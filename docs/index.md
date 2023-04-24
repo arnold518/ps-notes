@@ -25,6 +25,8 @@ int main()
 }
 ```
 
+그냥 한국어
+
 $$
 3x+5y=6
 $$
@@ -44,8 +46,6 @@ $$
     massa, nec semper lorem quam in massa.
 ```
 
-
-<div class="result" markdown>
 
 !!! note
 
