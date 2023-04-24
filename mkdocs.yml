@@ -17,9 +17,13 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
+    - search.share
   icon:
     repo: fontawesome/brands/github
-  language: en
+  language: ko
+  font:
+    text: Noto Sans
+    code: Ubuntu Mono
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -51,3 +55,11 @@ extra_javascript:
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - tags
+
+nav:
+  - Home: index.md
+  - 문제 풀이:
+      index2.md
+  - 알고리즘 & 자료구조 정리:
+      index3.md
