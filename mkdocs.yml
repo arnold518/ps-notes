@@ -18,12 +18,30 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
+    - navigation.indexes
   icon:
     repo: fontawesome/brands/github
-  language: ko
+  language: ko  
   font:
     text: Noto Sans
     code: Ubuntu Mono
+  palette: 
+      - primary: deep purple
+      - accent: deep purple
+      # Palette toggle for light mode
+      - media: "(prefers-color-scheme: light)"
+        scheme: default
+        toggle:
+          icon: material/weather-sunny
+          name: Switch to dark mode
+      # Palette toggle for dark mode
+      - media: "(prefers-color-scheme: dark)"
+        scheme: slate
+        toggle:
+          icon: material/weather-night
+          name: Switch to light mode
+    
+
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -55,11 +73,30 @@ extra_javascript:
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-  - tags
+  - tags:
+      tags_file: tags.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/arnold518
+  generator: false
+
+copyright: Copyright &copy; 2023 - 2023 Jaemin Park
 
 nav:
   - Home: index.md
   - 문제 풀이:
-      index2.md
+      - solutions/index.md
+      - Olympiad:
+          - IOI: a.md
+          - JOI: a.md
+          - JOISC: a.md
+          - JOIOC: a.md
+          - POI: a.md
+          - KOI: a.md
   - 알고리즘 & 자료구조 정리:
-      index3.md
+      - algorithms/index.md
+  - 아이디어 & 테크닉 모음:
+      - techniques/index.md
+  - Tags: tags.md
