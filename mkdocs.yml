@@ -1,3 +1,32 @@
-site_name: My Docs
+site_name: Problem Solving Notes
+repo_name: arnold518/ps-notes
+repo_url: https://github.com/arnold518/ps-notes
 theme:
   name: material
+  features:
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+plugins:
+  - tags:
+      enabled: !ENV [CI, false]
+  - search:
+      lang:
+        - en
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
