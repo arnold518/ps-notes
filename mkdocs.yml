@@ -62,6 +62,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
+  - md_in_html
   - toc:
       permalink: true
 
@@ -90,11 +91,21 @@ nav:
       - solutions/index.md
       - Olympiad:
           - IOI: a.md
+          - KOISC: a.md
           - JOI: a.md
           - JOISC: a.md
           - JOIOC: a.md
+          - APIO:
+              - 2019:
+                  - a.md
           - POI: a.md
           - KOI: a.md
+      - BOJ:
+          a.md
+      - Codeforces:
+          a.md
+      - Atcoder:
+          a.md
   - 알고리즘 & 자료구조 정리:
       - algorithms/index.md
   - 아이디어 & 테크닉 모음:
