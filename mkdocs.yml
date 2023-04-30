@@ -21,28 +21,31 @@ theme:
     - navigation.indexes
   icon:
     repo: fontawesome/brands/github
+    admonition:
+      note: material/lightbulb-on
+      tip: fontawesome/solid/clock
   language: ko  
   font:
     text: Noto Sans
     code: Ubuntu Mono
   palette: 
-      - primary: deep purple
-      - accent: deep purple
       # Palette toggle for light mode
       - media: "(prefers-color-scheme: light)"
         scheme: default
+        primary: deep purple
+        accent: deep purple
         toggle:
           icon: material/weather-sunny
           name: Switch to dark mode
       # Palette toggle for dark mode
       - media: "(prefers-color-scheme: dark)"
         scheme: slate
+        primary: deep purple
+        accent: deep purple
         toggle:
           icon: material/weather-night
           name: Switch to light mode
     
-
-
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
@@ -71,6 +74,9 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+extra_css:
+  - stylesheets/extra.css
+
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
@@ -97,7 +103,7 @@ nav:
           - JOIOC: a.md
           - APIO:
               - 2019:
-                  - a.md
+                  - P1 Strange Device : solutions/Olympiad/APIO/2019/P1 Strange Device/solution.md
           - POI: a.md
           - KOI: a.md
       - BOJ:
