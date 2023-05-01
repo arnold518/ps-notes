@@ -104,6 +104,8 @@ nav:
           - APIO:
               - 2019:
                   - P1 Strange Device : solutions/Olympiad/APIO/2019/P1 Strange Device/solution.md
+              - 2015:
+                  - P1 Bali Sculptures : solutions/Olympiad/APIO/2015/P1 Bali Sculptures/solution.md
           - POI: a.md
           - KOI: a.md
       - BOJ:
@@ -116,4 +118,7 @@ nav:
       - algorithms/index.md
   - 아이디어 & 테크닉 모음:
       - techniques/index.md
+  - Study:
+      - study/index.md
+      - Random Platinum Defence: study/Random Platinum Defence/rpd.md
   - Tags: tags.md
