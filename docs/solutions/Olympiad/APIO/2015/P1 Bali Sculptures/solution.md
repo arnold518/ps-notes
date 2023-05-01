@@ -2,6 +2,7 @@
 title: APIO 15 P1 Bali Sculptures
 tags:
     - dp
+    - greedy
     - ~ solution
 ---
 
@@ -17,7 +18,9 @@ tags:
 길이 $N$의 수열 $Y$가 주어질 때, 이 수열을 $X$ $(A \leq X \leq B)$개의 구간으로 쪼개어 각 구간별 $Y_i$의 합들의 bitwise OR을 최소화하여라.
 
 ### 제한
-$1 \leq N \leq 2,000$, $1 \leq A \leq B \leq N$, $0 \leq Y_i \leq 10^9$  
+$1 \leq N \leq 2,000$  
+$1 \leq A \leq B \leq N$  
+$0 \leq Y_i \leq 10^9$  
 **Subtask 4 : ** $1 \leq N \leq 100$, $1 \leq A \leq B \leq N$  
 **Subtask 5 : ** $1 \leq N \leq 2,000$, $1 = A \leq B \leq N$
 
@@ -37,6 +40,8 @@ $1 \leq N \leq 2,000$, $1 \leq A \leq B \leq N$, $0 \leq Y_i \leq 10^9$
 "$P[i]:=Y[i]$의 누적합 배열" 으로 정의한다.
 
 ### Subtask 4
+
+$1 \leq N \leq 100$, $1 \leq A \leq B \leq N$
 
 생각할 수 있는 가장 직관적인 풀이는 다음과 같다.
 
@@ -75,6 +80,8 @@ $logX$개의 비트 각각을 $O(N^2)$개의 상태 하나를 $O(N)$번의 trans
     </center>
 
 ### Subtask 5
+
+$1 \leq N \leq 2,000$, $1 = A \leq B \leq N$
 
 **Subtask 5**의 경우 가능한 구간의 개수를 최소화 시켜야 하는 대신 $N$의 크기가 늘어났다.
 이제, $dp[i][k]$의 `True` / `False` DP 대신, $k$항을 DP값으로 변환하여 조건을 만족하기 위한 구간의 개수의 최솟값을 저장하자.
