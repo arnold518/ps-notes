@@ -72,7 +72,7 @@ $N \leq 30,000$, $M \leq 30,000$
 $P$와 $P$로 나눈 나머지인 $k$를 고정하고 나면, $P_i=P$, $B_i \equiv k \ (mod \ P)$인 모든 $i$들을 그래프로 표현하기 위해서는 $O(\frac{N}{P_i})$개의 간선이 필요하다.
 또한, $k$는 $P$로 나눈 나머지이므로 서로 다른 $k$는 최대 $P$개 가능함을 알 수 있다.  
 이제, 최악의 경우에는 각 전령들이 $P_i=1$인 것이 $1$개, $P_i=2$인 것이 $2$개, ..., $P_i=\sqrt M$인 것이 $\sqrt M$개와 같이 있을 때이다.
-$P_i=1$인 것들의 간선의 개수의 합은 $\frac{N}{1} \cdot 1$, $P_i=2$인 것들은 $\frac{N}{2} \cdot 2$, ..., $P_i=\sqrt M$인 것들은 $\frac{N}{\sqrt M} \cdot M$로, 전체 합은 다음과 같다.
+$P_i=1$인 것들의 간선의 개수의 합은 $\frac{N}{1} \cdot 1$, $P_i=2$인 것들은 $\frac{N}{2} \cdot 2$, ..., $P_i=\sqrt M$인 것들은 $\frac{N}{\sqrt M} \cdot \sqrt{M}$로, 전체 합은 다음과 같다.
 
 $$
 \sum_{1 \leq p \leq \sqrt{M}}{\frac{N}{p} \cdot p} = O(N\sqrt{M})
