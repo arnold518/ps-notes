@@ -26,7 +26,12 @@ tags:
 
 ## 풀이
 
-!!! note "Observation 1"
+
+
+!!! note "Observation 1"    
+    
+
+!!! example "CheckPoint"
     
 
 !!! tip "Complexity"

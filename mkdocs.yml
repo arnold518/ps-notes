@@ -24,6 +24,7 @@ theme:
     admonition:
       note: material/lightbulb-on
       tip: fontawesome/solid/clock
+      example: material/text-box-check
   language: ko  
   font:
     text: Noto Sans
