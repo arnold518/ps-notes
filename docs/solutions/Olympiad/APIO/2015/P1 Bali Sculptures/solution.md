@@ -28,7 +28,7 @@ tags:
 ### 입력 / 출력
 !!! Quote "Input"
     $N$ $A$ $B$  
-    $Y_i$ $(1 \leq i \leq N)$
+    $Y_1$ $Y_2$ $\cdots$ $Y_N$
 
 !!! Quote "Output"
     $ans$

@@ -30,7 +30,10 @@ $0$번 전령이 $1$번 전령에게 소식을 전달하려고 하며, 소식을
 ### 입력 / 출력
 !!! Quote "Input"
     $N$ $M$  
-    $B_i$ $P_i$ $(0 \leq i < N)$
+    $B_0$ $P_0$  
+    $B_1$ $P_1$  
+    $\vdots$  
+    $B_{M-1}$ $P_{M-1}$
 
 !!! Quote "Output"
     $ans$
@@ -56,9 +59,7 @@ $i$번째 전령은 $B_i$번 빌딩에서 시작해서 $B_i+kP_i$ $(0 \leq B_i+k
     </center>
 
 
-### Subtask 5
-
-+ $N \leq 30,000$, $M \leq 30,000$
+### Subtask 5 (Full)
 
 위 그래프에서 불필요한 간선이 있는지 살펴보자.  
 만약 어떤 두 $i$, $j$가 $P_i=P_j$이며, $B_i \equiv B_j \ (mod \ P_i)$, $B_i < B_j$라고 가정하자.
