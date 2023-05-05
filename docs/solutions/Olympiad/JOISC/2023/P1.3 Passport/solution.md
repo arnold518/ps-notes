@@ -1,6 +1,11 @@
 ---
 title: JOISC 2023 P1.3 Passport
 tags:
+    - 0_1_bfs
+    - data_structures
+    - dijkstra
+    - graphs
+    - segtree
     - ~ solution
 ---
 
