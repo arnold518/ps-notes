@@ -1,0 +1,6 @@
+  - with-pdf:
+      author: Jaemin Park
+      render_js: true
+      headless_chrome_path: C:\Program Files\Google\Chrome\Application\chrome.exe
+      custom_template_path: ./docs/with_pdf_template
+      enabled_if_env: ENABLE_PDF_EXPORT
