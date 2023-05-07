@@ -1,6 +1,8 @@
 ---
 title: Prefix Function (Failure Function)
 tags:
+    - kmp
+    - string
     - ~ algorithm
 ---
 
