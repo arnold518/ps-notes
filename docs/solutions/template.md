@@ -6,25 +6,25 @@ tags:
 
 # 
 
-## 문제
+## Problem
 
-### 문제 링크
+### Problem Link
 []()
 
-### 문제 요약
+### Summary
 
 
-### 제한
+### Constraints
 
 
-### 입력 / 출력
+### Input / Output
 !!! Quote "Input"
 
 
 !!! Quote "Output"
     
 
-## 풀이
+## Solution
 
 
 
@@ -39,7 +39,7 @@ tags:
     Time Complexity : $O()$
     </center>
 
-## 코드
+## Code
 ``` cpp linenums="1"
 
 ```

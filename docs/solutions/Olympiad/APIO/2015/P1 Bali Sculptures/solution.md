@@ -8,16 +8,16 @@ tags:
 
 # APIO 15 P1 Bali Sculptures
 
-## 문제
+## Problem
 
-### 문제 링크
+### Problem Link
 [https://www.acmicpc.net/problem/10846](https://www.acmicpc.net/problem/10846)  
 [https://oj.uz/problem/view/APIO15_sculpture](https://oj.uz/problem/view/APIO15_sculpture)
 
-### 문제 요약
+### Summary
 길이 $N$의 수열 $Y$가 주어질 때, 이 수열을 $X$ $(A \leq X \leq B)$개의 구간으로 쪼개어 각 구간별 $Y_i$의 합들의 bitwise OR을 최소화하여라.
 
-### 제한
+### Constraints
 + $1 \leq N \leq 2,000$  
 + $1 \leq A \leq B \leq N$  
 + $0 \leq Y_i \leq 10^9$  
@@ -25,7 +25,7 @@ tags:
 **Subtask 4 : ** $1 \leq N \leq 100$, $1 \leq A \leq B \leq N$  
 **Subtask 5 : ** $1 \leq N \leq 2,000$, $1 = A \leq B \leq N$
 
-### 입력 / 출력
+### Input / Output
 !!! Quote "Input"
     $N$ $A$ $B$  
     $Y_1$ $Y_2$ $\cdots$ $Y_N$
@@ -33,7 +33,7 @@ tags:
 !!! Quote "Output"
     $ans$
 
-## 풀이
+## Solution
 
 **Subtask 4**와 **Subtask 5**가 서로를 포함하지 않는, 두 개의 문제로 구성되어 있음에 유의하자.  
 **Subtask 4**의 경우, $1 \leq N \leq 100$이고, **Subtask 5**의 경우 $1 \leq N \leq 2,000$인 대신 $A=1$로, 가능한 구간의 개수를 최소화 시켜야 한다.
@@ -107,7 +107,7 @@ $T$번째 비트가 $0$이 될 수 있는지 확인하기 위해서는 $dp[N]$�
     Time Complexity : $O(N^2logX)$
     </center>
 
-## 코드
+## Code
 ``` cpp linenums="1"
 #include <bits/stdc++.h>
 using namespace std;

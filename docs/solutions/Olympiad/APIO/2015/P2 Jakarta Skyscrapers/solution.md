@@ -9,25 +9,25 @@ tags:
 
 # APIO 15 P2 Jakarta Skyscrapers
 
-## 문제
+## Problem
 
-### 문제 링크
+### Problem Link
 [https://www.acmicpc.net/problem/10847](https://www.acmicpc.net/problem/10847)  
 [https://oj.uz/problem/view/APIO15_skyscraper](https://oj.uz/problem/view/APIO15_skyscraper)
 
-### 문제 요약
+### Summary
 $0, 1, \cdots, N-1$번의 $N$개의 빌딩이 있고, $0, 1, \cdots, M-1$번의 $M$명의 전령들이 있다.  
 $i$번째 전령은 처음에 $B_i$번 빌딩에서 시작하고, 한 번의 점프로 정확히 $P_i$개의 빌딩을 건너뛰어 이동할 수 있다.
 ($x$번 빌딩에서 $x+P_i$ $(x+P_i<N)$번 빌딩으로 이동, $x-P_i$ $(x-P_i \geq 0)$번 빌딩으로 이동)  
 $0$번 전령이 $1$번 전령에게 소식을 전달하려고 하며, 소식을 전해 들은 전령은 현재 칸에 있는 다른 전령에게 소식을 전달하거나, 다른 빌딩으로 한번 점프를 할 수 있을 때 필요한 점프의 총 횟수의 최솟값을 구하여라.
 
-### 제한
+### Constraints
 + $1 \leq N \leq 30,000$  
 + $2 \leq M \leq 30,000$  
 + $0 \leq B_i < N$  
 + $1 \leq P_i \leq 30,000$
 
-### 입력 / 출력
+### Input / Output
 !!! Quote "Input"
     $N$ $M$  
     $B_0$ $P_0$  
@@ -38,7 +38,7 @@ $0$번 전령이 $1$번 전령에게 소식을 전달하려고 하며, 소식을
 !!! Quote "Output"
     $ans$
 
-## 풀이
+## Solution
 
 ### Subtask 3
 
@@ -99,7 +99,7 @@ $$
     Time Complexity : $O(N\sqrt{M}logN)$
     </center>
 
-## 코드
+## Code
 ``` cpp linenums="1"
 #include <bits/stdc++.h>
 using namespace std;

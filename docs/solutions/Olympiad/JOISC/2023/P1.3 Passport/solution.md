@@ -11,23 +11,23 @@ tags:
 
 # JOISC 2023 P1.3 Passport
 
-## 문제
+## Problem
 
-### 문제 링크
+### Problem Link
 [https://www.acmicpc.net/problem/27994](https://www.acmicpc.net/problem/27994)  
 [https://oj.uz/problem/view/JOI23_passport](https://oj.uz/problem/view/JOI23_passport)
 
-### 문제 요약
+### Summary
 $1, 2, \cdots, N$번의 $N$개의 도시가 있고, 도시 $i$에서는 구간 $[L_i, R_i]$ 내의 임의의 도시로 자유롭게 이동할 수 있는 여권을 발급받을 수 있다. $(1 \leq i \leq N)$  
 $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발하였을 때, 모든 도시를 방문하기 위하여 필요한 여권의 최소 개수를 구하여라. $(1 \leq k \leq Q)$
 
-### 제한
+### Constraints
 + $2 \leq N \leq 200,000$
 + $1 \leq L_i \leq i \leq R_i \leq N$ $(1 \leq i \leq N)$
 + $1 \leq Q \leq N$
 + $1 \leq X_k \leq N$ $(1 \leq k \leq Q)$, 모든 $X_k$는 서로 다르다.
 
-### 입력 / 출력
+### Input / Output
 !!! Quote "Input"
     $N$  
     $L_1$ $R_1$  
@@ -46,7 +46,7 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
     $\vdots$  
     $ans_Q$  
 
-## 풀이
+## Solution
 
 ### Subtask 4
 + $N \leq 2500$
@@ -104,7 +104,7 @@ Segment Tree에 속하는 간선들은 가중치가 $0$, 나머지 간선들은 
     Time Complexity : $O(NlogN)$
     </center>
 
-## 코드
+## Code
 
 ``` cpp linenums="1"
 #include <bits/stdc++.h>

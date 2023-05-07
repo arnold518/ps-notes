@@ -8,22 +8,22 @@ tags:
 
 # APIO 19 P1 Strange Device
 
-## 문제
+## Problem
 
-### 문제 링크
+### Problem Link
 [https://www.acmicpc.net/problem/17634](https://www.acmicpc.net/problem/17634)  
 [https://oj.uz/problem/view/APIO19_strange_device](https://oj.uz/problem/view/APIO19_strange_device)
 
-### 문제 요약
+### Summary
 $x=(t+\lfloor{\frac{t}{B}}\rfloor) \ (mod \ A)$, $y=t \ (mod \ B)$ 일 때, $t$에 대한 순서쌍 $(x, y)$를 생각하자.  
 $t$의 구간들 $[l_i, r_i]$이 $N$개 주어질 때, 적어도 하나의 구간에 포함되는 모든 $t$들에 대하여 가능한 서로 다른 순서쌍 $(x, y)$의 개수를 구하여라.
 
-### 제한
+### Constraints
 + $N \leq 10^6$  
 + $1 \leq A, B \leq 10^{18}$  
 + $0 \leq l_i \leq r_i \leq 10^{18}$, $r_i < l_{i+1}$
 
-### 입력 / 출력
+### Input / Output
 !!! Quote "Input"
     $N$ $A$ $B$  
     $l_1$ $r_1$  
@@ -35,7 +35,7 @@ $t$의 구간들 $[l_i, r_i]$이 $N$개 주어질 때, 적어도 하나의 구�
 !!! Quote "Output"
     $ans$
 
-## 풀이
+## Solution
 
 우선, $y$의 주기가 $B$임에 착안하여 $t$가 $B$씩 증가함에 따라 순서쌍 $(x, y)$가 어떻게 변하는지 관찰하자.
 $0 \leq k < B$에 대하여, $t=k, k+B, k+2B, \cdots, k+nB$일 때 $x$는 다음과 같이 변한다.
@@ -80,7 +80,7 @@ $0$을 기준으로 원형 구간들을 모두 쪼개고, 전체 구간들을 �
     Time Complexity : $O(NlogN)$
     </center>
 
-## 코드
+## Code
 ``` cpp linenums="1"
 #include <bits/stdc++.h>
 using namespace std;

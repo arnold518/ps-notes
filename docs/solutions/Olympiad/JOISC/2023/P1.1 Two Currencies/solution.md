@@ -15,19 +15,19 @@ tags:
 
 # JOISC 2023 P1.1 Two Currencies
 
-## 문제
+## Problem
 
-### 문제 링크
+### Problem Link
 [https://www.acmicpc.net/problem/27992](https://www.acmicpc.net/problem/27992)  
 [https://oj.uz/problem/view/JOI23_currencies](https://oj.uz/problem/view/JOI23_currencies)
 
-### 문제 요약
+### Summary
 정점 $N$개의 트리가 주어지고, 몇 개의 간선은 지나려면 통행료를 내야 한다.  
 $P_i$번째 간선을 통과하기 위해서는 $1$개의 금화를 내거나, $C_i$개의 은화를 내야 한다. $(1 \leq i \leq M)$  
 $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $T_i$번 정점으로 금화 $X_i$개, 은화 $Y_i$개를 갖고 이동하려 한다. $(1 \leq i \leq Q)$  
 이 때, 이동이 가능한지 판별하고, 가능하다면 남는 금화의 개수의 최댓값을 구하여라.
 
-### 제한
+### Constraints
 + $2 \leq N \leq 100,000$
 + $1 \leq M \leq 100,000$
 + $1 \leq Q \leq 100,000$
@@ -35,7 +35,7 @@ $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $
 + $1 \leq P_j \leq N-1$, $1 \leq C_j \leq 10^9$ $(1 \leq j \leq M)$
 + $1 \leq S_k, T_k \leq N$, $0 \leq X_k \leq 10^9$, $0 \leq Y_k \leq 10^{18}$ $(1 \leq i \leq Q)$
 
-### 입력 / 출력
+### Input / Output
 !!! Quote "Input"
     $N$ $M$ $Q$  
     $A_1$ $B_1$  
@@ -62,7 +62,7 @@ $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $
     ---
     + $ans_i$는 $i$번째 쿼리에 대하여 불가능하면 $-1$, 가능하다면 남는 금화의 개수의 최댓값
 
-## 풀이
+## Solution
 
 ### Subtask 1
 + $N \leq 2000$, $M \leq 2000$, $Q \leq 2000$
@@ -134,7 +134,7 @@ $Q$번의 이분탐색을 해야 하니, Parallel Binary Search를 사용하자.
 마지막으로, 모든 $C_i$가 다르다고 가정하였는데, $C_i$가 같을 수 있다면 같은 $C_i$중 일부만 사용하는 경우를 고려할 수 없다.
 이는 단순히 임의로 tie-breaking rule을 적용한 후, 이분탐색을 정렬된 $C_i$들의 배열에 대해서 시행함으로서 해결할 수 있다.
 
-## 코드
+## Code
 ``` cpp linenums="1"
 #include <bits/stdc++.h>
 using namespace std;
