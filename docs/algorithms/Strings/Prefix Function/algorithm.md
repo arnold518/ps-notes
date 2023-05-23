@@ -10,7 +10,7 @@ tags:
 
 ## Definition
 
-!!! quote "Definition"
+!!! quote "Definition 1"
     $fail[i] := S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 최대 길이  
     조건을 만족하는 **proper prefix**가 없으면 $fail[i]=0$, $fail[0]=-1$
 정의에 의해, $fail[1]=0$이며 $fail[0]$은 정의되지 않기 때문에, $fail[0]=-1$이라고 생각하자.
@@ -21,7 +21,7 @@ tags:
 
 ### Property 1
 !!! note "Property 1"
-    $fail[i]+1≥fail[i+1]$
+    $$fail[i]+1≥fail[i+1]$$
 
 $fail[i+1]$에서 마지막 문자를 제거하면, 즉 길이 $fail[i+1]-1$의 prefix는 $S[1 \cdots i]$의 prefix 이고, 동시에 suffix 이다.
 즉, $fail[i]$의 조건을 모두 만족하니, 최댓값인 $fail[i]$는 $fail[i+1]-1$보다는 크거나 같아야 한다.
@@ -56,7 +56,7 @@ $x=fail[i]$라면 $x-1 \in F[i-1]$이니, 거꾸로 $j \in F[i-1]$인 모든 $j$
 
 따라서 다음과 같은 방법으로 구할 수 있다.
 
-!!! example "Algorithm"
+!!! example "Algorithm 1"
     $i$를 증가시켜가며 $fail[i]$를 구한다.  
     $j=fail[i-1], fail[fail[i-1]], \cdots$를 하나씩 확인하며, $S[j+1]=S[i]$인 $j$가 등장하는 순간 $fail[i]=j+1$이다.  
     만약 만족하는 $j$가 없다면 $fail[i]=0$이다.

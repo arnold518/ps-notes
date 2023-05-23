@@ -123,6 +123,9 @@ nav:
       - algorithms/index.md
       - Strings:
           - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
+      - Math:
+          - Polynomials and Series :
+              - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
   - 아이디어 & 테크닉 모음:
       - techniques/index.md
   - Study:
