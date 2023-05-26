@@ -131,7 +131,7 @@ $$
     $\displaystyle \begin{bmatrix} W \times W' \end{bmatrix}_{i, j} = \frac{1}{n} \sum_{k=0}^{n-1} \omega_n^{ik} \omega_n^{-kj} = \frac{1}{n} \sum_{k=0}^{n-1} \omega_n^{k(i-j)} = \frac{1}{n} \sum_{k=0}^{n-1} (\omega_n^{(i-j)})^k$
 
     1. $i \ne j$  
-    $\displaystyle \frac{1}{n} \sum_{k=0}^{n-1} (\omega_n^{(i-j)})^k = \frac{1 - \omega_n^{n(i-j)}}{1 - \omega_n^{(i-j)}}=0$
+    $\displaystyle \frac{1}{n} \sum_{k=0}^{n-1} (\omega_n^{(i-j)})^k = \frac{1}{n} \frac{1 - \omega_n^{n(i-j)}}{1 - \omega_n^{(i-j)}}=0$
 
     2. $i = j$  
     $\displaystyle \frac{1}{n} \sum_{k=0}^{n-1} (\omega_n^{(i-j)})^k = \frac{1}{n} \sum_{k=0}^{n-1} 1 = 1$
@@ -163,6 +163,13 @@ $A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots
 <center>
 $A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}$
 </center>
+
+!!! quote "Definition 3"
+    다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.
+    $A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots+a_{n-2}x^{\frac{n}{2}-1}$  
+    $A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}$  
+    $DFT(A_0(x))=((y_0)_0, (y_0)_1, (y_0)_2, \cdots, (y_0)_{\frac{n}{2}-1})$  
+    $DFT(A_1(x))=((y_1)_0, (y_1)_1, (y_1)_2, \cdots, (y_1)_{\frac{n}{2}-1})$
 
 위 식들에서 다음과 같은 사실을 확인할 수 있다.
 
@@ -199,14 +206,14 @@ $$
 
 <center>
 $y_k=(y_0)_k+\omega_n^k(y_1)_k$  
-$y_{k+\frac{n}{2}}=(y0)_k-\omega_n^k(y1)_k$  
+$y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$  
 $(k=0, 1, \cdots, \frac{n}{2}-1)$
 </center>
 
 !!! note "Property 7"
     <center>
     $y_k=(y_0)_k+\omega_n^k(y_1)_k$  
-    $y_{k+\frac{n}{2}}=(y0)_k-\omega_n^k(y1)_k$  
+    $y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$  
     $(k=0, 1, \cdots, \frac{n}{2}-1)$
     </center>
 
