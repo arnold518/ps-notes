@@ -133,7 +133,7 @@ T
 \end{bmatrix}
 $$
 
-!!! note "Property 1"
+!!! property "Property 1"
     $$
     c_i = \sum_{j \star k=i} a_j \cdot b_k
     $$
@@ -176,7 +176,7 @@ $$
 
 구체적으로 MultiDimensional DFT를 정의하기 위하여 다음을 정의하자.
 
-!!! quote "Definition 1"
+!!! definition "Definition 1"
     $A$가 $m \times n$ 행렬, $B$가 $p \times q$ 행렬일 때 $A$와 $B$의 kronecker product $A \otimes B$를 다음과 같은 크기 $mp \times nq$의 block matrix로 정의한다.
 
     $$
@@ -192,14 +192,14 @@ $$
 
 Kronecker product 에는 다음과 같은 성질들이 성립한다.
 
-!!! note "Property 2"
+!!! property "Property 2"
     $$(A \otimes B) \otimes C = A \otimes (B \otimes C)$$
 
     $$(A \otimes B)(C \otimes D) = (AC \otimes BD)$$
 
     $$(A \otimes B)^{-1} = (A^{-1} \otimes B^{-1})$$
 
-!!! quote "Definition 2"
+!!! definition "Definition 2"
     다항식 $A(x_0, x_1, \cdots, x_{n-1})$이 다음과 같는 계수들을 갖는다.
 
     $$
@@ -272,7 +272,7 @@ $$
 \end{bmatrix}
 $$
 
-!!! note "Property 3"
+!!! property "Property 3"
     $$
     \overrightarrow{a}_{0, 1, 2, \cdots, n-1} =
     \begin{bmatrix}
@@ -298,7 +298,7 @@ $$T'=T_1 \otimes T_2 \cdots \otimes T_{n-1}$$
 
 $$(\overrightarrow{y}_{1, 2, \cdots, n-1})_k = (T_1 \otimes T_2 \cdots \otimes T_{n-1}) (\overrightarrow{a}_{1, 2, \cdots, n-1})_k = T'(\overrightarrow{a}_{1, 2, \cdots, n-1})_k$$
 
-!!! quote "Definition 3"
+!!! definition "Definition 3"
 
     $$T'=T_1 \otimes T_2 \cdots \otimes T_{n-1}$$
 
@@ -356,7 +356,7 @@ $$
 위 복잡한 식들의 의미는 결국, 변수 $x_0$를 무시한 후, $x_0$의 차수에 따라 분리한 다항식 계수들에 대하여 각각 **DFT**를 한 후, 결과 벡터를 하나의 수처럼 생각한 후 $x_0$에 대한 **DFT**를 하면 MultiDimensional DFT를 할 수 있다는 의미이다.
 또한, 전 과정에서 DFT matrix 를 사용한 것이 아니라, **Property 1**의 성질을 만족하는 임의의 행렬을 사용해도 괜찮다.
 
-!!! example "Algorithm 1"
+!!! algorithm "Algorithm 1"
     MultiDimensional DFT를 하기 위해선, 우선 첫 번째 변수 $x_0$의 차수에 따라 분리한 다항식 계수들에 대하여 각각 $n-1$차원 **DFT**를 한 후, 결과 벡터를 하나의 수처럼 생각한 후 $x_0$에 대한 **DFT**를 하면 된다.
 
     이때, **DFT** 대신 **Property 1**의 성질을 만족하는 단순 행렬곱으로 각 단계를 생각해도 된다.
@@ -367,7 +367,7 @@ $$
 T^{-1} = T_0^{-1} \otimes T_1^{-1} \otimes T_2^{-1} \cdots \otimes T_{n-1}^{-1}
 $$
 
-!!! note "Property 4"
+!!! property "Property 4"
     $$
     T=T_0 \otimes T_1 \otimes T_2 \cdots \otimes T_{n-1}
     $$
@@ -442,7 +442,7 @@ T_{|}^{-1}=
 \end{bmatrix}
 $$
 
-!!! note "Property 5"
+!!! property "Property 5"
     $$
     T_{\oplus}=
     \begin{bmatrix}
@@ -479,10 +479,8 @@ $$
 
 시간 복잡도는 $logN$차원 **DFT**이고, 각 차원이 크기 $2$인 행렬곱이므로 $O(NlogN)$이다.
 
-!!! tip "Time Complexity"
-    <center>
+!!! complexity "Time Complexity"
     Time Complexity : $O(NlogN)$
-    </center>
 
 ### XOR Convolution
 

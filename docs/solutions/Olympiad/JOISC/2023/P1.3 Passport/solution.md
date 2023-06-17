@@ -28,7 +28,7 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
 + $1 \leq X_k \leq N$ $(1 \leq k \leq Q)$, 모든 $X_k$는 서로 다르다.
 
 ### Input / Output
-!!! Quote "Input"
+!!! inout "Input"
     $N$  
     $L_1$ $R_1$  
     $L_2$ $R_2$  
@@ -40,7 +40,7 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
     $\vdots$  
     $X_Q$  
 
-!!! Quote "Output"
+!!! inout "Output"
     $ans_1$  
     $ans_2$  
     $\vdots$  
@@ -54,7 +54,7 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
 현재 갖고 있는 여권들만 사용해서 이동할 수 있는 도시의 범위는 항상 구간이다. $(\because L_i \leq i \leq R_i)$  
 따라서, 방문 가능한 도시의 범위가 $[1, N]$임과, $L_i=1$인 여권과 $R_i=N$인 여권을 각각 발급받는것은 동치이다.
 
-!!! note "Observation 1"
+!!! observation "Observation 1"
 	<a name="observation-1"></a>
     모든 도시를 방문하기 위하여 발급받아야 하는 여권의 최소 개수는 $X_k$번 도시에서 시작해서 $L_i=1$인 여권과 $R_i=N$인 여권을 각각 발급받기 위하여 발급받아야 하는 여권의 최소 개수와 동치이다.
 
@@ -69,7 +69,7 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
 
 위 그림처럼, 최적해는 $X_k$에서 시작하여 한 경로를 따라 임의의 정점 $W$까지 이동 후, $W$에서 갈라져 $L$과 $R$로 각각 이동하는 형태이다.
 
-!!! note "Observation 2" 
+!!! observation "Observation 2" 
     $X_k$에서 시작하여 정점 $L$과 $R$로 가는 최단경로의 형태는, 우선 임의의 정점 $W$로 이동한 후 갈라져 $L$과 $R$로 이동하는 것이다.
     이 때 $X_k \rightarrow W$, $W \rightarrow L$, $W \rightarrow R$의 각 경로에는 겹치는 정점이 없다.
 
@@ -78,11 +78,11 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
 
 모든 간선의 가중치가 1이고, 정점이 $O(N)$개, 간선은 $O(N^2)$개이니 BFS를 통해 $O(N^2)$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     어떤 도시 $x$에서 여권을 발급받아, $[L_x, R_x]$에 속하는 도시 $y$로 이동하여 여권을 발급받는 행동을 $x$번 정점에서 $y$번 정점으로 이동하는 간선으로 생각할 때, **Observation 1**에 의해 이 그래프에서 $X_k$에서 시작하여 $L_i=1$인 도시 $L$과 $R_i=N$번 도시 $R$로 이동하는 경로를 찾으면 된다.
     **Observation 2**에 의해 이러한 경로는 임의의 정점 $W$를 기준으로 $X_k \rightarrow W$, $W \rightarrow L$, $W \rightarrow R$ 3개의 최단 경로의 합을 구하는 문제로 생각할 수 있으니, BFS를 통해 $O(N^2)$에 문제를 해결할 수 있다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(N^2)$
     </center>
@@ -97,10 +97,10 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
 하지만 Segment Tree의 간선들은 가중치가 $0$이기 때문에 단순한 BFS를 사용할 수는 없다.
 Segment Tree에 속하는 간선들은 가중치가 $0$, 나머지 간선들은 모두 가중치가 1로 전체 그래프의 간선들의 가중치가 $0$ 혹은 $1$이니 01-BFS를 사용하면 $O(NlogN)$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     $O(N^2)$개의 간선을 Segment Tree를 사용하여 $O(NlogN)$개의 간선들로 압축할 수 있다. 이제, 이 그래프에서 가중치가 $0$ 혹은 $1$이니 01-BFS를 사용하면 $O(NlogN)$에 문제를 해결할 수 있다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(NlogN)$
     </center>

@@ -36,7 +36,7 @@ $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $
 + $1 \leq S_k, T_k \leq N$, $0 \leq X_k \leq 10^9$, $0 \leq Y_k \leq 10^{18}$ $(1 \leq i \leq Q)$
 
 ### Input / Output
-!!! Quote "Input"
+!!! inout "Input"
     $N$ $M$ $Q$  
     $A_1$ $B_1$  
     $A_2$ $B_2$  
@@ -54,7 +54,7 @@ $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $
     + $A_i$, $B_i$는 트리의 인접 리스트
     + $P_i$는 간선 번호
 
-!!! Quote "Output"
+!!! inout "Output"
     $ans_1$  
     $ans_2$  
     $\vdots$  
@@ -71,15 +71,15 @@ $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $
 통행료들의 배열 $C_i$는 금화 $1$개를 내거나, 은화 $C_i$개를 내야 함을 의미한다.
 사용할 수 있는 은화의 총 개수가 정해진 상태에서, 금화를 최대한 적게 사용하는 것이 목적이니, $C_i$가 작은 통행료부터 예산이 바닥날 때까지 은화로 지불하고, 나머지를 금화로 지불하는 것이 최선이다.
 
-!!! note "Observation 1"
+!!! observation "Observation 1"
     한 쿼리 $k$에서 경로에 있는 모든 통행료들을 $C_i$의 순서대로 정렬한 후, $C_i$가 작은 통행료부터 순서대로 합이 $Y_k$이하일 때까지 최대한 더하고 남은 통행료들을 금화로 지불하는 것이 최적해이다.
 
 **Observation 1**을 이용하여 Naive하게 각 쿼리마다 경로를 따라 모든 통행료들의 배열을 얻고, 정렬하여 답을 계산하면 $O(Q(N+M))$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     **Observation 1**을 이용하여 Naive하게 구현하면 $O(Q(N+M))$에 문제를 해결할 수 있다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(Q(N+M))$
     </center>
@@ -94,7 +94,7 @@ $N$, $Q$, $M$이 클 때에는 직접 $C_i$들을 정렬하여 답을 구할 수
 $C_i \leq T$인 통행료들의 합을 구하여 통행료들의 합이 $Y_k$보다 작거나 같은 $T$의 최댓값을 구하면, $C_i \leq T$인 통행료들의 개수가 곧 은화로 지불할 수 있는 통행료들의 수를 의미한다.
 이제 경로 $(S_k, T_k)$ 에 있는 통행료들 중 $T$ 이하인 것들의 합, 혹은 개수에 대한 쿼리에 빠른 시간 안에 답할 수 있다면, 이 결과를 이용하여 이분탐색을 통해 답을 구할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     경로 $(S_k, T_k)$ 에 있는 통행료들 중 $T$ 이하인 것들의 합, 혹은 개수에 대한 쿼리에 빠른 시간 안에 답할 수 있다고 가정하자.
     $C_i \leq T$인 통행료들의 합이 $Y_k$보다 작거나 같은 $T$의 최댓값을 이분탐색으로 구하여 문제를 해결할 수 있다.
 
@@ -102,11 +102,11 @@ $C_i \leq T$인 통행료들의 합을 구하여 통행료들의 합이 $Y_k$보
 트리에서 DFS를 돌며, 자식의 PST는 부모의 PST에 간선이 지나는 $C_i$를 추가한 형태로 PST를 구성한 후, 경로 $(S_k, T_k)$의 쿼리는 $S_k$, $T_k$, $lca$ 에서의 $T$에 대한 쿼리를 날려 구할 수 있다.
 이분탐색에 $O(logY)$, PST 쿼리에서 $O(logM)$의 시간이 걸리니, 전체 $O(NlogN+M+QlogYlogM)$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     필요한 쿼리는 트리에서의 Persistent Segment Tree를 이용하여 구할 수 있다.  
     전체 시간복잡도는 $O(NlogN+M+QlogYlogM)$이다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(NlogN+M+QlogYlogM)$
     </center>
@@ -121,12 +121,12 @@ $Q$번의 이분탐색을 해야 하니, Parallel Binary Search를 사용하자.
 이는 Euler Tree Trick을 사용해서 트리를 일직선으로 핀 후, 구간 업데이트, 점 쿼리로 해결할 수 있으니 Segment Tree (Lazy Propagation 필요 없음)으로 구한다.
 이분탐색에 총 $O(logY)$, 정렬 및 Segment Tree 쿼리에 $O(logN)$의 시간이 걸리니, 전체 $O(NlogN+M+QlogYlogN)$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     오프라인 쿼리이니, Parallel Binary Search를 사용하면 간선 가중치 업데이트와 경로 가중치 합 쿼리 문제로 환원할 수 있다.
     이는 Euler Tree Trick으로 트리를 일직선으로 피고, Segment Tree를 활용하여 해결할 수 있다.  
     전체 시간복잡도는 $O(NlogN+M+QlogYlogN)$이다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(NlogN+M+QlogYlogN)$
     </center>

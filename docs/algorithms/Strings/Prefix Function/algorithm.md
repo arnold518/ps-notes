@@ -10,7 +10,7 @@ tags:
 
 ## Definition
 
-!!! quote "Definition 1"
+!!! definition "Definition 1"
     $fail[i] := S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 최대 길이  
     조건을 만족하는 **proper prefix**가 없으면 $fail[i]=0$, $fail[0]=-1$
 정의에 의해, $fail[1]=0$이며 $fail[0]$은 정의되지 않기 때문에, $fail[0]=-1$이라고 생각하자.
@@ -20,7 +20,7 @@ tags:
 ## Property
 
 ### Property 1
-!!! note "Property 1"
+!!! property "Property 1"
     $$fail[i]+1≥fail[i+1]$$
 
 $fail[i+1]$에서 마지막 문자를 제거하면, 즉 길이 $fail[i+1]-1$의 prefix는 $S[1 \cdots i]$의 prefix 이고, 동시에 suffix 이다.
@@ -34,7 +34,7 @@ $fail[i+1]$에서 마지막 문자를 제거하면, 즉 길이 $fail[i+1]-1$의 
 따라서 $fail[i]$를 $1$부터 $N$까지 계산하면 $fail[i]$는 최대 $N$번 증가, 최대 $N$번 감소함을 알 수 있다.
 
 ### Property 2
-!!! note "Property 2"
+!!! property "Property 2"
     $fail$의 정의에서 “최대” 조건을 무시한, 즉 $S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 길이들의 집합을 $F[i]$라 하자.
     $F[i]$는 $fail[i], fail[fail[i]], fail[fail[fail[i]]], \cdots$ 의 형태로 구성된다.
 
@@ -56,7 +56,7 @@ $x=fail[i]$라면 $x-1 \in F[i-1]$이니, 거꾸로 $j \in F[i-1]$인 모든 $j$
 
 따라서 다음과 같은 방법으로 구할 수 있다.
 
-!!! example "Algorithm 1"
+!!! algorithm "Algorithm 1"
     $i$를 증가시켜가며 $fail[i]$를 구한다.  
     $j=fail[i-1], fail[fail[i-1]], \cdots$를 하나씩 확인하며, $S[j+1]=S[i]$인 $j$가 등장하는 순간 $fail[i]=j+1$이다.  
     만약 만족하는 $j$가 없다면 $fail[i]=0$이다.
@@ -64,7 +64,7 @@ $x=fail[i]$라면 $x-1 \in F[i-1]$이니, 거꾸로 $j \in F[i-1]$인 모든 $j$
 **Property 1**과 같이 $fail[i]$는 최대 $N$번 증가, 최대 $N$번 감소하니, 위와 같은 알고리즘으로 $O(N)$ 시간에 모든 $fail[i]$를 구할 수 있다.
 이는 $S$에서 $S$를 찾는 KMP 알고리즘을 생각했을 때, 문자열을 최대 $N$칸 밀어가며 탐색하니 $O(N)$이라고 생각해도 된다.
 
-!!! tip "Time Complexity"
+!!! complexity "Time Complexity"
     <center>
     Time Complexity : $O(N)$
     </center>

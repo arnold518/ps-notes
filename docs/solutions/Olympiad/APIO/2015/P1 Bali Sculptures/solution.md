@@ -26,11 +26,11 @@ tags:
 **Subtask 5 : ** $1 \leq N \leq 2,000$, $1 = A \leq B \leq N$
 
 ### Input / Output
-!!! Quote "Input"
+!!! inout "Input"
     $N$ $A$ $B$  
     $Y_1$ $Y_2$ $\cdots$ $Y_N$
 
-!!! Quote "Output"
+!!! inout "Output"
     $ans$
 
 ## Solution
@@ -64,7 +64,7 @@ DP가 최적해를 보장하기 위해서는 전체 문제를 최적으로 풀�
 문제의 답을 최고 비트부터 하나씩 결정해가는 풀이를 생각하자.  
 최적해의 $T+1$이상의 비트를 다 결정했다고 가정하고 $T$번째 비트를 결정하기 위하여 다음의 DP를 생각하자.
 
-!!! quote "Definition 1"
+!!! definition "Definition 1"
     $T$를 최상위 비트에서부터 감소시키며, 최적해의 $T+1$이상의 비트를 다 결정했다고 가정하고, $T$번째 비트가 $0$이 될 수 있는지 확인하자.  
     $dp[i][k]:=$$1 \sim i$까지의 수들을 $k$개의 구간으로 쪼갤 때 각 구간합들을 bitwise OR한 값들 중, $T+1$이상의 비트는 지금까지 구한 최적해와 똑같으며, $T$번째 비트는 $0$이 되도록 할 수 있는가? (`True` / `False`)
 
@@ -76,10 +76,10 @@ $T$번째 비트가 $0$이 될 수 있는지 확인하기 위해서는 $dp[N][A]
 
 $logX$개의 비트 각각을 $O(N^2)$개의 상태 하나를 $O(N)$번의 transition으로 문제를 해결하니, 전체 $O(N^3logX)$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     **Definition 1**과 같이 DP를 정의하면 최고 비트부터 하나씩 최적해를 결정할 수 있고, $O(N^3logX)$에 문제를 해결할 수 있다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(N^3logX)$
     </center>
@@ -91,7 +91,7 @@ $logX$개의 비트 각각을 $O(N^2)$개의 상태 하나를 $O(N)$번의 trans
 **Subtask 5**의 경우 가능한 구간의 개수를 최소화 시켜야 하는 대신 $N$의 크기가 늘어났다.
 이제, $dp[i][k]$의 `True` / `False` DP 대신, $k$항을 DP값으로 변환하여 조건을 만족하기 위한 구간의 개수의 최솟값을 저장하자.
 
-!!! quote "Definition 2"
+!!! definition "Definition 2"
     $T$를 최상위 비트에서부터 감소시키며, 최적해의 $T+1$이상의 비트를 다 결정했다고 가정하고, $T$번째 비트가 $0$이 될 수 있는지 확인하자.  
     $dp[i]:=$$1 \sim i$까지의 수들을 여러 구간으로 쪼갤 때 각 구간합들을 bitwise OR한 값들 중, $T+1$이상의 비트는 지금까지 구한 최적해와 똑같으며, $T$번째 비트는 $0$이 되도록 할 수 있는 구간의 최소 개수
 
@@ -99,10 +99,10 @@ transition은 **Subtask 4**의 경우와 거의 유사하다.
 조건을 만족시키기 불가능하거나 필요한 구간의 개수가 $B$를 넘어가는 경우, $dp[i]$에 무한히 큰 값을 넣어 해결할 수 있다.
 $T$번째 비트가 $0$이 될 수 있는지 확인하기 위해서는 $dp[N]$이 $B$보다 작거나 같은지 확인하면 된다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     구간의 개수를 최소화시키면 된다는 점을 이용하면 **Definition 2**와 같이 DP를 수정하면 최고 비트부터 하나씩 최적해를 결정할 수 있고, $O(N^2logX)$에 문제를 해결할 수 있다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(N^2logX)$
     </center>

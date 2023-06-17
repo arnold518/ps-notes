@@ -24,7 +24,7 @@ $t$의 구간들 $[l_i, r_i]$이 $N$개 주어질 때, 적어도 하나의 구�
 + $0 \leq l_i \leq r_i \leq 10^{18}$, $r_i < l_{i+1}$
 
 ### Input / Output
-!!! Quote "Input"
+!!! inout "Input"
     $N$ $A$ $B$  
     $l_1$ $r_1$  
 	$l_2$ $r_2$  
@@ -32,7 +32,7 @@ $t$의 구간들 $[l_i, r_i]$이 $N$개 주어질 때, 적어도 하나의 구�
 	$l_N$ $r_N$  
 
 
-!!! Quote "Output"
+!!! inout "Output"
     $ans$
 
 ## Solution
@@ -61,7 +61,7 @@ $$
 
 위 결과를 통해 고정된 $y$에 대하여 주기가 $n=\frac{A}{gcd(A, B+1)}$이니, 가능한 $B$개의 모든 $y$에 대해서는 전체 $T=\frac{AB}{gcd(A, B+1)}$임을 알 수 있다.
 
-!!! note "Observation 1"
+!!! observation "Observation 1"
     $(x, y)$의 주기는 $T=\frac{AB}{gcd(A, B+1)}$이다.
 
 이제 $(x, y)$ 대신, $t \ (mod \ T)$로 대체하여 생각해도 된다.
@@ -69,13 +69,13 @@ $$
 모든 구간의 길이가 $T$ 미만이면, 각 구간은 $0 \sim T-1$의 수들을 원형으로 배열한 모양에서 하나의 구간으로 대응된다.
 $0$을 기준으로 원형 구간들을 모두 쪼개고, 전체 구간들을 정렬한 후 sweeping을 통해 $O(NlogN)$에 합집합의 크기를 구할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     **Observation 1**에서 $(x, y)$의 주기가 $T$이니 순서쌍 $(x, y)$ 대신 $t \ (mod \ T)$로 대체할 수 있다.  
 	구간 $[l_i, r_i]$는 $0 \sim T-1$의 수들을 원형으로 배열한 모양에서 하나의 구간으로 대응시킬 수 있으니, $0$을 기준으로 원형 구간들을 선형 구간들로 쪼개고, 정렬한 후 sweeping을 통해 $O(NlogN)$에 합집합의 크기를 구할 수 있다.
 
 마지막으로, $1 \leq A, B \leq 10^{18}$이니 $T=\frac{AB}{gcd(A, B+1)}$가 `long long` 자료형의 범위를 벗어날 수 있으므로, $min(T, 10^{18})$의 값을 사용하여 overflow를 방지할 수 있다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(NlogN)$
     </center>

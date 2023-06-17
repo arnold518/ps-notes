@@ -37,23 +37,23 @@ $$\omega_n=e^{\frac{2\pi i}{n}}=\cos\frac{2\pi}{n}+i\sin\frac{2\pi}{n}$$
 [$n$-th root of unity](https://en.wikipedia.org/wiki/Root_of_unity), $\omega_n$을 생각하자.
 $\omega_n$은 다음 두 성질을 만족한다.
 
-!!! note "Property 1"
+!!! property "Property 1"
     $$\omega_n^n=1$$
 
-!!! note "Property 2"
+!!! property "Property 2"
     $\omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}$은 모두 서로 다르다.  
     $\omega_n^k=e^{\frac{2\pi ik}{n}}=\cos\frac{2\pi k}{n}+i\sin\frac{2\pi k}{n}$
 
-!!! note "Property 3"
+!!! property "Property 3"
     $$\displaystyle \sum_{i=0}^{n-1} \omega_n^i = \omega_n^0 + \omega_n^1 + \cdots + \omega_n^{n-1} = \frac{1 - \omega_n^n}{1 - \omega_n} = 0$$
 
 다항식에 대입할 값들 $x_0, x_1, \cdots, x_{n-1}$로, $\omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}$를 선택했을 때의 함숫값들을 $DFT$로 표현하자.
 또한, $DFT$의 역함수를 $IDFT$라 정의하자.
 
-!!! Quote "Definition 1"
+!!! definition "Definition 1"
     $DFT(a_0, a_1, \cdots, a_{n-1})=(A(\omega_n^0), A(\omega_n^1), \cdots, A(\omega_n^{n-1}))=(y_0, y_1, \cdots, y_{n-1})$
 
-!!! Quote "Definition 2"
+!!! definition "Definition 2"
     $IDFT(y_0, y_1, \cdots, y_{n-1})=IDFT(A(\omega_n^0), A(\omega_n^1), \cdots, A(\omega_n^{n-1}))=(a_0, a_1, \cdots, a_{n-1})$
 
 DFT는 다음과 같이 행렬곱의 형태로 표현할 수 있다.
@@ -109,7 +109,7 @@ W^{-1}=
 \end{bmatrix}_{0 \le i, j < n}
 $$
 
-!!! note "Property 4"
+!!! property "Property 4"
     $$
     W=
     \begin{bmatrix}
@@ -164,7 +164,7 @@ $A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots
 $A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}$
 </center>
 
-!!! quote "Definition 3"
+!!! definition "Definition 3"
     다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.
     $A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots+a_{n-2}x^{\frac{n}{2}-1}$  
     $A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}$  
@@ -177,7 +177,7 @@ $$
 A(x)=A_0(x^2)+xA_1(x^2)
 $$
 
-!!! note "Property 5"
+!!! property "Property 5"
     $$
     A(x)=A_0(x^2)+xA_1(x^2)
     $$
@@ -189,7 +189,7 @@ $$
 \omega_n^2=\omega_{\frac{n}{2}}, \omega_n^{\frac{n}{2}}=-1
 $$
 
-!!! note "Property 6"
+!!! property "Property 6"
     $$
     \omega_n^2=\omega_{\frac{n}{2}}, \ \omega_n^{\frac{n}{2}}=-1
     $$
@@ -210,7 +210,7 @@ $y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$
 $(k=0, 1, \cdots, \frac{n}{2}-1)$
 </center>
 
-!!! note "Property 7"
+!!! property "Property 7"
     <center>
     $y_k=(y_0)_k+\omega_n^k(y_1)_k$  
     $y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$  
@@ -219,7 +219,7 @@ $(k=0, 1, \cdots, \frac{n}{2}-1)$
 
 $DFT(A_0)$, $DFT(A_1)$를 구했다면, $O(N)$의 시간에 $DFT(A)$를 구할 수 있다.
 
-!!! example "Algorithm 1"
+!!! algorithm "Algorithm 1"
     $n$이 $2$의 거듭제곱이 아니라면, $0$을 뒤에 채워넣어 $2$의 거듭제곱으로 만들어준다.  
     $DFT(A)$에서 짝수 번째 계수들과 홀수 번째 계수들을 각각 분리하여 $DFT(A_0)$과 $DFT(A_1)$을 재귀적으로 구한다.  
     **Property 7**의 식을 이용하여 $DFT(A_0)$, $DFT(A_1)$의 결과를 합쳐준다.
@@ -227,7 +227,7 @@ $DFT(A_0)$, $DFT(A_1)$를 구했다면, $O(N)$의 시간에 $DFT(A)$를 구할 �
 
 따라서 위 분할정복 알고리즘의 시간복잡도는 $T(N)=2T(\frac{N}{2})+O(N)$으로, $O(NlogN)$이다.
 
-!!! tip "Time Complexity"
+!!! complexity "Time Complexity"
     <center>
     Time Complexity : $O(NlogN)$
     </center>
@@ -250,7 +250,7 @@ $$
 위 아이디어를 통해 재귀 없이, 반복만으로도 **Property 7**을 이용하여 한 배열 내에서 계산을 할 수 있다.
 **Property 7**에서 $y_k$와 $y_{k+\frac{n}{2}}$를 계산하기 위하여 필요한 값이, 현재 작업하는 배열에 해당하는 칸 $k$, $k+\frac{n}{2}$에 들어 있는 $(y_0)_k$와 $(y_1)_k$이니, $k$를 증가시켜 나가며 배열을 갱신시키면 된다.
 
-!!! example "Algorithm 2"
+!!! algorithm "Algorithm 2"
     $n$이 $2$의 거듭제곱이 아니라면, $0$을 뒤에 채워넣어 $2$의 거듭제곱으로 만들어준다.  
     $x$의 비트를 뒤집은 수가 $y$일 때 $x<y$이면 $a_x$와 $a_y$를 swap해주어 계수 배열의 **bit-reversal permutation**을 얻는다.  
     구간의 길이를 $2^0, 2^1, \cdots$로 늘려 가며 인접한 두 구간을 하나로 합쳐준다.
@@ -300,7 +300,7 @@ void fft(vector<cd> &A, bool inv)
 
 $p$가 소수일 때, [$n$-th primitive root of unity modulo $p$](https://en.wikipedia.org/wiki/Root_of_unity_modulo_n) $\omega_n$이 존재할 필요충분조건은 $n \ | \ p-1$이다.
 
-!!! note "Property 8"
+!!! property "Property 8"
     $p$가 소수일 때, "$n$-th primitive root of unity modulo $p$" $\omega_n$이 존재할 필요충분조건은 $n \ | \ p-1$이다.
 
 모든 소수는 [root of unity modulo $p$](https://en.wikipedia.org/wiki/Root_of_unity_modulo_n) 원시근 $\omega=\omega_{p-1}$가 존재한다.
@@ -315,7 +315,7 @@ $$
 \omega_n^n=(\omega^{\frac{p-1}{n}})^n=\omega^{p-1}\equiv 1
 $$
 
-!!! note "Property 9"
+!!! property "Property 9"
     $p$가 소수일 때, root of unity modulo $p$ 원시근 $\omega=\omega_{p-1}$가 존재한다.  
     원시근 $\omega$를 알고 있을 때, $n \ | \ p-1$인 $n$에 대하여 $\omega_n=\omega^{\frac{p-1}{n}}$으로 구할 수 있다.
 

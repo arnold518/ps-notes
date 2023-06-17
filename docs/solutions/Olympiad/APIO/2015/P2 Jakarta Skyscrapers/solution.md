@@ -28,14 +28,14 @@ $0$번 전령이 $1$번 전령에게 소식을 전달하려고 하며, 소식을
 + $1 \leq P_i \leq 30,000$
 
 ### Input / Output
-!!! Quote "Input"
+!!! inout "Input"
     $N$ $M$  
     $B_0$ $P_0$  
     $B_1$ $P_1$  
     $\vdots$  
     $B_{M-1}$ $P_{M-1}$
 
-!!! Quote "Output"
+!!! inout "Output"
     $ans$
 
 ## Solution
@@ -49,11 +49,11 @@ $i$번째 전령은 $B_i$번 빌딩에서 시작해서 $B_i+kP_i$ $(0 \leq B_i+k
 
 정점의 개수는 $O(N)$, 간선의 개수는 최악의 경우에 $O(NM)$개까지 가능하니, $O(ElogV)$ 다익스트라 알고리즘을 사용하면 $O(NMlogN)$, $O(E+V^2)$ 다익스트라 알고리즘을 사용하면 $O(NM+N^2)$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     $B_i$번 정점에서 $B_i+kP_i$ $(0 \leq B_i+kP_i < N)$번 정점으로 가중치 $|k|$의 간선을 이어 만든 정점 $O(N)$개, 간선 $O(NM)$인 그래프를 생각하자.
     이 그래프에서 다익스트라 알고리즘으로 $O(N^2+NM)$의 시간에 최단경로를 구하여 문제를 해결할 수 있다.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(NMlogN)$ or $O(N^2+NM)$
     </center>
@@ -71,7 +71,7 @@ $i$번째 전령은 $B_i$번 빌딩에서 시작해서 $B_i+kP_i$ $(0 \leq B_i+k
 ![image 1](./1.png)
 ![image 2](./2.png)
 
-!!! note "Observation 1"
+!!! observation "Observation 1"
     어떤 두 $i$, $j$가 $P_i=P_j$이며, $B_i \equiv B_j \ (mod \ P_i)$, $B_i < B_j$일 때, $i$번 전령이 오른쪽으로 $j$번 전령을 넘지 않고, $j$번 전령이 왼쪽으로 $i$번 전령을 넘지 않도록 이동하는 최적해가 존재한다.
 
 이러한 압축은 간선의 개수를 얼마나 효과적으로 줄여줄 수 있을까?  
@@ -84,17 +84,17 @@ $$
 \sum_{1 \leq p \leq \sqrt{M}}{\frac{N}{p} \cdot p} = O(N\sqrt{M})
 $$
 
-!!! note "Observation 2"
+!!! observation "Observation 2"
     $P_i=P_j$이고 $B_i \equiv B_j \ (mod \ P_i)$인 모든 $i$, $j$들을 하나로 묶어 불필요한 간선들을 제거하면, 압축된 그래프에서 사용되는 전체 간선의 개수는 $O(N\sqrt{M})$개이다.
 
 이제, 위와 같이 만든 압축된 그래프는 $O(N)$개의 정점과 $O(N\sqrt{M})$개의 간선들로 구성되어 있고, 다익스트라 알고리즘을 활용하면 $O(N\sqrt{M}logN)$에 문제를 해결할 수 있다.
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     **Observation 1**에 의해 **Observation 2**와 같이 그래프를 압축할 수 있고, 정점 $O(N)$, 간선 $O(N\sqrt{M})$개의 압축된 그래프에서 다익스트라 알고리즘으로 $O(N\sqrt{M}logN)$의 시간에 최단경로를 구하여 문제를 해결할 수 있다.
 
 구현할 때, 다익스트라의 구현이 충분히 빠르지 않으면 `AC`를 받기 힘드니 빠른 다익스트라의 구현을 사용할 수 있도록 주의하자.
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O(N\sqrt{M}logN)$
     </center>

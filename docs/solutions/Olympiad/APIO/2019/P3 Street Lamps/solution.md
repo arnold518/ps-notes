@@ -25,7 +25,7 @@ $a$번 정류장에서 $b$번 정류장 $(1 \leq a < b \leq N+1)$로 이동할 �
 + $1 \leq Q \leq 300,000$
 
 ### 입력 / 출력
-!!! Quote "Input"
+!!! inout "Input"
     $N$ $Q$  
     $s_1 s_2 \cdots s_n$  
     ($Query \ 1$)  
@@ -36,19 +36,19 @@ $a$번 정류장에서 $b$번 정류장 $(1 \leq a < b \leq N+1)$로 이동할 �
     + 시점 $0$에 $i$번째 가로등이 켜져 있으면 $s_i=1$, 꺼져 있으면 $s_i=0$
     + ($Query \ k$) : $toggle \ i$ or $query \ a \ b$
 
-!!! Quote "Output"
+!!! inout "Output"
     `answer for each Query`  
     $ans_i$
 
 ## 풀이
 
-!!! note "Observation 1"    
+!!! observation "Observation 1"    
     
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     
 
-!!! tip "Complexity"
+!!! complexity "Complexity"
     <center>
     Time Complexity : $O()$
     </center>
