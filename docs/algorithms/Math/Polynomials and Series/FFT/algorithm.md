@@ -125,7 +125,7 @@ $$
     \end{bmatrix}_{0 \le i, j < n}
     $$
 
-!!! abstract "Proof"
+!!! proof "Proof"
     $W'=\frac{1}{n}\begin{bmatrix}\omega_n^{-ij}\end{bmatrix}_{0 \le i, j < n}$
 
     $\displaystyle \begin{bmatrix} W \times W' \end{bmatrix}_{i, j} = \frac{1}{n} \sum_{k=0}^{n-1} \omega_n^{ik} \omega_n^{-kj} = \frac{1}{n} \sum_{k=0}^{n-1} \omega_n^{k(i-j)} = \frac{1}{n} \sum_{k=0}^{n-1} (\omega_n^{(i-j)})^k$
