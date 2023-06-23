@@ -84,3 +84,6 @@ vector<int> getFail(int N, string &S)
     return fail;
 }
 ```
+
+## Reference
+- [https://cp-algorithms.com/string/prefix-function.html](https://cp-algorithms.com/string/prefix-function.html)

@@ -117,6 +117,9 @@ nav:
           a.md
   - 알고리즘 & 자료구조 정리:
       - algorithms/index.md
+      - Graphs:
+          - Flows : 
+              - Ford–Fulkerson method : algorithms/Graphs/Flows/Ford-Fulkerson method/algorithm.md
       - Strings:
           - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
       - Math:

@@ -165,7 +165,7 @@ $A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdo
 </center>
 
 !!! definition "Definition 3"
-    다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.
+    다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.  
     $A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots+a_{n-2}x^{\frac{n}{2}-1}$  
     $A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}$  
     $DFT(A_0(x))=((y_0)_0, (y_0)_1, (y_0)_2, \cdots, (y_0)_{\frac{n}{2}-1})$  
@@ -389,3 +389,9 @@ void fft(vector<ll> &A, bool inv)
 	if(inv) for(int i=0; i<N; i++) A[i]=A[i]*t%MOD;
 }
 ```
+
+## Reference
+- [https://cp-algorithms.com/algebra/fft.html](https://cp-algorithms.com/algebra/fft.html)
+- [https://algoshitpo.github.io/2020/05/20/fft-ntt/](https://algoshitpo.github.io/2020/05/20/fft-ntt/)
+- [https://codeforces.com/blog/entry/111371](https://codeforces.com/blog/entry/111371)
+- [https://codeforces.com/blog/entry/43499](https://codeforces.com/blog/entry/43499)

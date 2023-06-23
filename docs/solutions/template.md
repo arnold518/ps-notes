@@ -18,26 +18,24 @@ tags:
 
 
 ### Input / Output
-!!! Quote "Input"
+!!! inout "Input"
 
 
-!!! Quote "Output"
+!!! inout "Output"
     
 
 ## Solution
 
 
 
-!!! note "Observation 1"    
+!!! observation "Observation 1"    
     
 
-!!! example "CheckPoint"
+!!! checkpoint "CheckPoint"
     
 
-!!! tip "Complexity"
-    <center>
+!!! complexity "Complexity"
     Time Complexity : $O()$
-    </center>
 
 ## Code
 ``` cpp linenums="1"

@@ -177,7 +177,7 @@ $$
 구체적으로 MultiDimensional DFT를 정의하기 위하여 다음을 정의하자.
 
 !!! definition "Definition 1"
-    $A$가 $m \times n$ 행렬, $B$가 $p \times q$ 행렬일 때 $A$와 $B$의 kronecker product $A \otimes B$를 다음과 같은 크기 $mp \times nq$의 block matrix로 정의한다.
+    $A$가 $m \times n$ 행렬, $B$가 $p \times q$ 행렬일 때 $A$와 $B$의 **kronecker product** $A \otimes B$를 다음과 같은 크기 $mp \times nq$의 block matrix로 정의한다.
 
     $$
     A \bigotimes B = 
@@ -212,7 +212,7 @@ Kronecker product 에는 다음과 같은 성질들이 성립한다.
     a_{i_0, i_1, i_2, \cdots, i_{n-1}} x_0^{i_0} x_1^{i_1} x_2^{i_2} \cdots x_{n-1}^{i_{n-1}}
     $$
 
-    이 때, 다항식의 vector form을 다음과 같이 정의한다.
+    이 때, 다항식의 **vector form**을 다음과 같이 정의한다.
 
     $\overrightarrow{a}_{0, 1, 2, \cdots, n-1}=$ 다항식들의 계수 $a_{i_0, i_1, i_2, \cdots, i_{n-1}}$를 $(i_0, i_1, i_2, \cdots, i_{n-1})$에 대한 사전순으로 일렬로 배열한 벡터.
 
@@ -571,3 +571,8 @@ void DFT(vector<ll> &A, bool inv)
 	}
 }
 ```
+
+## Reference
+- [https://codeforces.com/blog/entry/43499](https://codeforces.com/blog/entry/43499)
+- [https://codeforces.com/blog/entry/71899](https://codeforces.com/blog/entry/71899)
+- [https://codeforces.com/blog/entry/115438](https://codeforces.com/blog/entry/115438)
