@@ -83,11 +83,11 @@ $f'-f$가 일반적인 flow와 매우 비슷한 성질들을 갖고 있음을 �
 일반적인 flow와는 다르게, $f$의 flow difference는 capacity가 아닌, 가중치가 $[-f(e), c(e)-f(e)]$ 구간의 형태로 나타남을 알 수 있다.
 
 !!! property "Property 2"
-    Flow network $(G, c, s, t)$와 flow $f$가 주어질 때 임의의 flow $f'$과 임의의 $f$의 flow difference, $g$는 일대일 대응된다.
+    Flow network $(G, c, s, t)$와 flow $f$가 주어질 때, 임의의 flow $f'$와 $f$의 flow difference $g$는 일대일 대응된다.
 
     $$ f'-f \leftrightarrow g $$
 
-    즉, 임의의 $f$의 flow difference가 있을 때, 이를 $f$에 더해 새로운 flow $f'$를 만들어낼 수 있다.
+    즉, 임의의 $f$의 flow difference $g$가 있을 때, 이를 $f$에 더해 새로운 flow $f'$를 만들어낼 수 있다.
 
 flow difference의 문제는, 음의 가중치를 가질 수 있다는 점이다.
 이 점 이외에는 일반적인 flow와 모두 똑같으니, flow difference를 음 아닌 가중치만을 이용하여 표현하기 위하여 residual flow network를 정의하자.
@@ -152,11 +152,22 @@ Flow $f$가 maximum flow인지 여부를 $G_f$에서 $s$에서 $t$로 가는 경
 
 !!! algorithm "Algorithm 1"
     Flow network $(G, c, s, t)$가 주어진다.  
-    flow $f$를 $0$으로 초기화한 후, $G_f$에서 $s \rightarrow t$ 경로가 존재하지 않을 때까지 $G_f$의 임의의 flow $f'$을 찾은 후, $f \leftarrow f+f'$로 업데이트한다.
+    flow $f$를 $0$으로 초기화한 후, $G_f$에서 $s \rightarrow t$ 경로가 존재하지 않을 때까지 $G_f$의 임의의 flow $f'$을 찾은 후, $f \leftarrow f+f'$로 업데이트한다.  
     $f$가 Maximum Flow이다.
+
+    ``` linenums="1"
+    Let (G, c, s, t) be a flow network
+    Initialize f <- 0
+    While t is not reachable from s in G_f :
+        Find some flow f' in G_f
+        f <- f + f'
+    return f
+    ```
 
 Maximum Flow 문제를 해결하는 여러 알고리즘은 위 풀이에서 $G_f$의 임의의 양의 flow $f'$를 찾는 방법을 제시한다.
 각 방법에 대하여, 반복문이 언젠가는 종료한다는 사실, 즉 $G_f$에서 $s \rightarrow t$ 경로가 언젠가는 끊긴다는 것을 증명해야 한다.
+
+---
 
 Ford-Fulkerson Method는 $f'$를 찾기 위하여, $s$에서 $t$로 가는 경로가 존재한다는 것을 알고 있으니, 해당 경로를 따라 경로의 capcity의 최솟값에 해당하는 flow를 흘리고 이를 $f'$이라 한다.
 $G_f$에서는 모든 가중치가 양수이니, 경로의 capcity의 최솟값에 해당하는 flow 또한 양수임을 알 수 있고, 가중치가 정수, 혹은 유리수 등의 countable(isomorphic to $\mathbb{N}$)이면 반복문이 종료한다는 것을 알 수 있다.
@@ -164,7 +175,7 @@ $G_f$에서는 모든 가중치가 양수이니, 경로의 capcity의 최솟값�
 
 !!! algorithm "Algorithm 2"
     Flow network $(G, c, s, t)$가 주어진다.  
-    flow $f$를 $0$으로 초기화한 후, $G_f$에서 $s \rightarrow t$ 경로가 존재하지 않을 때까지 $s \rightarrow t$ 경로를 따라 capcity의 최솟값에 해당하는 flow $f'$를 찾고, $f \leftarrow f+f'$로 업데이트한다.
+    flow $f$를 $0$으로 초기화한 후, $G_f$에서 $s \rightarrow t$ 경로가 존재하지 않을 때까지 $s \rightarrow t$ 경로를 따라 capcity의 최솟값에 해당하는 flow $f'$를 찾고, $f \leftarrow f+f'$로 업데이트한다.  
     $f$가 Maximum Flow이다.
 
 !!! definition "Definition 8"
