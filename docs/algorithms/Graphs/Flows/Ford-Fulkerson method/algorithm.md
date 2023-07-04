@@ -129,7 +129,7 @@ $G_f$의 flow $g$는 같은 도형을 $f$의 점을 원점으로 평행이동한
     $G$의 임의의 flow는 Linear Programming의 조건에 부합하니, $|E|$차원 convex polyhedron으로 생각할 수 있다.  
     $G_f$의 flow $g$는 같은 도형을 $f$의 점을 원점으로 평행이동한 모양과 같다.
 
-## Ford-Fulkerson Method
+## Universal Algorithm for Maximum Flow
 
 Flow $f$가 maximum flow인지 여부를 $G_f$에서 $s$에서 $t$로 가는 경로가 존재하는지 여부로 확인할 수 있다.
 
@@ -167,7 +167,7 @@ Flow $f$가 maximum flow인지 여부를 $G_f$에서 $s$에서 $t$로 가는 경
 Maximum Flow 문제를 해결하는 여러 알고리즘은 위 풀이에서 $G_f$의 임의의 양의 flow $f'$를 찾는 방법을 제시한다.
 각 방법에 대하여, 반복문이 언젠가는 종료한다는 사실, 즉 $G_f$에서 $s \rightarrow t$ 경로가 언젠가는 끊긴다는 것을 증명해야 한다.
 
----
+## Ford - Fulkerson Method
 
 Ford-Fulkerson Method는 $f'$를 찾기 위하여, $s$에서 $t$로 가는 경로가 존재한다는 것을 알고 있으니, 해당 경로를 따라 경로의 capcity의 최솟값에 해당하는 flow를 흘리고 이를 $f'$이라 한다.
 $G_f$에서는 모든 가중치가 양수이니, 경로의 capcity의 최솟값에 해당하는 flow 또한 양수임을 알 수 있고, 가중치가 정수, 혹은 유리수 등의 countable(isomorphic to $\mathbb{N}$)이면 반복문이 종료한다는 것을 알 수 있다.
@@ -177,6 +177,16 @@ $G_f$에서는 모든 가중치가 양수이니, 경로의 capcity의 최솟값�
     Flow network $(G, c, s, t)$가 주어진다.  
     flow $f$를 $0$으로 초기화한 후, $G_f$에서 $s \rightarrow t$ 경로가 존재하지 않을 때까지 $s \rightarrow t$ 경로를 따라 capcity의 최솟값에 해당하는 flow $f'$를 찾고, $f \leftarrow f+f'$로 업데이트한다.  
     $f$가 Maximum Flow이다.
+
+    ``` linenums="1"
+    Let (G, c, s, t) be a flow network
+    Initialize f <- 0
+    While t is not reachable from s in G_f :
+        Find a path P from s to t in G_f
+        Let flow f' be flow with all edges in P with the lowest capacity
+        f <- f + f'
+    return f
+    ```
 
 !!! definition "Definition 8"
     새로운 flow $f'$를 흘리기 위하여 $s \rightarrow t$ 경로를 찾고, capcity의 최솟값에 해당하는 flow를 흘리는데, 이 때 경로를 **augmenting path**라 한다.

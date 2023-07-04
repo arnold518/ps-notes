@@ -110,7 +110,7 @@ nav:
           - POI: a.md
           - KOI: a.md
       - BOJ:
-          a.md
+          - 28304 : solutions/BOJ/28304/solution.md
       - Codeforces:
           a.md
       - Atcoder:
@@ -131,4 +131,6 @@ nav:
   - Study:
       - study/index.md
       - Random Platinum Defence: study/Random Platinum Defence/rpd.md
+      - Practice :
+          - UCPC 2023 예선 : study/Practice/UCPC 2023 예선/post.md
   - Tags: tags.md
