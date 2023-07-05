@@ -120,6 +120,7 @@ nav:
       - Graphs:
           - Flows : 
               - Ford–Fulkerson method : algorithms/Graphs/Flows/Ford-Fulkerson method/algorithm.md
+              - Min Cost Max Flow : algorithms/Graphs/Flows/Min Cost Max Flow/algorithm.md
       - Strings:
           - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
       - Math:

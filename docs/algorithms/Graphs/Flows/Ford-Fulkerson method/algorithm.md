@@ -134,12 +134,12 @@ $G_f$의 flow $g$는 같은 도형을 $f$의 점을 원점으로 평행이동한
 Flow $f$가 maximum flow인지 여부를 $G_f$에서 $s$에서 $t$로 가는 경로가 존재하는지 여부로 확인할 수 있다.
 
 !!! property "Property 5"
-    Flow $f$가 maximum flow 일 때, $G_f$에서는 $s$에서 $t$로 가는 경로가 존재하지 않는다.  
-    반대로, $G_f$에서 $s$에서 $t$로 가는 경로가 존재하지 않는다면 $f$는 maximum flow이다.
+    다음 두 명제는 동치이다.  
+
+    - Flow $f$가 maximum flow이다.  
+    - $G_f$에서 $s$에서 $t$로 가는 경로가 존재하지 않는다.  
 
 !!! proof "Proof"
-    각 명제의 대우 명제를 증명하자.
-
     $f$가 maximum flow가 아니라고 하면, 다른 maximum flow $f'$이 존재한다.
     $f'-f$는 **Property 2**와 **Property 3**에 의해 flow difference로 일대일 대응 가능하고, 따라서 $G_f$의 임의의 flow $g$와 일대일 대응 가능하다.
     $val(g)>0$이어야 하니, $G_f$에서 $s$에서 $t$로 가는 경로가 존재해야 한다.
@@ -191,10 +191,10 @@ $G_f$에서는 모든 가중치가 양수이니, 경로의 capcity의 최솟값�
 !!! definition "Definition 8"
     새로운 flow $f'$를 흘리기 위하여 $s \rightarrow t$ 경로를 찾고, capcity의 최솟값에 해당하는 flow를 흘리는데, 이 때 경로를 **augmenting path**라 한다.
 
-시간 복잡도는 최악의 경우에는 각 반복문이 크기 $1$의 flow를 찾으며, 한번 flow를 찾기 위하여 DFS를 돌아야 하니 $O(Ef)$ ($f$는 maximum flow의 양)의 시간이 걸린다.
+시간 복잡도는 최악의 경우에는 각 반복문이 크기 $1$의 flow를 찾으며, 한번 flow를 찾기 위하여 DFS를 돌아야 하니 $O(EF)$ ($F$는 maximum flow의 양)의 시간이 걸린다.
 
 !!! complexity "Time Complexity"
-    $O(Ef)$
+    Time Complexity : $O(EF)$
 
 ## Reference
 - [https://codeforces.com/blog/entry/104960](https://codeforces.com/blog/entry/104960)
