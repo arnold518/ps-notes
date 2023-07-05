@@ -59,7 +59,7 @@ Minimum cost maximum flow 문제는 Maximum Flow를 갖는 flow들 중, cost의 
     $f$가 Minimum Cost Maximum Flow이다.
 
     ``` linenums="1"
-    Let (G, c, s, t) be a flow network
+    Let (G, c, a, s, t) be a flow network
     Initialize f <- 0
     While t is not reachable from s in G_f :
         Find the shortest path P of costs from s to t in G_f
