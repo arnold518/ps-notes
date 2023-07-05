@@ -114,6 +114,8 @@ Flow network $(G, c, a, s, t)$에 negative cycle가 존재하지 않는다면, *
 ### Implementation
 
 ``` cpp linenums="1"
+const int INF = 1e9+7;
+
 struct Edge
 {
 	int v, w, c, f, r;
@@ -186,7 +188,7 @@ ll mcmf(int N, int S, int E)
 	ll ans=0;
 	while(1)
 	{
-		ll t=spfa();
+		ll t=spfa(N, S, E);
 		if(!t) break;
 		ans+=t;
 	}
@@ -231,3 +233,8 @@ Minimum cost flow 문제는 convex polyhedron을 (flow, cost)의 좌표평면에
 <center>
 ![image 4](./4.png)
 </center>
+
+## Reference
+
+- [https://codeforces.com/blog/entry/105330](https://codeforces.com/blog/entry/105330)
+- [https://cp-algorithms.com/graph/min_cost_flow.html](https://cp-algorithms.com/graph/min_cost_flow.html)
