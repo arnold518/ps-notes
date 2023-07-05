@@ -23,8 +23,9 @@ tags:
 !!! property "Property 1"
     $$fail[i]+1≥fail[i+1]$$
 
-$fail[i+1]$에서 마지막 문자를 제거하면, 즉 길이 $fail[i+1]-1$의 prefix는 $S[1 \cdots i]$의 prefix 이고, 동시에 suffix 이다.
-즉, $fail[i]$의 조건을 모두 만족하니, 최댓값인 $fail[i]$는 $fail[i+1]-1$보다는 크거나 같아야 한다.
+!!! proof
+    $fail[i+1]$에서 마지막 문자를 제거하면, 즉 길이 $fail[i+1]-1$의 prefix는 $S[1 \cdots i]$의 prefix 이고, 동시에 suffix 이다.
+    즉, $fail[i]$의 조건을 모두 만족하니, 최댓값인 $fail[i]$는 $fail[i+1]-1$보다는 크거나 같아야 한다.
 
 <center>
 ![image 1](./1.png)
@@ -42,9 +43,10 @@ $fail[i+1]$에서 마지막 문자를 제거하면, 즉 길이 $fail[i+1]-1$의 
 ![image 2](./2.png){width=90%}
 </center>
 
-$F[i]$를 귀납적으로 구하기 위하여 $j<i$인 모든 $j$에 대하여 $F[j]$를 구했다고 생각하자.
-$x \in F[i]$라고 하면 $fail$의 정의애 의해 $x \leq fail[i]$이며, 위 그림과 같이 $x=fail[i]$이거나 $x \in F[fail[i]]$가 성립해야 한다.
-따라서 $F[i] = F[fail[i]] \cup {fail[i]}$가 성립하며, 이는 $F[i]={fail[i], fail[fail[i]], \cdots}$과 같은 구조임을 의미한다.
+!!! proof
+    $F[i]$를 귀납적으로 구하기 위하여 $j<i$인 모든 $j$에 대하여 $F[j]$를 구했다고 생각하자.
+    $x \in F[i]$라고 하면 $fail$의 정의애 의해 $x \leq fail[i]$이며, 위 그림과 같이 $x=fail[i]$이거나 $x \in F[fail[i]]$가 성립해야 한다.
+    따라서 $F[i] = F[fail[i]] \cup {fail[i]}$가 성립하며, 이는 $F[i]={fail[i], fail[fail[i]], \cdots}$과 같은 구조임을 의미한다.
 
 위 성질은 $i$에서 $fail[i]$로 가는 간선을 이었을 때, 만들어지는 구조가 트리이며 $F[i]$를 구하기 위해서는 $i$의 조상들의 집합을 구하면 됨을 의미한다. 앞으로 이 트리를 **Failure Tree**라 부르기로 한다.
 
@@ -74,13 +76,15 @@ $x=fail[i]$라면 $x-1 \in F[i-1]$이니, 거꾸로 $j \in F[i-1]$인 모든 $j$
 ``` cpp linenums="1"
 vector<int> getFail(int N, string &S)
 {
-	vector<int> fail(N+1);
+    vector<int> fail(N+1);
 
-	fail[0]=-1; fail[1]=0;
-	for(int i=2; i<=N; i++)
-	{
-        for(int j=fail[i-1]; j>0; j=fail[j]) if(S[j+1]==S[i]) { fail[i]=j+1; break; }
-	}
+    fail[0]=-1;
+    for(int i=1; i<=N; i++)
+    {
+    	int j=fail[i-1];
+        for(; j>=0; j=fail[j]) if(S[j+1]==S[i]) break;
+        fail[i]=j+1;
+    }
     return fail;
 }
 ```

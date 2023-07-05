@@ -152,7 +152,7 @@ ll EdmondKarp(int N, int S, int E)
 	ll ans=0;
 	while(1)
 	{
-		ll t=bfs();
+		ll t=bfs(N, S, E);
 		if(!t) break;
 		ans+=t;
 	}

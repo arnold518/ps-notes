@@ -124,6 +124,7 @@ nav:
               - Min Cost Max Flow : algorithms/Graphs/Flows/Min Cost Max Flow/algorithm.md
       - Strings:
           - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
+          - KMP : algorithms/Strings/KMP/algorithm.md
       - Math:
           - Polynomials and Series :
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
