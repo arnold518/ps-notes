@@ -1,5 +1,5 @@
 ---
-title: Prefix Function (Failure Function)
+title: KMP (Knuth-Morris-Pratt Algorithm)
 tags:
     - kmp
     - string
