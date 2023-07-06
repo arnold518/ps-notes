@@ -125,6 +125,7 @@ nav:
       - Strings:
           - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
           - KMP : algorithms/Strings/KMP/algorithm.md
+          - Aho-Corasick : algorithms/Strings/Aho-Corasick/algorithm.md
       - Math:
           - Polynomials and Series :
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md

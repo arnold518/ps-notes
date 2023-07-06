@@ -1,5 +1,7 @@
 ---
 title: UCPC 2023 예선
+tags:
+    - ~post
 ---
 
 # UCPC 2023 예선

@@ -1,12 +1,12 @@
 ---
-title: KMP (Knuth-Morris-Pratt Algorithm)
+title: KMP (Knuth-Morris-Pratt algorithm)
 tags:
     - kmp
     - string
     - ~ algorithm
 ---
 
-# KMP (Knuth-Morris-Pratt Algorithm)
+# KMP (Knuth-Morris-Pratt algorithm)
 
 KMP 알고리즘은 길이 $N$의 문자열 $S$에서 길이 $M$의 문자열 $T$의 모든 등장 위치를 $O(N+M)$에 찾는 알고리즘이다.
 문자열 매칭을 하기 위하여 $T$의 failure function을 먼저 계산하였다고 가정한다.
