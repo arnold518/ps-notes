@@ -185,4 +185,4 @@ vector<int> AhoCorasick(string &S, vector<string> &TV)
 
 ## Reference
 
-- [https://cp-algorithms.com/string/aho_corasick.html#construction-of-an-automaton](https://cp-algorithms.com/string/aho_corasick.html#construction-of-an-automaton)
+- [https://cp-algorithms.com/string/aho_corasick.html](https://cp-algorithms.com/string/aho_corasick.html)

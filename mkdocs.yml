@@ -19,6 +19,7 @@ theme:
     - search.highlight
     - search.share
     - navigation.indexes
+    - navigation.expand
   icon:
     repo: fontawesome/brands/github
   language: ko  
@@ -122,10 +123,13 @@ nav:
               - Ford–Fulkerson method : algorithms/Graphs/Flows/Ford-Fulkerson method/algorithm.md
               - Edmond-Karp algorithm : algorithms/Graphs/Flows/Edmond-Karp algorithm/algorithm.md
               - Min Cost Max Flow : algorithms/Graphs/Flows/Min Cost Max Flow/algorithm.md
+          - Theorems :
+              - Kőnig's theorem : algorithms/Graphs/Theorems/Kőnig's theorem/algorithm.md
       - Strings:
           - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
           - KMP : algorithms/Strings/KMP/algorithm.md
           - Aho-Corasick : algorithms/Strings/Aho-Corasick/algorithm.md
+          - Suffix Array & LCP Array : algorithms/Strings/Suffix Array & LCP Array/algorithm.md
       - Math:
           - Polynomials and Series :
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
