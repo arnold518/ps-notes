@@ -274,7 +274,7 @@ void fft(vector<cd> &A, bool inv)
 
 	for(int i=1; i<N; i<<=1)
 	{
-		cd w(cos(PI/i), (inv?1:-1)*sin(PI/i));
+		cd w(cos(PI/i), (inv ? -1 : 1)*sin(PI/i));
 		for(int j=0; j<N; j+=i+i)
 		{
 			cd s(1, 0);
