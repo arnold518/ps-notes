@@ -75,12 +75,6 @@ extra_javascript:
 extra_css:
   - stylesheets/extra.css
 
-analytics:
-  provider               : "google-gtag" 
-                          # false (default), "google", "google-universal", "google-gtag", "custom"
-  google:
-    tracking_id          : "G-L0MHM11ZXZ"
-    anonymize_ip         : # true, false (default)
 
 plugins:
   - search:
@@ -93,6 +87,9 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/arnold518
   generator: false
+  analytics:
+    provider: google
+    property: G-L0MHM11ZXZ
 
 copyright: Copyright &copy; 2023 - 2023 Jaemin Park
 
