@@ -75,6 +75,13 @@ extra_javascript:
 extra_css:
   - stylesheets/extra.css
 
+analytics:
+  provider               : "google-gtag" 
+                          # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "G-L0MHM11ZXZ"
+    anonymize_ip         : # true, false (default)
+
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
