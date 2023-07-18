@@ -134,6 +134,7 @@ nav:
           - KMP : algorithms/Strings/KMP/algorithm.md
           - Aho-Corasick : algorithms/Strings/Aho-Corasick/algorithm.md
           - Suffix Array & LCP Array : algorithms/Strings/Suffix Array & LCP Array/algorithm.md
+          - Suffix Automaton : algorithms/Strings/Suffix Automaton/algorithm.md
       - Math:
           - Polynomials and Series :
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md

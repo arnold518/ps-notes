@@ -1,6 +1,9 @@
 .md-typeset .admonition {
   font-size: 90%;
 }
+li {
+  font-size: 90%;
+}
 p {
   font-size: 90%;
   line-height: 180%;
