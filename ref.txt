@@ -1,0 +1,5 @@
+stackoverflow.com/a/72383929/179014
+https://just-the-docs.github.io/just-the-docs/
+https://www.csrhymes.com/bulma-clean-theme/
+
+.\venv\Scripts\activate

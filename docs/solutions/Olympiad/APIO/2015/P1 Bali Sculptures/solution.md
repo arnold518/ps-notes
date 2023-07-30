@@ -25,14 +25,6 @@ tags:
 **Subtask 4 : ** $1 \leq N \leq 100$, $1 \leq A \leq B \leq N$  
 **Subtask 5 : ** $1 \leq N \leq 2,000$, $1 = A \leq B \leq N$
 
-### Input / Output
-!!! inout "Input"
-    $N$ $A$ $B$  
-    $Y_1$ $Y_2$ $\cdots$ $Y_N$
-
-!!! inout "Output"
-    $ans$
-
 ## Solution
 
 **Subtask 4**와 **Subtask 5**가 서로를 포함하지 않는, 두 개의 문제로 구성되어 있음에 유의하자.  

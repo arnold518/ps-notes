@@ -31,36 +31,8 @@ $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $
 + $2 \leq N \leq 100,000$
 + $1 \leq M \leq 100,000$
 + $1 \leq Q \leq 100,000$
-+ $1 \leq A_i, B_i \leq N$ $(1 \leq i \leq N-1)$
 + $1 \leq P_j \leq N-1$, $1 \leq C_j \leq 10^9$ $(1 \leq j \leq M)$
-+ $1 \leq S_k, T_k \leq N$, $0 \leq X_k \leq 10^9$, $0 \leq Y_k \leq 10^{18}$ $(1 \leq i \leq Q)$
-
-### Input / Output
-!!! inout "Input"
-    $N$ $M$ $Q$  
-    $A_1$ $B_1$  
-    $A_2$ $B_2$  
-    $\vdots$  
-    $A_{N-1}$ $B_{N-1}$  
-    $P_1$ $C_1$  
-    $P_2$ $C_2$  
-    $\vdots$  
-    $P_M$ $C_M$  
-    $S_1$ $T_1$ $X_1$ $Y_1$   
-    $S_2$ $T_2$ $X_2$ $Y_2$  
-    $\vdots$  
-    $S_Q$ $T_Q$ $X_Q$ $Y_Q$  
-    ---
-    + $A_i$, $B_i$는 트리의 인접 리스트
-    + $P_i$는 간선 번호
-
-!!! inout "Output"
-    $ans_1$  
-    $ans_2$  
-    $\vdots$  
-    $ans_Q$
-    ---
-    + $ans_i$는 $i$번째 쿼리에 대하여 불가능하면 $-1$, 가능하다면 남는 금화의 개수의 최댓값
++ $1 \leq S_k, T_k \leq N$, $0 \leq X_k \leq 10^9$, $0 \leq Y_k \leq 10^{18}$ $(1 \leq k \leq Q)$
 
 ## Solution
 

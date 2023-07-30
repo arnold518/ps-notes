@@ -27,25 +27,6 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
 + $1 \leq Q \leq N$
 + $1 \leq X_k \leq N$ $(1 \leq k \leq Q)$, 모든 $X_k$는 서로 다르다.
 
-### Input / Output
-!!! inout "Input"
-    $N$  
-    $L_1$ $R_1$  
-    $L_2$ $R_2$  
-    $\vdots$  
-    $L_N$ $R_N$  
-    $Q$  
-    $X_1$  
-    $X_2$  
-    $\vdots$  
-    $X_Q$  
-
-!!! inout "Output"
-    $ans_1$  
-    $ans_2$  
-    $\vdots$  
-    $ans_Q$  
-
 ## Solution
 
 ### Subtask 4

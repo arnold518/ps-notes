@@ -27,17 +27,6 @@ $0$번 전령이 $1$번 전령에게 소식을 전달하려고 하며, 소식을
 + $0 \leq B_i < N$  
 + $1 \leq P_i \leq 30,000$
 
-### Input / Output
-!!! inout "Input"
-    $N$ $M$  
-    $B_0$ $P_0$  
-    $B_1$ $P_1$  
-    $\vdots$  
-    $B_{M-1}$ $P_{M-1}$
-
-!!! inout "Output"
-    $ans$
-
 ## Solution
 
 ### Subtask 3

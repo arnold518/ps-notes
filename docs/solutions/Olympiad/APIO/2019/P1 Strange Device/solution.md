@@ -23,18 +23,6 @@ $t$의 구간들 $[l_i, r_i]$이 $N$개 주어질 때, 적어도 하나의 구�
 + $1 \leq A, B \leq 10^{18}$  
 + $0 \leq l_i \leq r_i \leq 10^{18}$, $r_i < l_{i+1}$
 
-### Input / Output
-!!! inout "Input"
-    $N$ $A$ $B$  
-    $l_1$ $r_1$  
-	$l_2$ $r_2$  
-	$\vdots$  
-	$l_N$ $r_N$  
-
-
-!!! inout "Output"
-    $ans$
-
 ## Solution
 
 우선, $y$의 주기가 $B$임에 착안하여 $t$가 $B$씩 증가함에 따라 순서쌍 $(x, y)$가 어떻게 변하는지 관찰하자.
