@@ -79,6 +79,11 @@ Prefix Function는 문자열 $S$의 모든 prefix $S[1 \cdots i]$에 대하여 p
 
 이 알고리즘을 이용하면 KMP와 동일하게, $S$에서 $T$의 등장 위치를 모두 $O(N+M)$에 찾을 수 있다.
 
+!!! complexity "Time Complexity"
+    <center>
+    Time Complexity : $O(N+M)$
+    </center>
+
 ``` cpp linenums="1"
 vector<int> match(int N, int M, string &S, string &T)
 {
@@ -100,3 +105,4 @@ vector<int> match(int N, int M, string &S, string &T)
 ## Reference
 
 - [https://cp-algorithms.com/string/z-function.html](https://cp-algorithms.com/string/z-function.html)
+- [https://codeforces.com/blog/entry/3107](https://codeforces.com/blog/entry/3107)
