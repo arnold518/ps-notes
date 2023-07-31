@@ -11,6 +11,7 @@
     - [Prefix Function](./Strings/Prefix Function/algorithm)
     - [KMP](./Strings/KMP/algorithm)
     - [Aho-Corasick](./Strings/Aho-Corasick/algorithm)
+    - [Z Function](./Strings/Z Function/algorithm)
     - [Suffix Array & LCP Array](./Strings/Suffix Array & LCP Array/algorithm)
     - [Suffix Automaton](./Strings/Suffix Automaton/algorithm)
 - Math

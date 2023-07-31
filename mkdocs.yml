@@ -133,6 +133,7 @@ nav:
           - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
           - KMP : algorithms/Strings/KMP/algorithm.md
           - Aho-Corasick : algorithms/Strings/Aho-Corasick/algorithm.md
+          - Z Function : algorithms/Strings/Z Function/algorithm.md
           - Suffix Array & LCP Array : algorithms/Strings/Suffix Array & LCP Array/algorithm.md
           - Suffix Automaton : algorithms/Strings/Suffix Automaton/algorithm.md
       - Math:
