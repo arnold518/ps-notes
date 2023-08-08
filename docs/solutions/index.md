@@ -1,5 +1,6 @@
 # 문제 풀이
 
+## Table of Contents
 - Olympiad
     - IOI
     - KOISC
@@ -21,3 +22,7 @@
     - [28304](./BOJ/28304/solution)
 - Codeforces
 - Atcoder
+
+## Todo
+
+- BOJ 28304 마무리

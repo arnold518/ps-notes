@@ -1,5 +1,6 @@
 # 알고리즘 & 자료구조 정리
 
+## Table of Contents
 - Graphs
     - Flows
         - [Ford–Fulkerson method](./Graphs/Flows/Ford-Fulkerson method/algorithm)
@@ -18,3 +19,8 @@
     - Polynomials and Series
         - [FFT](./Math/Polynomials and Series/FFT/algorithm)
         - [FWHT](./Math/Polynomials and Series/FWHT/algorithm)
+
+## Todo
+- Max Flow Min Cost theorem
+- Sprague - Grundy theorem
+- Dinic's algorithm

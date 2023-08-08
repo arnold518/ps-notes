@@ -141,7 +141,8 @@ nav:
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
               - FWHT : algorithms/Math/Polynomials and Series/FWHT/algorithm.md
   - 아이디어 & 테크닉 모음:
-      - techniques/index.md
+      - ideas/index.md
+      - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
   - Study:
       - study/index.md
       - Random Platinum Defence: study/Random Platinum Defence/rpd.md
