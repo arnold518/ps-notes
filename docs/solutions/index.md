@@ -3,6 +3,9 @@
 ## Table of Contents
 - Olympiad
     - IOI
+        - 2019
+            - Day 1
+                - [P1 Arranging Shoes](./Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution)
     - KOISC
     - JOI
     - JOISC

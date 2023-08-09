@@ -98,7 +98,10 @@ nav:
   - 문제 풀이:
       - solutions/index.md
       - Olympiad:
-          - IOI: a.md
+          - IOI:
+              - 2019:
+                  - Day 1:
+                      - P1.1 Arranging Shoes : solutions/Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution.md
           - KOISC: a.md
           - JOI: a.md
           - JOISC:

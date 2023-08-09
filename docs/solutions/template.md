@@ -17,12 +17,6 @@ tags:
 ### Constraints
 
 
-### Input / Output
-!!! inout "Input"
-
-
-!!! inout "Output"
-    
 
 ## Solution
 
