@@ -24,7 +24,7 @@ theme:
     repo: fontawesome/brands/github
   language: ko  
   font:
-    text: Noto Sans
+    text: Noto Sans KR
     code: Ubuntu Mono
   palette: 
       # Palette toggle for light mode
@@ -102,6 +102,7 @@ nav:
               - 2019:
                   - Day 1:
                       - P1 Arranging Shoes : solutions/Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution.md
+                      - P2 Split the Attractions : solutions/Olympiad/IOI/2019/Day 1/P2 Split the Attractions/solution.md
                       - P3 Rectangles : solutions/Olympiad/IOI/2019/Day 1/P3 Rectangles/solution.md
           - KOISC: a.md
           - JOI: a.md

@@ -1,8 +1,6 @@
 ---
 title: IOI 2019 Day 1 P3 Rectangles
 tags:
-    - data_structures
-    - divide_and_conquer
     - implementation
     - sorting
     - stack

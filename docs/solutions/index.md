@@ -6,6 +6,7 @@
         - 2019
             - Day 1
                 - [P1 Arranging Shoes](./Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution)
+                - [P2 Split the Attractions](./Olympiad/IOI/2019/Day 1/P2 Split the Attractions/solution)
                 - [P3 Rectangles](./Olympiad/IOI/2019/Day 1/P3 Rectangles/solution)
     - KOISC
     - JOI
