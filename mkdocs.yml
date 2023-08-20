@@ -99,6 +99,9 @@ nav:
       - solutions/index.md
       - Olympiad:
           - IOI:
+              - 2022:
+                  - Day 1:
+                      - P1 Catfish Farm : solutions/Olympiad/IOI/2022/Day 1/P1 Catfish Farm/solution.md
               - 2019:
                   - Day 1:
                       - P1 Arranging Shoes : solutions/Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution.md
