@@ -6,6 +6,7 @@
         - 2022
             - Day 1
                 - [P1 Catfish Farm](./Olympiad/IOI/2022/Day 1/P1 Catfish Farm/solution)
+                - [P2 Prisoner Challenge](./Olympiad/IOI/2022/Day 1/P2 Prisoner Challenge/solution)
         - 2019
             - Day 1
                 - [P1 Arranging Shoes](./Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution)
