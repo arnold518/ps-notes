@@ -8,6 +8,9 @@
                 - [P1 Catfish Farm](./Olympiad/IOI/2022/Day 1/P1 Catfish Farm/solution)
                 - [P2 Prisoner Challenge](./Olympiad/IOI/2022/Day 1/P2 Prisoner Challenge/solution)
                 - [P3 Radio Towers](./Olympiad/IOI/2022/Day 1/P3 Radio Towers/solution)
+        - 2021
+            - Day 1
+                - [P2 Keys](./Olympiad/IOI/2021/Day 1/P2 Keys/solution)
         - 2019
             - Day 1
                 - [P1 Arranging Shoes](./Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution)
