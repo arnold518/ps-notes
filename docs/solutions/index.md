@@ -11,6 +11,8 @@
         - 2021
             - Day 1
                 - [P2 Keys](./Olympiad/IOI/2021/Day 1/P2 Keys/solution)
+            - Day 2
+                - [P1 Mutating DNA](./Olympiad/IOI/2021/Day 2/P1 Mutating DNA/solution)
         - 2019
             - Day 1
                 - [P1 Arranging Shoes](./Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution)
