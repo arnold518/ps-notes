@@ -93,7 +93,7 @@ $v$번 정점에서 시작하였을 때 도달가능한 정점들의 집합을 $
 각 $u$에 대하여 이와 같이 확실히 $S_u \supseteq S_v$라는 것을 아는 정점 $v$에 대하여 $par(u)=v$로 간선을 하나씩 이어 주면, 완성된 그래프에서 각 정점의 outdegree는 $0$ 아니면 $1$으로, functional graph나 트리들의 집합이 된다.
 이 때, functional graph의 루트에 해당하는 사이클 $P=\{v_1, v_2, \cdots, v_k \}$에 대해 다음이 성립한다.
 
-$$S_{v_1} \supseteq S_{v_2} \supseteq \cdots S_{v_k} \supseteq S_{v_1}$$
+$$S_{v_1} \supseteq S_{v_2} \supseteq \cdots \supseteq S_{v_k} \supseteq S_{v_1}$$
 
 $$S_{v_1} = S_{v_2} = \cdots = S_{v_k}$$
 

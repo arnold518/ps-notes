@@ -24,6 +24,7 @@
         - 2023
             - [P1.1 Two Currencies](./Olympiad/JOISC/2023/P1.1 Two Currencies/solution)
             - [P1.3 Passport](./Olympiad/JOISC/2023/P1.3 Passport/solution)
+            - [P2.2 Council](./Olympiad/JOISC/2023/P2.2 Council/solution)
     - JOIOC
     - APIO
         - 2019

@@ -2,6 +2,8 @@
 title: IOI 2021 Day 2 P1 Mutating DNA
 tags:
     - ~ solution
+    - greedy
+    - prefix_sum
 ---
 
 # IOI 2021 Day 2 P1 Mutating DNA
