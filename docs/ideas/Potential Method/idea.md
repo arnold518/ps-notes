@@ -108,7 +108,7 @@ C++의 `std::vector`과 같이 크기를 $1$씩 증가시킬 수 있는 배열�
 
 Splay tree, segment tree beats, kinetic segment tree 등의 다양한 ammortized 시간복잡도를 갖는 자료구조의 시간복잡도 증명을 potential method를 이용하여 할 수 있다.
 
-[Segment Tree Beats](../../../../algorithms/Data Structures/Segment Tree Beats/algorithm/#complexity)
+[Segment Tree Beats](../../../algorithms/Data Structures/Segment Tree Beats/algorithm/#complexity)
 
 Merging / Splitting Dynamic Segment Trees
 
