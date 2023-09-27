@@ -14,6 +14,8 @@ tags:
 
 Tournament graph는 매우 복잡한 형태이니, 이를 구조화시키기 위하여 그래프를 SCC별로 묶어 정리하자.
 
+## Property 1
+
 !!! property "Property 1"
     Tournament graph $G=(V, E)$를 SCC별로 묶어 위상정렬한 순서대로 나열하자.
     각 SCC 집합을 위상정렬 순서대로 $S_1, S_2, \cdots, S_k$라 하면 다음이 성립한다.
@@ -25,6 +27,8 @@ Tournament graph는 매우 복잡한 형태이니, 이를 구조화시키기 위
 <center>
 ![image 1](./1.png)
 </center>
+
+## Property 2
 
 !!! property "Property 2"
     Tournament graph에는 **hamiltonian path**가 적어도 하나 존재한다.
@@ -41,6 +45,8 @@ Tournament graph는 매우 복잡한 형태이니, 이를 구조화시키기 위
 <center>
 ![image 2](./2.png)
 </center>
+
+## Property 3
 
 !!! property "Property 3"
     Tournament graph가 $1$개의 SCC로 구성되어 있다면, hamiltonian path 뿐만 아니라 **hamiltonian cycle**이 적어도 하나 존재한다.
@@ -62,7 +68,7 @@ Tournament graph는 매우 복잡한 형태이니, 이를 구조화시키기 위
 ![image 3](./3.png)
 </center>
 
----
+## Implementation
 
 [https://www.acmicpc.net/problem/26843](https://www.acmicpc.net/problem/26843) 문제를 해결하기 위하여 **Property 3**의 귀납적인 construction을 $O(N^2)$에 구현한 예시이다.
 

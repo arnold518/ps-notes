@@ -289,7 +289,7 @@ struct Node
 	}
 };
 
-Node NS[MAXN+10];
+Node NS[MAXN*2+10];
 int ncnt, last;
 
 int newNode()

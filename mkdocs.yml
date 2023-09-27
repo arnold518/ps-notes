@@ -138,6 +138,8 @@ nav:
           a.md
   - 알고리즘 & 자료구조 정리:
       - algorithms/index.md
+      - Data Structures :
+          - Segment Tree Beats : algorithms/Data Structures/Segment Tree Beats/algorithm.md
       - Graphs:
           - Flows : 
               - Ford–Fulkerson method : algorithms/Graphs/Flows/Ford-Fulkerson method/algorithm.md
@@ -152,6 +154,7 @@ nav:
           - Z Function : algorithms/Strings/Z Function/algorithm.md
           - Suffix Array & LCP Array : algorithms/Strings/Suffix Array & LCP Array/algorithm.md
           - Suffix Automaton : algorithms/Strings/Suffix Automaton/algorithm.md
+          - Eertree : algorithms/Strings/Eertree/algorithm.md
       - Math:
           - Polynomials and Series :
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
@@ -159,6 +162,8 @@ nav:
   - 아이디어 & 테크닉 모음:
       - ideas/index.md
       - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
+      - Potential Method : ideas/Potential Method/idea.md
+      - Number of Triangles in Undirected Graph : ideas/Number of Triangles in Graph/idea.md
   - Study:
       - study/index.md
       - Random Platinum Defence: study/Random Platinum Defence/rpd.md
