@@ -163,6 +163,7 @@ nav:
       - ideas/index.md
       - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
       - Potential Method : ideas/Potential Method/idea.md
+      - Tree Optimization : ideas/Tree Optimization/idea.md
       - Number of Triangles in Undirected Graph : ideas/Number of Triangles in Graph/idea.md
   - Study:
       - study/index.md

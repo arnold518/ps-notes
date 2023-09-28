@@ -4,6 +4,7 @@
 
 - [SCC of Tournament Graph](./SCC of Tournament Graph/idea)
 - [Potential Method](./Potential Method/idea)
+- [Tree Optimization](./Tree Optimization/idea)
 - [Number of Triangles in Graph](./Number of Triangles in Graph/idea)
 
 ## Todo
