@@ -155,6 +155,7 @@ nav:
           - Suffix Array & LCP Array : algorithms/Strings/Suffix Array & LCP Array/algorithm.md
           - Suffix Automaton : algorithms/Strings/Suffix Automaton/algorithm.md
           - Eertree : algorithms/Strings/Eertree/algorithm.md
+          - Lyndon Decomposition : algorithms/Strings/Lyndon Decomposition/algorithm.md
       - Math:
           - Polynomials and Series :
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
@@ -164,6 +165,7 @@ nav:
       - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
       - Potential Method : ideas/Potential Method/idea.md
       - Tree Optimization : ideas/Tree Optimization/idea.md
+      - Tree Optimization 2 (with HLD) : ideas/Tree Optimization 2 (with HLD)/idea.md
       - Number of Triangles in Undirected Graph : ideas/Number of Triangles in Graph/idea.md
   - Study:
       - study/index.md

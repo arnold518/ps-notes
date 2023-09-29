@@ -18,6 +18,7 @@
     - [Suffix Array & LCP Array](./Strings/Suffix Array & LCP Array/algorithm)
     - [Suffix Automaton](./Strings/Suffix Automaton/algorithm)
     - [Eertree](./Strings/Eertree/algorithm)
+    - [Lyndon Decomposition](./Strings/Lyndon Decomposition/algorithm)
 - Math
     - Polynomials and Series
         - [FFT](./Math/Polynomials and Series/FFT/algorithm)
@@ -33,7 +34,6 @@
 - Li Chao Tree (extended)
 - Linear Programming
 - Alien (with backtracking)
-- Segment Tree Beats finish
 
 - k - vertex /edge connected component
 - Menger's theorem
