@@ -147,7 +147,7 @@ Lyndon word의 예로는 **"a"**, **"ab"**, **"aab"**, **"abb"**, **"abcd"**, **
     **(Uniqueness)**  
     $S$의 lyndon decomposition이 유일하게 존재함을, $S$의 길이 $len(S)$에 대한 귀납법을 사용하여 증명하자.
     만약 $S$의 서로 다른 두 lyndon decomposition $S=w_1 w_2 \cdots w_k$, $S=v_1 v_2 \cdots v_m$이 존재하고, 일반성을 잃지 않고 $len(w_1) \le len(v_1)$이라 하자.  
-    만약 $len(w_1)=len(v_1)$이면 $w_1=v_1이고 귀납적으로 $S=w_1+S'$에서 $S'$의 lyndon decomposition이 unique하니 증명이 종료된다.  
+    만약 $len(w_1)=len(v_1)$이면 $w_1=v_1$이고 귀납적으로 $S=w_1+S'$에서 $S'$의 lyndon decomposition이 unique하니 증명이 종료된다.  
     $len(w_1)<len(v_1)$라면 아래 그림과 같이 $len(w_1)+len(w_2)+\cdots+len(w_p) \ge len(v_1)$인 최소의 $1 < p \le k$가 존재한다.
     $w_p$의 길이 $len(v_1)-(len(w_1)+len(w_2)+\cdots+len(w_{p-1}))$인 prefix를 $w_p'$이라 하면 $w_p' < w_p \le w_{p-1} \le \cdots \le w_1 < v_1$이 성립한다.
     $v_1$의 suffix인 $w_p'$에 대해 $w_p' < v_1$인데, 이는 $v_1$이 lyndon word임에 모순이다.

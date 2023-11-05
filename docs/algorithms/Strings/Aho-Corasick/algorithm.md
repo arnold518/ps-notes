@@ -84,102 +84,99 @@ $S$의 특정 문자까지 진행한 후, 현재 Trie에서 보고 있는 노드
 ## Implementation
 
 ``` cpp linenums="1"
+// par[v] = parent of node v
+// fail[v] = failure link of node v
+// suf[v] = suffix link of node v
 struct Node
 {
-	int fail, par, c;
-	int chd[26];
-	bool flag;
-	Node(int _par, int _c)
-	{
-		fail=-1; par=_par; c=_c;
-		for(int i=0; i<26; i++) chd[i]=-1;
-		flag=false;
-	}
+    int par, fail, suf;
+    vector<int> chd;
+    Node()
+    {
+        par=fail=suf=-1;
+        chd=vector<int>(26, -1);
+    }
 };
 
 int root;
 vector<Node> NS;
 
-int newNode(int par, int c)
+int newNode()
 {
-	NS.push_back(Node(par, c));
-	return NS.size()-1;
+    NS.push_back(Node());
+    return NS.size()-1;
 }
 
-void makeTrie(vector<string> &SV)
+// Make trie of dictionary SV
+// Determine par[v] for all nodes, suf[v] for terminal nodes
+void makeTrie(vector<string> SV) // SV[0], SV[1], ... is 0-based
 {
-	root = newNode(-1, -1);
-	NS[root].par=root;
-	NS[root].fail=root;
+    root=newNode();
+    NS[root].par=root; NS[root].fail=root; NS[root].suf=root;
 
-	for(auto &S : SV)
-	{
-		int now=root;
-		for(int j=0; j<S.size(); j++)
-		{
-			if(NS[now].chd[S[j]-'a']==-1) NS[now].chd[S[j]-'a']=newNode(now, S[j]-'a');
-			now=NS[now].chd[S[j]-'a'];
-		}
-		NS[now].flag=true;
-	}
+    for(auto &S : SV)
+    {
+        int now=root;
+        for(auto c : S)
+        {
+            if(NS[now].chd[c-'a']==-1)
+            {
+                int nxt=NS[now].chd[c-'a']=newNode();
+                NS[nxt].par=now;
+            }
+            now=NS[now].chd[c-'a'];
+        }
+        NS[now].suf=now;
+    }
 }
 
+// Determine fail[v], suf[v] for all nodes
 void bfs()
 {
-	queue<int> Q;
-	Q.push(root);
-	while(!Q.empty())
-	{
-		int now=Q.front(); Q.pop();
-		Node &node = NS[now];
+    queue<int> Q;
+    Q.push(root);
+    while(!Q.empty())
+    {
+        int now=Q.front(); Q.pop();
+        for(int i=0; i<26; i++) if(NS[now].chd[i]!=-1)
+        {
+            int nxt=NS[now].chd[i];
+            if(now==root) NS[nxt].fail=root;
+            else
+            {
+                int p;
+                for(p=NS[now].fail; p!=root; p=NS[p].fail) if(NS[p].chd[i]!=-1) break;
+                if(NS[p].chd[i]==-1) NS[nxt].fail=root;
+                else NS[nxt].fail=NS[p].chd[i];
+            }
 
-		if(now==root || node.par==root)
-		{
-			node.fail=root;
-		}
-		else
-		{
-			int nxt=NS[node.par].fail;
-			while(nxt!=root && NS[nxt].chd[node.c]==-1) nxt=NS[nxt].fail;
-			if(NS[nxt].chd[node.c]!=-1) node.fail=NS[nxt].chd[node.c];
-			else node.fail=root;
-
-			node.flag|=NS[node.fail].flag;
-		}
-
-		for(int nxt=0; nxt<26; nxt++)
-		{
-			if(node.chd[nxt]==-1) continue;
-			Q.push(node.chd[nxt]);
-		}
-	}
+            if(NS[nxt].suf==-1) NS[nxt].suf=NS[NS[nxt].fail].suf;
+            Q.push(nxt);
+        }
+    }
 }
 
-vector<int> AhoCorasick(string &S, vector<string> &TV)
+// Find occurences of TV[0], TV[1], ... in S
+// AhoCorasick(S = "mississippi", TV = ["ss", "sis", "ippi", "pp"]) = [3, 5, 6, 9, 10]
+vector<int> AhoCorasick(string S, vector<string> TV) // S, TV[0], TV[1], ... is 0-based
 {
-	//Find occurences of TV[0], TV[1], ... in S
-	vector<int> ans;
+    vector<int> ans;
 
-	makeTrie(TV);
-	bfs();
+    makeTrie(TV);
+    bfs();
 
-	int now=root;
-	bool ans=false;
-	for(int i=0; i<S.size(); i++)
-	{
-		if(NS[now].chd[S[i]-'a']!=-1) now=NS[now].chd[S[i]-'a'];
-		else
-		{
-			while(now!=root && NS[now].chd[S[i]-'a']==-1) now=NS[now].fail;
-			if(NS[now].chd[S[i]-'a']!=-1)
-			{
-				now=NS[now].chd[S[i]-'a'];
-			}
-		}
-		if(NS[now].flag) ans.push_back(i); // ending position of occurences in S
-		ans|=NS[now].flag;
-	}
-	return ans;
+    int now=root;
+    for(int i=0; i<S.size(); i++)
+    {
+        for(; now!=root && NS[now].chd[S[i]-'a']==-1; now=NS[now].fail);
+        if(NS[now].chd[S[i]-'a']!=-1) now=NS[now].chd[S[i]-'a'];
+
+        // now is matching node in trie with S[0...i]
+        // your code goes here
+
+        if(NS[now].suf!=root) ans.push_back(i); // Ending position of occurences in S
+    }
+    return ans;
 }
 ```
 

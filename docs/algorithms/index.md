@@ -24,6 +24,10 @@
         - [FFT](./Math/Polynomials and Series/FFT/algorithm)
         - [FWHT](./Math/Polynomials and Series/FWHT/algorithm)
 
+## Team Note
+
+- [Personal Team Note](./Team Note/teamnote)
+
 ## Todo
 - Max Flow Min Cost theorem
 - Sprague - Grundy theorem

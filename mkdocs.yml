@@ -160,6 +160,7 @@ nav:
           - Polynomials and Series :
               - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
               - FWHT : algorithms/Math/Polynomials and Series/FWHT/algorithm.md
+      - Team Note: algorithms/Team Note/teamnote.md
   - 아이디어 & 테크닉 모음:
       - ideas/index.md
       - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md

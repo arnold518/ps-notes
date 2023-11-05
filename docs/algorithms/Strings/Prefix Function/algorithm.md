@@ -74,15 +74,18 @@ $x=fail[i]$라면 $x-1 \in F[i-1]$이니, 거꾸로 $j \in F[i-1]$인 모든 $j$
 ## Implementation
 
 ``` cpp linenums="1"
-vector<int> getFail(int N, string &S)
+// Get failure function of S
+// getFail(S = "?ababca") = [-1, 0, 0, 1, 2, 0, 1]
+vector<int> getFail(string S) // S is 1-based (leading "?")
 {
+    int N=S.size()-1;
     vector<int> fail(N+1);
 
     fail[0]=-1;
     for(int i=1; i<=N; i++)
     {
     	int j=fail[i-1];
-        for(; j>=0; j=fail[j]) if(S[j+1]==S[i]) break;
+        while(j>=0 && S[j+1]!=S[i]) j=fail[j];
         fail[i]=j+1;
     }
     return fail;

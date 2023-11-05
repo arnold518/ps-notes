@@ -41,29 +41,34 @@ $i-1$번째 칸에서 최대로 매칭한 위치를 $j=match[i-1]$라 할 때, $
 ## Implementation
 
 ``` cpp linenums="1"
-vector<int> getFail(int N, string &S)
+// Get failure function of S
+// getFail(S = "?ababca") = [-1, 0, 0, 1, 2, 0, 1]
+vector<int> getFail(string S) // S is 1-based (leading "?")
 {
+    int N=S.size()-1;
     vector<int> fail(N+1);
 
     fail[0]=-1;
     for(int i=1; i<=N; i++)
     {
     	int j=fail[i-1];
-        for(; j>=0; j=fail[j]) if(S[j+1]==S[i]) break;
+        while(j>=0 && S[j+1]!=S[i]) j=fail[j];
         fail[i]=j+1;
     }
     return fail;
 }
 
-vector<int> KMP(int N, int M, string &S, string &T)
+// Find occurences of T in S
+// KMP(S = "?aabcbabaaa", T = "?aa") = [1, 8, 9]
+vector<int> KMP(string S, string T) // S, T is 1-based (leading "?")
 {
-	//Find occurences of T in S
-	vector<int> fail = getFail(M, T);
+    int N=S.size()-1, M=T.size()-1;
+	vector<int> fail = getFail(T);
 	vector<int> ans;
 
 	for(int i=1, j=0; i<=N; i++)
 	{
-		for(; j>=0; j=fail[j]) if(T[j+1]==S[i]) break;
+        while(j>=0 && T[j+1]!=S[i]) j=fail[j];
 		j++;
 		if(j==M) ans.push_back(i-M+1), j=fail[j];
 	}
