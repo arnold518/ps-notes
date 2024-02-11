@@ -30,6 +30,11 @@ $fail[v]$를 구하기 위하여, $fail[par[v]], fail[fail[par[v]]], \cdots$ 의
 완성된 Trie와 Suffix Link (Failure Link)를 바탕으로, 비교하려고 하는 문자열 $S$의 각 문자를 하나씩 보며 탐색한다.
 시작 노드는 루트에서 시작하며, $S$의 문자를 하나씩 보며, 현재 노드의 자식 문자 간선이 존재하면, 그 노드로 이동하고, 존재하지 않으면, 존재할 때까지 Suffix Link를 타고 이동하며 비교를 반복한다.
 
+!!! complexity
+    $N = |S|$, $M = \sum |TV[i]|$, $\sum$ = 알파벳 개수  
+    Time Complexity : $O(N+M)$  
+    Space Complexity : $O(M\sum)$
+
 ## Code
 
 ``` cpp linenums="1" title="aho_corasick.cpp"
