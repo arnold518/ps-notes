@@ -463,6 +463,90 @@ vector<int> getST(string S) // S is 1-based (leading "?")
 
 ## Graph
 
+### Eulerian trail
+
+!!! definition
+    **Eulerian trail**은 Directed / Undirected graph의 모든 간선을 정확히 한 번씩 사용하는 경로이다.  
+    Eulerian trail이 존재할 필요충분조건은 다음과 같다.
+
+    - Directed graph에서는 모든 정점의 indegree와 outdegree가 같다.
+    - Undirected graph에서는 Odd degree의 정점이 $0$개 혹은 $2$개이다.
+
+!!! algorithm
+
+
+``` cpp linenums="1"
+// MAXN, MAXM must be defined
+const int MAXN = 1e5;
+const int MAXM = 1e5;
+
+int N, M;
+vector<pii> adj[MAXN+10];
+
+int pos[MAXN+10];
+bool used[MAXM+10];
+vector<int> ST;
+
+void euler(int now)
+{
+    while(pos[now]<adj[now].size())
+    {
+        auto &[nxt, p] = adj[now][pos[now]++];
+        if(used[p]) continue;
+        used[p]=true;
+        euler(nxt);
+    }
+    ST.push_back(now);
+}
+
+// Get euler trail(cycle) of undirected graph
+// Return euler trail (nodes) (empty vector if impossible)
+// N = number of nodes, M = number of edges, E = vector of edges
+// S = starting node (0 if not defined)
+vector<int> getEuler(int _N, int _M, vector<pii> E, int S)
+{
+    N=_N; M=_M;
+    for(int i=0; i<M; i++)
+    {
+        auto [u, v] = E[i];
+        adj[u].push_back({v, i+1});
+        adj[v].push_back({u, i+1});
+    }
+    for(int i=1; i<=N; i++) pos[i]=0;
+    for(int i=1; i<=M; i++) used[i]=false;
+    // INIT finished
+
+    vector<int> O;
+    for(int i=1; i<=N; i++) if(adj[i].size()%2) O.push_back(i);
+    assert(O.size()%2==0);
+
+    if(O.size()>2) return vector<int>(); // More than 2 odd vertices
+    
+    if(O.size()==0) // Zero odd vertices
+    {
+        if(S!=0) euler(S);
+        else euler(1);
+    }
+    else // Two odd vertices
+    {
+        int p=O[0], q=O[1];
+        if(S!=0)
+        {
+            if(S!=p && S!=q) return vector<int>();
+            if(S!=p) swap(p, q);
+        }
+
+        adj[p].insert(adj[p].begin(), {q, M+1});
+        adj[q].insert(adj[q].begin(), {p, M+1});
+        euler(p);
+        ST.pop_back();
+    }
+
+    if(ST.size()!=M+1) return vector<int>();
+    return ST;
+}
+```
+
 ## Flows, Matching
 
 ## Data Structure

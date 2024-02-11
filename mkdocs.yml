@@ -174,4 +174,9 @@ nav:
       - Practice :
           - UCPC 2023 예선 : study/Practice/UCPC 2023 예선/post.md
           - SCPC 2023 Round 1 : study/Practice/SCPC 2023 Round 1/post.md
+          - OI Review : study/Practice/OI Review/post.md
+  - Personal Team Note:
+      - teamnote/index.md
+      - String :
+          - KMP (Prefix Function) : teamnote/String/KMP/note.md
   - Tags: tags.md
