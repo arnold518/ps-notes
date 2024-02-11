@@ -1,3 +1,10 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+
 namespace KMP
 {
     // Get failure function of S
@@ -35,4 +42,19 @@ namespace KMP
         }
         return ans;
     }
+}
+
+void test_kmp()
+{
+    vector<int> V;
+    V = KMP::getFail("?ababca");
+    assert(V == vector<int>({-1, 0, 0, 1, 2, 0, 1}));
+
+    V = KMP::KMP("?aabcbabaaa", "?aa");
+    assert(V == vector<int>({2, 9, 10}));
+}
+
+int main()
+{
+    test_kmp();
 }

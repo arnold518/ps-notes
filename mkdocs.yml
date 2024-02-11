@@ -179,4 +179,5 @@ nav:
       - teamnote/index.md
       - String :
           - KMP (Prefix Function) : teamnote/String/KMP/note.md
+          - Aho-Corasick : teamnote/String/Aho-Corasick/note.md
   - Tags: tags.md

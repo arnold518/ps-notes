@@ -1,4 +1,4 @@
-# KMP (Prefix Function)
+# 
 
 !!! property
 !!! definition
@@ -14,7 +14,7 @@
 
 ## Code
 
-``` cpp linenums="1"
+``` cpp linenums="1" titel=".cpp"
 ```
 
 ## Details

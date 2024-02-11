@@ -50,7 +50,7 @@
 
 ## Code
 
-``` cpp linenums="1"
+``` cpp linenums="1" title="kmp.cpp"
 namespace KMP
 {
     // Get failure function of S
@@ -71,9 +71,9 @@ namespace KMP
         return fail;
     }
 
-    // Find occurences of T in S
+    // Find occurences of T in S (ending position)
     // S, T is 1-based (leading "?")
-    // KMP(S = "?aabcbabaaa", T = "?aa") = [1, 8, 9]
+    // KMP(S = "?aabcbabaaa", T = "?aa") = [2, 9, 10]
     vector<int> KMP(string S, string T)
     {
         int N=S.size()-1, M=T.size()-1;
@@ -84,7 +84,7 @@ namespace KMP
         {
             while(j>=0 && T[j+1]!=S[i]) j=fail[j];
             j++;
-            if(j==M) ans.push_back(i-M+1), j=fail[j];
+            if(j==M) ans.push_back(i), j=fail[j];
         }
         return ans;
     }
@@ -100,7 +100,7 @@ namespace KMP
     // S is 1-based (leading "?")
     vector<int> getFail(string S) {}
 
-    // Find occurences of T in S
+    // Find occurences of T in S (ending position)
     // S, T is 1-based (leading "?")
     vector<int> KMP(string S, string T) {}
 }
@@ -108,11 +108,11 @@ namespace KMP
 
 - `vector<int> getFail(string S)` : $S$의 failure function을 구해서 리턴함
 - $S$는 1-based (leading "?")
-- `vector<int> KMP(string S, string T)` : $S$에서 $T$의 모든 등장 위치 (시작 인덱스)를 구해서 리턴함
+- `vector<int> KMP(string S, string T)` : $S$에서 $T$의 모든 등장 위치 (끝 인덱스)를 구해서 리턴함
 - $S$, $T$는 1-based (leading "?")
 
 ``` cpp linenums="1" title="example"
-int main()
+void test_kmp()
 {
     vector<int> V;
     V = KMP::getFail("?ababca");

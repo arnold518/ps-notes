@@ -4,6 +4,7 @@
 
 - String
     - [KMP (Prefix Function)](./String/KMP/note.md)
+    - [Aho-Corasick](./String/Aho-Corasick/note.md)
 - Optimization
 - Graph
 - Math
