@@ -91,7 +91,7 @@ extra:
     provider: google
     property: G-L0MHM11ZXZ
 
-copyright: Copyright &copy; 2023 - 2023 Jaemin Park
+copyright: Copyright &copy; 2023 - 2024 Jaemin Park
 
 nav:
   - Home: index.md
@@ -182,4 +182,5 @@ nav:
           - Aho-Corasick : teamnote/String/Aho-Corasick/note.md
           - Z Function : teamnote/String/Z/note.md
           - Manacher : teamnote/String/Manacher/note.md
+          - Suffix Array, LCP Array : teamnote/String/Suffix Array, LCP Array/note.md
   - Tags: tags.md

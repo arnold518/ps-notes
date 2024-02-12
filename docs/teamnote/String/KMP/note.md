@@ -2,23 +2,23 @@
 
 ## Problem
 
-!!! definition
+!!! definition "Definition 1"
     $S$의 failure function $fail[i] := S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 최대 길이  
     조건을 만족하는 **proper prefix**가 없으면 $fail[i]=0$, $fail[0]=-1$
 
-- Failure function : 문자열 $S$가 주어질 때, $S$의 failure function을 구한다.
+- Failure Function : 문자열 $S$가 주어질 때, $S$의 failure function을 구한다.
 - KMP : 문자열 $S$, $T$가 주어질 때, $T$의 failure function을 이용하여 $S$에서 $T$의 모든 등장 위치를 탐색한다.
 
 ## Algorithm
 
-!!! property
+!!! property "Property 1"
     $$fail[i]+1≥fail[i+1]$$
 
     <center>
     ![image 1](./1.png){width=70%}
     </center>
 
-!!! property
+!!! property "Property 2"
     $fail$의 정의에서 “최대” 조건을 무시한, 즉 $S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 길이들의 집합을 $F[i]$라 하자.
     $F[i]$는 $fail[i], fail[fail[i]], fail[fail[fail[i]]], \cdots$ 의 형태로 구성된다.
     
@@ -26,7 +26,7 @@
     ![image 2](./2.png){width=70%}
     </center>
 
-- Failure function  
+- Failure Function  
   
     문자열 $S$에서 $i$를 증가시켜가며 $fail[i]$를 구한다.
     $j=fail[i-1], fail[fail[i-1]], \cdots$를 하나씩 확인하며, $S[j+1]=S[i]$인 $j$가 등장하는 순간 $fail[i]=j+1$이다.
@@ -107,9 +107,9 @@ namespace KMP
 ```
 
 - `vector<int> getFail(string S)` : $S$의 failure function을 구해서 리턴함
-- $S$는 1-based (leading "?")
+    - $S$는 1-based (leading "?")
 - `vector<int> KMP(string S, string T)` : $S$에서 $T$의 모든 등장 위치 (끝 인덱스)를 구해서 리턴함
-- $S$, $T$는 1-based (leading "?")
+    - $S$, $T$는 1-based (leading "?")
 
 ``` cpp linenums="1" title="example"
 void test_kmp()

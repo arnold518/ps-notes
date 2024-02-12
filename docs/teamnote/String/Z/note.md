@@ -2,7 +2,7 @@
 
 ## Problem
 
-!!! definition
+!!! definition "Definition 1"
     $Z[i] := i$에서 시작하는 $S$의 suffix와 전체 문자열 $S$의 **longest common prefix**의 길이   
     $Z[i] := LCP(S[1 \cdots ], S[i \cdots])$, $i \ge 2$부터 정의되고, $Z[1]=0$이라 한다.
 
@@ -100,12 +100,11 @@ namespace Z
 ```
 
 - `vector<int> getZ(string S)` : $S$의 Z function을 리턴함
-- $Z[i] = LCP(S[i \cdots], S)$
-- $S$는 1-based (leading "?")
-
+    - $Z[i] = LCP(S[i \cdots], S)$
+    - $S$는 1-based (leading "?")
 - `vector<int> matchZ(string S, string T)` : $S$의 모든 suffix들과 $T$ 전체의 LCP를 리턴함
-- $F[i] = LCP(S[i \cdots], T)$
-- $S$, $T$는 1-based (leading "?")
+    - $F[i] = LCP(S[i \cdots], T)$
+    - $S$, $T$는 1-based (leading "?")
 
 ``` cpp linenums="1" title="example"
 void test_z()

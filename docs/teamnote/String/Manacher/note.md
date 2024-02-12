@@ -2,7 +2,7 @@
 
 ## Problem
 
-!!! definition
+!!! definition "Definition 1"
     $P[i] :=$ $S$에서 $i$를 중심으로 하는 palindrome의 최대 반지름의 길이  
     $S[i-P[i] \ \cdots \ i+P[i]]$가 palindrome인 최대 $P[i]$
 
@@ -61,8 +61,8 @@ namespace Manacher
 ```
 
 - `vector<int> manacher(string S)` : $S$의 모든 $i$에 대해 $i$를 중심으로 하는 palindrome의 최대 반지름의 길이를 리턴함
-- $P[i] = S[i-P[i] \ \cdots \ i+P[i]]$가 palindrome인 최대 $P[i]$
-- $S$는 1-based (leading "?")
+    - $P[i] = S[i-P[i] \ \cdots \ i+P[i]]$가 palindrome인 최대 $P[i]$
+    - $S$는 1-based (leading "?")
 
 ``` cpp linenums="1" title="example"
 void test_manacher()
