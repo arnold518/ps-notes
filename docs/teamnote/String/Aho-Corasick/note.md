@@ -164,7 +164,7 @@ namespace AhoCorasick
 ```
 
 - `void makeTrie(vector<string> SV)` : 문자열 사전 $SV$의 Trie를 만들고, 모든 노드의 $par[v]$, $fail[v]$, $suf[v]$를 결정
-- `vector<int> AhoCorasick(string S, vector<string> TV)` : $S$에서 문자열 사전 $TV$의 등장 위치(끝 인덱스)를 구함
+- `vector<int> AhoCorasick(string S, vector<string> TV)` : $S$에서 문자열 사전 $TV$의 등장 위치(끝 인덱스)를 리턴함
 - $S, TV[0], TV[1], \cdots$는 0-based
 
 ``` cpp linenums="1" title="example"

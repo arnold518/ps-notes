@@ -14,7 +14,7 @@
 
 ## Code
 
-``` cpp linenums="1" titel=".cpp"
+``` cpp linenums="1" title=".cpp"
 ```
 
 ## Details
