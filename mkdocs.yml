@@ -183,4 +183,11 @@ nav:
           - Z Function : teamnote/String/Z/note.md
           - Manacher : teamnote/String/Manacher/note.md
           - Suffix Array, LCP Array : teamnote/String/Suffix Array, LCP Array/note.md
+      - Optimization : a.md
+      - Graph : a.md
+      - Math : a.md
+      - Data Structure : a.md
+      - Note : a.md
+      - Misc : 
+          - Mint Struct : teamnote/Misc/Mint/note.md
   - Tags: tags.md

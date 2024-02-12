@@ -16,3 +16,4 @@
 - Data Structure
 - Note
 - Misc
+    - [Mint Struct](./Misc/Mint/note.md)
