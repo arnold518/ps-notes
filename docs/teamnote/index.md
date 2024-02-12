@@ -14,6 +14,8 @@
 - Graph
 - Math
 - Data Structure
+- Geometry
 - Note
+- Theorem
 - Misc
     - [Mint Struct](./Misc/Mint/note.md)

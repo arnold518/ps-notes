@@ -187,7 +187,9 @@ nav:
       - Graph : a.md
       - Math : a.md
       - Data Structure : a.md
+      - Geometry : a.md
       - Note : a.md
+      - Theorem : a.md
       - Misc : 
           - Mint Struct : teamnote/Misc/Mint/note.md
   - Tags: tags.md
