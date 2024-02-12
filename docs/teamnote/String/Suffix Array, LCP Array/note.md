@@ -9,7 +9,7 @@
       $LCP[i] = LCP(S[SA[i-1]...], S[SA[i]...])$ $(2 \le i)$
 
 - Suffix Array, LCP Array : 문자열 $S$가 주어질 때, $S$의 suffix array, LCP array를 구한다.
-- Compare Substring : 문자열 $S$의 substring $S[l1 \cdots r1]$, $S[l2 \cdots r2]$를 사전순으로 비교한다.
+- Compare Substring : 문자열 $S$의 substring $S[l_1 \cdots r_1]$, $S[l_2 \cdots r_2]$를 사전순으로 비교한다.
 
 <center>
 ![image 1](./1.png){width=40%}
@@ -170,7 +170,7 @@ namespace SA_LCP
 - `MAXN`이 선언되어야 함
 - `void SA_LCP(string S)` : $S$의 suffix array, LCP array를 구함 (`SA`, `R`, `LCP` 배열을 채움)
     - $S$는 1-based (leading "?")
-- `bool cmp(int l1, int r1, int l2, int r2)` : $S[l1 \cdots r1]$, $S[l2 \cdots r2]$를 사전순으로 비교하여 $S[l1 \cdots r1] < S[l2 \cdots r2]$를 리턴함
+- `bool cmp(int l1, int r1, int l2, int r2)` : $S[l_1 \cdots r_1]$, $S[l_2 \cdots r_2]$를 사전순으로 비교하여 $S[l_1 \cdots r_1] < S[l_2 \cdots r_2]$를 리턴함
     - 사용하기 위해서 `void SA_LCP(string S)`의 코드 내 주석을 제거하고 호출했어야 함
 
 ``` cpp linenums="1" title="example"
