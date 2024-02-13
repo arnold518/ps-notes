@@ -186,7 +186,8 @@ nav:
       - Optimization : a.md
       - Graph : a.md
       - Math : a.md
-      - Data Structure : a.md
+      - Data Structure:
+          - Convex Hull Trick : teamnote/Data Structure/Convex Hull Trick/note.md
       - Geometry : a.md
       - Note : a.md
       - Theorem : a.md

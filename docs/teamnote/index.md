@@ -14,6 +14,7 @@
 - Graph
 - Math
 - Data Structure
+    - [Convex Hull Trick](./Data Structure/Convex Hull Trick/note.md)
 - Geometry
 - Note
 - Theorem
