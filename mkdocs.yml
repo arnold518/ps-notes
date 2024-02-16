@@ -185,7 +185,8 @@ nav:
           - Suffix Array, LCP Array : teamnote/String/Suffix Array, LCP Array/note.md
       - Optimization : a.md
       - Graph : a.md
-      - Math : a.md
+      - Math :
+          - Number Theoretic Transform : teamnote/Math/Number Theoretic Transform/note.md
       - Data Structure:
           - Convex Hull Trick : teamnote/Data Structure/Convex Hull Trick/note.md
       - Geometry : a.md

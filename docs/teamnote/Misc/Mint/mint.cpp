@@ -19,7 +19,7 @@ struct mint
 
 mint mpow(mint a, int x)
 {
-    mint ret=1
+    mint ret=1;
     while(x)
     {
         if(x&1) ret=ret*a;
