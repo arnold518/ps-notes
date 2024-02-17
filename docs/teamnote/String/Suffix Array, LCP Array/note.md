@@ -36,7 +36,7 @@
         ![image 2](./2.png){width=30%}
         </center>
     
-    suffix의 길이가 증가하는 순서, 즉 $i$가 증가하는 순서대로 $LCP[R[i]]$를 채운다.
+    suffix의 길이가 감소하는 순서, 즉 $i$가 증가하는 순서대로 $LCP[R[i]]$를 채운다.
     **Property 1**에 의해 $LCP[R[i]]=LCP[R[i-1]]-1$부터 시작하여 늘릴 수 있을 때까지 naive하게 늘려본다.
 
     !!! complexity
