@@ -25,6 +25,8 @@
     | 2,113,929,217 |  63 | 25 |     5    |
     |  104,857,601  |  25 | 22 |     3    |
     | 1,092,616,193 | 521 | 21 |     3    |
+    
+    </center>
 
 !!! definition "Definition 1"
     다항식 $A(x)=\displaystyle \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}$ 에 대한 DFT와 IDFT를 다음과 같이 정의한다.
@@ -89,8 +91,6 @@
 - DFT / IDFT : `MOD`와 원시근 `G`가 정해져 있을 때, 배열 $A$가 주어질 때, $A$의 DFT / IDFT 배열을 구한다.
 - Convolution : 다항식 $F(x)$, $G(x)$가 주어질 때, $\mathbb{Z}_{\text{MOD}}$에서의 다항식 곱 $(F \cdot G)(x)$를 구한다.
 
-</center>
-
 ## Algorithm
 
 - DFT / IDFT
@@ -130,6 +130,7 @@
 
     다항식 $F(x)$와 $G(x)$를 길이 $|F|+|G|-1$ 이상의 2의 거듭제곱 크기의 배열로 확장시킨다.
     각 배열의 DFT를 취한 후, 내적(원소별 곱) 후 IDFT를 취하여 $(F \cdot G)(x)$를 얻는다.
+    총 3번의 DFT 함수를 호출한다.
     
     !!! complexity
         $O(NlogN)$
@@ -235,7 +236,7 @@ namespace NTT
 - `void init() {}` : 초기화
 - `void dft(vector<mint> &A, bool inv) {}` : 다항식 $A$의 DFT (`inv`가 true라면 IDFT)를 구하여 배열 $A$에 저장함
     - $A$의 길이는 2의 거듭제곱이어야 함
-- `vector<mint> multiply(vector<mint> F, vector<mint> G) {}` : 다항식 $F$와 $G$를 곱하여 리턴함
+- `vector<mint> multiply(vector<mint> F, vector<mint> G) {}` : $\mathbb{Z}_{\text{MOD}}$에서 다항식 $F$와 $G$를 곱하여 리턴함
 
 ``` cpp linenums="1" title="example"
 void test_ntt()

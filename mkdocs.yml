@@ -186,6 +186,7 @@ nav:
       - Optimization : a.md
       - Graph : a.md
       - Math :
+          - Fast Fourier Transform : teamnote/Math/Fast Fourier Transform/note.md
           - Number Theoretic Transform : teamnote/Math/Number Theoretic Transform/note.md
       - Data Structure:
           - Convex Hull Trick : teamnote/Data Structure/Convex Hull Trick/note.md

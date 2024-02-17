@@ -13,6 +13,7 @@
 - Optimization
 - Graph
 - Math
+    - [Fast Fourier Transform](./Math/Fast Fourier Transform/note.md)
     - [Number Theoretic Transform](./Math/Number Theoretic Transform/note.md)
 - Data Structure
     - [Convex Hull Trick](./Data Structure/Convex Hull Trick/note.md)
