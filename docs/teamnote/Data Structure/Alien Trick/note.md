@@ -205,6 +205,7 @@ namespace Alien
     - `get_opt(i)` : $dp[j] + cost(j, i) \cdot 2$를 최적화시키는 $j<i$를 구함
     - 반정수 범위 이분탐색을 위해 `lambda`는 홀수, `cost(p, q)`에 2를 곱하여 계산
 - `pair<ll, vector<int>> alien(int K) {}` : 주어진 $K$에 대해 (최적의 $dp[N][K]$, 역추적한 최적해)를 리턴함
+    - `lambda`는 그을 접선의 기울기를 의미함
     - 역추적한 최적해는 $[a_0=0, a_1, \cdots, a_{K-1}, a_K=N]$의 형태임
 
 ``` cpp linenums="1" title="example"
