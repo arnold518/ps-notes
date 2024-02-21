@@ -190,6 +190,7 @@ nav:
           - Number Theoretic Transform : teamnote/Math/Number Theoretic Transform/note.md
       - Data Structure:
           - Convex Hull Trick : teamnote/Data Structure/Convex Hull Trick/note.md
+          - Alien Trick : teamnote/Data Structure/Alien Trick/note.md
       - Geometry : a.md
       - Note : a.md
       - Theorem : a.md

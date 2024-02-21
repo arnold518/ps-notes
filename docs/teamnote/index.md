@@ -17,6 +17,7 @@
     - [Number Theoretic Transform](./Math/Number Theoretic Transform/note.md)
 - Data Structure
     - [Convex Hull Trick](./Data Structure/Convex Hull Trick/note.md)
+    - [Alien Trick](./Data Structure/Alien Trick/note.md)
 - Geometry
 - Note
 - Theorem
