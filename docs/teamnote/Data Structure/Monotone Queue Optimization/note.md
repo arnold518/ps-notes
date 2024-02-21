@@ -16,6 +16,7 @@ $$dp[i] = min_{j<i} (dp[j] + cost(j, i))$$
     $f_p(x) = dp[p] + cost(p, x)$라 하면 $f_p(x_1)-f_q(x_1) \le f_p(x_2)-f_q(x_2)$.
 
     $f_p(x)-f_q(x)$는 증가함수이다. $(f_p(x)<f_q(x) \ \rightarrow \ f_p(x)=f_q(x) \ \rightarrow \ f_p(x)>f_q(x))$  
+    $x$가 증가함에 따라 $f_p(x)$가 최적이었다가, $f_q(x)$가 최적으로 바뀐다.  
     $f_p(x)$와 $f_q(x)$는 대소관계가 정확히 한 번 바뀌니, 직선과 같이 취급할 수 있다.
 
 **Property 1**에 의해, $f_p(x)$는 직선과 같이 관리할 수 있고, 따라서 함수들을 CHT와 비슷한 방법으로 관리한다.
