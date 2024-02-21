@@ -1,4 +1,17 @@
-namespace Alien
+// https://www.acmicpc.net/problem/17439
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+
+const int MAXN = 5e4;
+int N, K;
+ll A[MAXN+10];
+
+namespace Alien_Monoton_Queue
 {
     // MAXN must be defined
     const int MAXN = 5e5;
@@ -17,6 +30,23 @@ namespace Alien
         N=_N;
     }
 
+    // cost(p, q) must be monge
+    ll cost(int p, int q) { return (q-p)*(A[q]-A[p]); }
+
+    // Get maximum x that dp[p]+cost(p, x) < dp[q]+cost(q, x) (p is optimal than q)
+    // p < q must hold
+    int cross(int p, int q)
+    {
+        int lo=q, hi=N+1;
+        while(lo+1<hi)
+        {
+            int mid=lo+hi>>1;
+            if(dp[p]+cost(p, mid)*2 <= dp[q]+cost(q, mid)*2) lo=mid;
+            else hi=mid;
+        }
+        return lo;
+    }
+
     // For given lambda, calculate dp, cnt, memo, V
     // dp[i] = min(or max)_{j<i} (dp[j] + cost(j, i)*2 - lambda)
     // changes dp, cnt, memo, V 
@@ -26,15 +56,21 @@ namespace Alien
         for(int i=0; i<=N; i++) dp[i]=cnt[i]=memo[i]=0;
         V.clear();
 
+        deque<int> DQ;
+        DQ.push_back(0);
+
         for(int i=1; i<=N; i++)
         {
-            // get_opt(i), cost(p, q) must be implemented
-            // opt = argmin(or max)_{j<i} (dp[j] + cost(j, i)*2)
-            // your code goes here
-            int opt = get_opt(i);
-            dp[i] = dp[opt]+cost(opt, i)*2-lambda; // Don't forget *2
-            cnt[i] = cnt[opt]+1;
-            memo[i] = opt;
+            while(DQ.size()>1 && dp[DQ[0]]+cost(DQ[0], i)*2 >= dp[DQ[1]]+cost(DQ[1], i)*2) DQ.pop_front();
+            
+            // opt = argmin(or max)_{j<i} (dp[j] + cost(j, i))
+            int opt = DQ.front();
+            dp[i]=dp[opt]+cost(opt, i)*2-lambda;
+            cnt[i]=cnt[opt]+1;
+            memo[i]=opt;
+
+            while(DQ.size()>1 && !(cross(DQ[DQ.size()-2], DQ[DQ.size()-1]) < cross(DQ[DQ.size()-1], i))) DQ.pop_back();
+            DQ.push_back(i);
         }
 
         for(int i=N; i>0;)
@@ -91,4 +127,17 @@ namespace Alien
         ll ans=dp[N]/2+hi*K;
         return {ans, ansV};
     }
+}
+
+int main()
+{
+    scanf("%d%d", &N, &K);
+    K=min(N, K);
+    for(int i=1; i<=N; i++) scanf("%lld", &A[i]), A[i]+=A[i-1];
+
+    Alien_Monoton_Queue::init(N);
+    auto [ans, ansV] = Alien_Monoton_Queue::alien(K);
+    ans=0;
+    for(int i=1; i<ansV.size(); i++) ans+=Alien_Monoton_Queue::cost(ansV[i-1], ansV[i]);
+    printf("%lld\n", ans);
 }

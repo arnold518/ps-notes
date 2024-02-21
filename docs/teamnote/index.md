@@ -18,6 +18,7 @@
 - Data Structure
     - [Convex Hull Trick](./Data Structure/Convex Hull Trick/note.md)
     - [Alien Trick](./Data Structure/Alien Trick/note.md)
+    - [Monotone Queue Optimization](./Data Structure/Monotone Queue Optimization/note.md)
 - Geometry
 - Note
 - Theorem

@@ -2,20 +2,19 @@
 
 ## Problem
 
+!!! definition "Definition 1"
+    $a \le b \le c \le d$ 일 때, $cost(a, c) + cost(b, d) \le cost(a, d) + cost(b, c)$ ($cost(a, c) + cost(b, d)$가 $cost(a, d) + cost(b, c)$보다 최적) 라면 $cost(j, i)$를 **monge** 하다고 한다.
+
 $$dp[i][k] = min_{j<i} (dp[j][k-1] + cost(j, i))$$
 
-위와 같은 형태의 점화식에서 $K$가 주어질 때, $dp[N][K]$를 구하고, 실제 최적해를 역추적한다.
+위와 같은 형태의 점화식에서 $cost(j, i)$가 monge 하고, $K$가 주어질 때 $dp[N][K]$를 구하고, 실제 최적해를 역추적한다.
 
 ## Algorithm
 
 - calculate DP
 
-    !!! definition "Definition 1"
-        $a \le b \le c \le d$일 때, $cost(a, c) + cost(b, d) \le cost(a, d) + cost(b, c)$ ($cost(a, c) + cost(b, d)$가 $cost(a, d) + cost(b, c)$보다 최적) 라면 $cost(j, i)$를 **monge** 하다고 한다.
-
-        $f(k) = dp[N][k]$라 정의한다.
-
     !!! property "Property 1"
+        $f(k) = dp[N][k]$라 정의하자.
         $cost(j, i)$가 **monge** 하다면 $f(k)$는 $k$에 대하여 **convex** 하다.
 
         - `min`일 때, $2f(k) \le f(k-1)+f(k+1)$
@@ -25,6 +24,7 @@ $$dp[i][k] = min_{j<i} (dp[j][k-1] + cost(j, i))$$
 
     $$dp2[i] = min_{j<i} (dp2[j] + cost(j, i)) - \lambda$$
 
+    $f(k) = dp[N][k]$라 정의하자.
     적당한 $\lambda$에 대하여 $p=f(k)-\lambda k$를 최적화한다.
     $f(k)=p + \lambda k$이니, $(x, f(x))$를 선으로 이은 그래프에서 기울기 $\lambda$의 접선을 그었을 때의 $y$좌표가 최적의 $p$가 된다.
     $p=f(k)-\lambda k$는 고정된 $\lambda$에 대하여 최적의 $dp2[N]$을 의미한다.
@@ -89,7 +89,8 @@ namespace Alien
     }
 
     // For given lambda, calculate dp, cnt, memo, V
-    // dp[i] = min(or max)_{j<i} (dp[j] + cost(j, i)*2 - lambda) 
+    // dp[i] = min(or max)_{j<i} (dp[j] + cost(j, i)*2 - lambda)
+    // changes dp, cnt, memo, V 
     void solve(ll lambda)
     {
         // initialize dp, cnt, memo, V, (other data structures)
@@ -102,7 +103,7 @@ namespace Alien
             // opt = argmin(or max)_{j<i} (dp[j] + cost(j, i)*2)
             // your code goes here
             int opt = get_opt(i);
-            dp[i] = dp[opt] + cost(opt, i)*2 - lambda; // Don't forget *2
+            dp[i] = dp[opt]+cost(opt, i)*2-lambda; // Don't forget *2
             cnt[i] = cnt[opt]+1;
             memo[i] = opt;
         }
@@ -201,6 +202,7 @@ namespace Alien
     - `cnt[i]` : $dp2[i]$까지 사용한 transition의 개수
     - `memo[i]` : $dp2[i]$에서 사용한 마지막 transition의 위치
     - `V` : 복구한 최적해
+    - $cost(p, q)$가 monge해야 함
     - 문제 상황에 따라 `get_opt(i)`, `cost(p, q)` 부분을 구현하여 사용함
     - `get_opt(i)` : $dp[j] + cost(j, i) \cdot 2$를 최적화시키는 $j<i$를 구함
     - 반정수 범위 이분탐색을 위해 `lambda`는 홀수, `cost(p, q)`에 2를 곱하여 계산
