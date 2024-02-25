@@ -20,7 +20,7 @@ struct mint
     operator int(void) const { return x; }
 };
 
-mint mpow(mint a, int x)
+mint mpow(mint a, ll x)
 {
     mint ret=1;
     while(x)
