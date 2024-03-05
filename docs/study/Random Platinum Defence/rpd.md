@@ -13,3 +13,4 @@
 | 2023-07-09 |  [3295](https://www.acmicpc.net/problem/3295)  |           4           |         16         |        0        |       20      |
 | 2023-07-10 | [20176](https://www.acmicpc.net/problem/20176) |           7           |         20         |        0        |       27      |
 | 2024-03-05 |  [2764](https://www.acmicpc.net/problem/2764)  |           8           |         12         |        0        |       20      |
+| 2024-03-05 | [27844](https://www.acmicpc.net/problem/27844) |           7           |         24         |        1        |       51      |
