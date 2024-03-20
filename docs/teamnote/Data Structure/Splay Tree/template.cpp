@@ -39,12 +39,14 @@ namespace SplayTree
         // should be called before going down to children
         // changes lazy
         void prop(int node) {}
+
+        // Propagates all ancestors of x
+        void prop_anc(int x)
         
         // Rotate x with its parent
         void rotate(int x) {}
 
         // Make x the root of tree
-        // ancestors of x must be propagated before
         // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x) {}
 

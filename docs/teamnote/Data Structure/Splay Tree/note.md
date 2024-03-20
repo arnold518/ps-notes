@@ -164,6 +164,13 @@ namespace SplayTree
             // your code goes here
             NS[node].lazy=0;
         }
+
+        // Propagates all ancestors of x
+        void prop_anc(int x)
+        {
+            if(NS[x].par!=0) prop_anc(NS[x].par);
+            prop(x);
+        }
         
         // Rotate x with its parent
         void rotate(int x)
@@ -192,10 +199,10 @@ namespace SplayTree
         }
 
         // Make x the root of tree
-        // ancestors of x must be propagated before
         // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x)
         {
+            prop_anc(x);
             while(NS[x].par)
             {
                 int p=NS[x].par, q=NS[p].par;
@@ -341,12 +348,14 @@ namespace SplayTree
         // should be called before going down to children
         // changes lazy
         void prop(int node) {}
+
+        // Propagates all ancestors of x
+        void prop_anc(int x)
         
         // Rotate x with its parent
         void rotate(int x) {}
 
         // Make x the root of tree
-        // ancestors of x must be propagated before
         // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x) {}
 
@@ -393,10 +402,10 @@ namespace SplayTree
     - `void prop(int node) {}` : 현재 노드 `node`의 `lazy`에 쌓여 있는 업데이트를 자식 노드로 전파함
         - 자식 노드로 내려가기 전에 호출되어야 함
         - `lazy`값을 초기화함
+    - `void prop_anc(int x)` : 노드 $x$의 조상 노드들에 대해 모두 순서대로 `prop`을 호출함
     - `void rotate(int x) {}` : 노드 $x$를 $x$의 부모 노드 $p$의 위치로 올림
         - $x$는 루트가 아니여야 함
     - `void splay(int x) {}` : 노드 $x$를 루트로 만듬
-        - $x$의 조상들에 대해서는 이미 `prop`이 호출되었어야 함
         - 트리 내부의 노드를 접근할 때에는 시간을 소모한 후 splay 연산을 실행해야 함
     - `int find_kth(int node, int k) {}` : 노드 `node`의 서브트리의 $k$번째 노드 번호를 리턴함
     - `int find_kth(int k) {}` : 전체 트리의 $k$번째 노드 번호를 리턴함

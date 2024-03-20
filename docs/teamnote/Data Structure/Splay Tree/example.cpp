@@ -84,6 +84,13 @@ namespace SplayTree
             // your code goes here
             NS[node].lazy=0;
         }
+
+        // Propagates all ancestors of x
+        void prop_anc(int x)
+        {
+            if(NS[x].par!=0) prop_anc(NS[x].par);
+            prop(x);
+        }
         
         // Rotate x with its parent
         void rotate(int x)
@@ -112,10 +119,10 @@ namespace SplayTree
         }
 
         // Make x the root of tree
-        // ancestors of x must be propagated before
         // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x)
         {
+            prop_anc(x);
             while(NS[x].par)
             {
                 int p=NS[x].par, q=NS[p].par;
