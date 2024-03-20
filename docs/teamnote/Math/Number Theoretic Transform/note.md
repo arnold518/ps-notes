@@ -88,12 +88,12 @@
     \end{bmatrix}_{0 \le i, j < n}
     $$
 
-- DFT / IDFT : `MOD`와 원시근 `G`가 정해져 있을 때, 배열 $A$가 주어질 때, $A$의 DFT / IDFT 배열을 구한다.
-- Convolution : 다항식 $F(x)$, $G(x)$가 주어질 때, $\mathbb{Z}_{\text{MOD}}$에서의 다항식 곱 $(F \cdot G)(x)$를 구한다.
+- **DFT / IDFT** : `MOD`와 원시근 `G`가 정해져 있을 때, 배열 $A$가 주어질 때, $A$의 DFT / IDFT 배열을 구한다.
+- **Convolution** : 다항식 $F(x)$, $G(x)$가 주어질 때, $\mathbb{Z}_{\text{MOD}}$에서의 다항식 곱 $(F \cdot G)(x)$를 구한다.
 
 ## Algorithm
 
-- DFT / IDFT
+- **DFT / IDFT**
 
     !!! definition "Definition 2"
         다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.  
@@ -123,7 +123,7 @@
     !!! complexity
         $O(NlogN)$
 
-- Convolution
+- **Convolution**
 
     !!! property "Property 3"
         $$DFT(F(x)) \cdot DFT(G(x)) = DFT((F \cdot G)(x))$$

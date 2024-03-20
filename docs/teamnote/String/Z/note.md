@@ -6,12 +6,12 @@
     $Z[i] := i$에서 시작하는 $S$의 suffix와 전체 문자열 $S$의 **longest common prefix**의 길이   
     $Z[i] := LCP(S[1 \cdots ], S[i \cdots])$, $i \ge 2$부터 정의되고, $Z[1]=0$이라 한다.
 
-- Z function : 문자열 $S$가 주어질 때 $S$의 Z function을 구한다. $(Z[i] = LCP(S[i \cdots], S))$
-- match Z : 문자열 $S$, $T$가 주어질 때, $T$의 Z function을 이용하여 $S$의 각 suffix와 $T$ 전체의 LCP를 구한다. $(F[i] = LCP(S[i \cdots], T))$
+- **Z function** : 문자열 $S$가 주어질 때 $S$의 Z function을 구한다. $(Z[i] = LCP(S[i \cdots], S))$
+- **match Z** : 문자열 $S$, $T$가 주어질 때, $T$의 Z function을 이용하여 $S$의 각 suffix와 $T$ 전체의 LCP를 구한다. $(F[i] = LCP(S[i \cdots], T))$
 
 ## Algorithm
 
-- Z function
+- **Z function**
 
     Z function을 앞에서부터 한 칸씩 계산한다.
     계산 과정에서 지금까지 계산한 $Z$ 값들 중 가장 뒤쪽 위치에 해당하는 값을 $r=pos+Z[pos]-1$이라 하자.
@@ -26,7 +26,7 @@
     !!! complexity
         $O(|S|)$
 
-- match Z
+- **match Z**
     
     $T$에 대한 Z function을 먼저 구하고, 이를 이용하여 $S$의 $F$ 값을 하나씩 앞에서부터 구한다.
     지금까지 계산한 $F$ 값들 중 가장 뒤쪽 위치에 해당하는 값을 $r=pos+F[pos]-1$에 저장하고, Z function과 같이 이미 구했던 $F$값을 최대한 재활용하여 새로운 $F$ 값을 구한다.

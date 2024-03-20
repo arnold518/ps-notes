@@ -70,13 +70,13 @@
 
 구현에서 사용할 자료형에 따라 `double_range` (`double` / `long double`의 fraction 표현 범위), `long_range` (`long long` / `__int128`의 표현 범위)가 결정된다.
 
-- DFT / IDFT : 배열 $A$가 주어질 때, $A$의 DFT / IDFT 배열을 구한다.
-- Convolution : 다항식 $F(x)$, $G(x)$가 주어질 때, 다항식 곱 $(F \cdot G)(x)$를 구한다. (`MAXV * MAXV * N <= double_range`)
-- Convolution2 : 다항식 $F(x)$, $G(x)$가 주어질 때, 다항식 곱 $(F \cdot G)(x)$를 구한다. (`MAXV * N <= double_range`)
+- **DFT / IDFT** : 배열 $A$가 주어질 때, $A$의 DFT / IDFT 배열을 구한다.
+- **Convolution** : 다항식 $F(x)$, $G(x)$가 주어질 때, 다항식 곱 $(F \cdot G)(x)$를 구한다. (`MAXV * MAXV * N <= double_range`)
+- **Convolution2** : 다항식 $F(x)$, $G(x)$가 주어질 때, 다항식 곱 $(F \cdot G)(x)$를 구한다. (`MAXV * N <= double_range`)
 
 ## Algorithm
 
-- DFT / IDFT
+- **DFT / IDFT**
 
     !!! definition "Definition 2"
         다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.  
@@ -106,7 +106,7 @@
     !!! complexity
         $O(NlogN)$
 
-- Convolution (`MAXV * MAXV * N <= double_range`)
+- **Convolution** (`MAXV * MAXV * N <= double_range`)
 
     !!! property "Property 3"
         $$DFT(F(x)) \cdot DFT(G(x)) = DFT((F \cdot G)(x))$$
@@ -118,7 +118,7 @@
     !!! complexity
         $O(NlogN)$
 
-- Convolution2 (`MAXV * N <= double_range`)
+- **Convolution2** (`MAXV * N <= double_range`)
     
     !!! property "Property 4"
         $F(x)$랑 $G(x)$를 각각 DFT해야 할 때 $P=F+Gi$를 DFT하면

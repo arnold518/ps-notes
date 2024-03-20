@@ -8,8 +8,8 @@
     - $LCP[i] :=$ $SA[i]$에서 시작하는 suffix와 $SA[i-1]$에서 시작하는 suffix의 **longest common prefix**의 길이  
       $LCP[i] = LCP(S[SA[i-1]...], S[SA[i]...])$ $(2 \le i)$
 
-- Suffix Array, LCP Array : 문자열 $S$가 주어질 때, $S$의 suffix array, LCP array를 구한다.
-- Compare Substring : 문자열 $S$의 substring $S[l_1 \cdots r_1]$, $S[l_2 \cdots r_2]$를 사전순으로 비교한다.
+- **Suffix Array, LCP Array** : 문자열 $S$가 주어질 때, $S$의 suffix array, LCP array를 구한다.
+- **Compare Substring** : 문자열 $S$의 substring $S[l_1 \cdots r_1]$, $S[l_2 \cdots r_2]$를 사전순으로 비교한다.
 
 <center>
 ![image 1](./1.png){width=40%}
@@ -17,7 +17,7 @@
 
 ## Algorithm
 
-- Suffix Array
+- **Suffix Array**
 
     각 suffix들의 앞의 $1, 2, 4, 8, \cdots$ 개의 문자들만을 생각했을 때의 정렬 순서를 순차적으로 구하며 $SA[i], R[i]$ 배열을 관리한다.
     가장 먼저 각 suffix들의 앞의 $1$개의 문자에 대한 정렬 순서, 즉 알파벳 순으로 정렬하여 $SA[i], R[i]$를 구하고 시작한다.
@@ -27,7 +27,7 @@
     !!! complexity
         $O(|S|log|S|)$
 
-- LCP Array
+- **LCP Array**
 
     !!! property "Property 1"
         $$LCP[R[i]]-1 \le LCP[R[i+1]]$$
@@ -42,7 +42,7 @@
     !!! complexity
         $O(|S|)$
 
-- Compare Substring
+- **Compare Substring**
     
     Suffix array를 구하는 과정에서, 각 길이 $d$에 대한 $R[i]$를 $R2[i][d]$에 기록한다.
     $R2[i][d]$를 sparse table과 같이 사용하여, $O(1)$ RMQ 알고리즘과 같이 두 substring을 비교한다.
