@@ -4,11 +4,11 @@
 
 다음 연산들을 online으로 지원할 수 있는 dynamic array를 구현하여라.
 
-- Insert : $k$번째 원소 바로 뒤에 원소 $x$를 삽입한다.
-- Erase : $k$번째 원소를 삭제한다.
-- Find_kth : $k$번째 원소를 구한다.
-- Update : 구간 $[l, r]$에 업데이트를 적용한다. (lazy propagation이 가능한 연산)
-- Query : 구간 $[l, r]$에 쿼리를 날린다.
+- **Insert** : $k$번째 원소 바로 뒤에 원소 $x$를 삽입한다.
+- **Erase** : $k$번째 원소를 삭제한다.
+- **Find_kth** : $k$번째 원소를 구한다.
+- **Update** : 구간 $[l, r]$에 업데이트를 적용한다. (lazy propagation이 가능한 연산)
+- **Query** : 구간 $[l, r]$에 쿼리를 날린다.
 
 ## Algorithm
 
