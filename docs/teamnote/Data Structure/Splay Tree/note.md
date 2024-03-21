@@ -279,7 +279,6 @@ namespace SplayTree
             NS[x].lc=root;
             NS[root].par=x;
             root=x;
-            recalc(root);
             return NS[NS[root].lc].rc;
         }
 
@@ -392,6 +391,7 @@ namespace SplayTree
 - `SplayTree`
     - `root` 노드가 초기화되어야 함
     - `NS[0]`은 `NIL` 노드를 의미함
+    - 배열의 왼쪽, 오른쪽 끝에 dummy 원소를 추가해야 함
     - 문제 상황의 연산에 따라 `recalc`, `apply`, `prop`을 구현하여 사용
     - `void recalc(int node) {}` : 왼쪽 자식, 오른쪽 자식의 값을 이용하여 현재 노드 `node`의 값을 다시 계산함
         - `node`의 `lazy`값이 비어 있어야 함

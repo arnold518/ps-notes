@@ -225,7 +225,6 @@ namespace SplayTree
             NS[x].lc=root;
             NS[root].par=x;
             root=x;
-            recalc(root);
             return NS[NS[root].lc].rc;
         }
 
