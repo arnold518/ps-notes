@@ -11,7 +11,7 @@ $$dp[i][k] = min_{j<i} (dp[j][k-1] + cost(j, i))$$
 
 ## Algorithm
 
-- **calculate DP**
+- **Calculate DP**
 
     !!! property "Property 1"
         $f(k) = dp[N][k]$라 정의하자.
@@ -41,7 +41,7 @@ $$dp[i][k] = min_{j<i} (dp[j][k-1] + cost(j, i))$$
         $O(T(N)logX)$  
         ($T(N)$ : $dp2[N]$을 한번 구하기 위해 필요한 시간)
 
-- **restore solution**
+- **Restore Solution**
 
     !!! property "Property 2"
         $P_1$을 transition $k_1$개를 사용하는 최적해 $[ a_0=0, a_1, \cdots, a_i, a_{i+1}, \cdots, a_{k_1-1}, a_{k_1}=N ]$라 하고,  
