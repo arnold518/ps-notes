@@ -37,7 +37,6 @@ namespace Treap
         Treap() { NS=vector<Node>(1); }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;

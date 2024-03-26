@@ -113,10 +113,9 @@ namespace Treap
 
     struct Treap
     {
-        Treap() { NS=vector<Node>(1); }
+        Treap() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
@@ -291,10 +290,9 @@ namespace Treap
 
     struct Treap
     {
-        Treap() { NS=vector<Node>(1); }
+        Treap() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
@@ -348,8 +346,8 @@ namespace Treap
     - `lazy` : 현재 노드를 제외하고, 현재 노드의 서브트리에 적용해야 할 누적된 lazy 값 (현재 노드에는 이미 업데이트가 적용되어 있음)
     - `Node(ll x) {}` : 원소 $x$를 의미하는 새로운 노드를 생성함 (랜덤한 priority도 배정함)
 - `Treap`
-    - `root` 노드가 초기화되어야 함
     - `NS[0]`은 `NIL` 노드를 의미함
+    - 전체 트리들이 꼭 하나로 연결되어 있을 필요는 없으며, 현재 작업 중인 트리의 루트가 `root`에 담겨 있어야 함
     - 문제 상황의 연산에 따라 `recalc`, `apply`, `prop`을 구현하여 사용
     - `void recalc(int node) {}` : 왼쪽 자식, 오른쪽 자식의 값을 이용하여 현재 노드 `node`의 값을 다시 계산함
         - `node`의 `lazy`값이 비어 있어야 함
@@ -376,11 +374,7 @@ void test_treap()
     vector<int> A={0, 1, 10, 100, 1000, 10000};
     Treap::Treap T;
     
-    for(int i=1; i<=5; i++)
-    {
-        if(i==1) T.root=T.newNode(A[i]);
-        else T.root=T.merge(T.root, T.newNode(A[i]));
-    }
+    for(int i=1; i<=5; i++) T.root=T.merge(T.root, T.newNode(A[i]));
 
     assert(T.query(2, 4).sum == 1110);
     T.insert(2, T.newNode(100000)); // A = [1, 10, 100000, 100, 1000, 10000]

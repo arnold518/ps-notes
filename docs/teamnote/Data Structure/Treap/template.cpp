@@ -19,10 +19,9 @@ namespace Treap
 
     struct Treap
     {
-        Treap() { NS=vector<Node>(1); }
+        Treap() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;

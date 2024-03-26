@@ -67,10 +67,9 @@ namespace Treap
 
     struct Treap
     {
-        Treap() { NS=vector<Node>(1); }
+        Treap() { NS=vector<Node>(1); root=0; }
         int newNode(int x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
@@ -230,8 +229,7 @@ int main()
     {
         int x;
         scanf("%d", &x);
-        if(i==1) T.root=T.newNode(x);
-        else T.root=T.merge(T.root, T.newNode(x));
+        T.root=T.merge(T.root, T.newNode(x));
     }
 
     while(Q--)
