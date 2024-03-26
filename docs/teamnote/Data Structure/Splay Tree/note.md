@@ -114,13 +114,11 @@ namespace SplayTree
         }
     };
 
-    // MUST include leftmost, rightmost dummy elements
     struct SplayTree
     {
-        SplayTree() { NS=vector<Node>(1); }
+        SplayTree() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
@@ -190,9 +188,11 @@ namespace SplayTree
             NS[x].par=NS[p].par;
             NS[p].par=x;
             if(q) NS[q].par=p;
-            if(p==root) root=x;
-            else if(NS[NS[x].par].lc==p) NS[NS[x].par].lc=x;
-            else NS[NS[x].par].rc=x;
+            if(NS[x].par!=0)
+            {
+                if(NS[NS[x].par].lc==p) NS[NS[x].par].lc=x;
+                else NS[NS[x].par].rc=x;
+            }
 
             recalc(p);
             recalc(x);
@@ -202,6 +202,8 @@ namespace SplayTree
         // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x)
         {
+            root=x;
+            if(x==0) return;
             prop_anc(x);
             while(NS[x].par)
             {
@@ -209,7 +211,6 @@ namespace SplayTree
                 if(q) rotate((NS[p].lc==x)==(NS[q].lc==p) ? p : x);
                 rotate(x);
             }
-            prop(root);
         }
 
         // Find kth node in subtree of node
@@ -227,6 +228,7 @@ namespace SplayTree
         // Insert node x after the kth node in subtree of node
         void insert(int node, int k, int x)
         {
+            if(node==0) return;
             assert(0<=k && k<=NS[node].sz);
             prop(node);
 
@@ -256,46 +258,68 @@ namespace SplayTree
         // Erase root of tree
         void erase()
         {
+            assert(root!=0);
             prop(root);
+
             int p=NS[root].lc, q=NS[root].rc;
+            if(p==0 || q==0)
+            {
+                root=p+q;
+                NS[root].par=0;
+                return;
+            }
             root=p;
-            NS[p].par=0;
+            NS[root].par=0;
             find_kth(NS[p].sz);
             NS[root].rc=q;
             NS[q].par=root;
-            NS[root].par=0;
             recalc(root);
         }
 
         // Merge [l, r]th nodes into subtree of NS[NS[root].lc].rc, and return it
         int interval(int l, int r)
         {
-            assert(1<l && r<NS[root].sz);
-            find_kth(r+1);
-            int x=root;
-            root=NS[x].lc;
-            NS[root].par=0;
-            find_kth(l-1);
-            NS[x].lc=root;
-            NS[root].par=x;
-            root=x;
-            return NS[NS[root].lc].rc;
+            assert(1<=l && r<=NS[root].sz);
+            int sz=NS[root].sz, ret, x;
+
+            if(r<sz)
+            {
+                find_kth(r+1);
+                x=root;
+                root=NS[x].lc;
+                NS[root].par=0;
+            }
+
+            if(l>1)
+            {
+                find_kth(l-1);
+                ret=NS[root].rc;
+            }
+            else ret=root;
+
+            if(r<sz)
+            {
+                NS[root].par=x;
+                NS[x].lc=root;
+                root=x;
+            }
+            return ret;
         }
 
         // Update val to range [l, r]
-        void update(int l, int r, ll val)
+        void update(int l, int r, ll lazy)
         {
-            assert(1<l && r<NS[root].sz);
+            assert(1<=l && r<=NS[root].sz);
             int p=interval(l, r);
-            apply(p, val);
+            apply(p, lazy);
             recalc(NS[p].par);
-            recalc(root);
+            recalc(NS[NS[p].par].par);
         }
         
         // Query range [l, r]
         Node query(int l, int r)
         {
-            assert(1<l && r<NS[root].sz);
+            assert(1<=l && r<=NS[root].sz);
             int p=interval(l, r);
             return NS[p];
         }
@@ -322,13 +346,11 @@ namespace SplayTree
         Node() {}
     };
 
-    // MUST include leftmost, rightmost dummy elements
     struct SplayTree
     {
-        SplayTree() { NS=vector<Node>(1); }
+        SplayTree() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
@@ -389,9 +411,8 @@ namespace SplayTree
     - `lazy` : 현재 노드를 제외하고, 현재 노드의 서브트리에 적용해야 할 누적된 lazy 값 (현재 노드에는 이미 업데이트가 적용되어 있음)
     - `Node(ll x) {}` : 원소 $x$를 의미하는 새로운 노드를 생성함
 - `SplayTree`
-    - `root` 노드가 초기화되어야 함
     - `NS[0]`은 `NIL` 노드를 의미함
-    - 배열의 왼쪽, 오른쪽 끝에 dummy 원소를 추가해야 함
+    - 전체 트리들이 꼭 하나로 연결되어 있을 필요는 없으며, 현재 작업 중인 트리의 루트가 `root`에 담겨 있어야 함
     - 문제 상황의 연산에 따라 `recalc`, `apply`, `prop`을 구현하여 사용
     - `void recalc(int node) {}` : 왼쪽 자식, 오른쪽 자식의 값을 이용하여 현재 노드 `node`의 값을 다시 계산함
         - `node`의 `lazy`값이 비어 있어야 함
@@ -405,7 +426,7 @@ namespace SplayTree
     - `void prop_anc(int x)` : 노드 $x$의 조상 노드들에 대해 모두 순서대로 `prop`을 호출함
     - `void rotate(int x) {}` : 노드 $x$를 $x$의 부모 노드 $p$의 위치로 올림
         - $x$는 루트가 아니여야 함
-    - `void splay(int x) {}` : 노드 $x$를 루트로 만듬
+    - `void splay(int x) {}` : 노드 $x$를 `root`로 만듬
         - 트리 내부의 노드를 접근할 때에는 시간을 소모한 후 splay 연산을 실행해야 함
     - `int find_kth(int node, int k) {}` : 노드 `node`의 서브트리의 $k$번째 노드 번호를 리턴함
     - `int find_kth(int k) {}` : 전체 트리의 $k$번째 노드 번호를 리턴함

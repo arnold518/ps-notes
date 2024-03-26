@@ -60,13 +60,11 @@ namespace SplayTree
         }
     };
 
-    // MUST include leftmost, rightmost dummy elements
     struct SplayTree
     {
-        SplayTree() { NS=vector<Node>(1); }
+        SplayTree() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
@@ -136,9 +134,11 @@ namespace SplayTree
             NS[x].par=NS[p].par;
             NS[p].par=x;
             if(q) NS[q].par=p;
-            if(p==root) root=x;
-            else if(NS[NS[x].par].lc==p) NS[NS[x].par].lc=x;
-            else NS[NS[x].par].rc=x;
+            if(NS[x].par!=0)
+            {
+                if(NS[NS[x].par].lc==p) NS[NS[x].par].lc=x;
+                else NS[NS[x].par].rc=x;
+            }
 
             recalc(p);
             recalc(x);
@@ -148,6 +148,8 @@ namespace SplayTree
         // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x)
         {
+            root=x;
+            if(x==0) return;
             prop_anc(x);
             while(NS[x].par)
             {
@@ -155,7 +157,6 @@ namespace SplayTree
                 if(q) rotate((NS[p].lc==x)==(NS[q].lc==p) ? p : x);
                 rotate(x);
             }
-            prop(root);
         }
 
         // Find kth node in subtree of node
@@ -173,6 +174,7 @@ namespace SplayTree
         // Insert node x after the kth node in subtree of node
         void insert(int node, int k, int x)
         {
+            if(node==0) return;
             assert(0<=k && k<=NS[node].sz);
             prop(node);
 
@@ -202,46 +204,68 @@ namespace SplayTree
         // Erase root of tree
         void erase()
         {
+            assert(root!=0);
             prop(root);
+
             int p=NS[root].lc, q=NS[root].rc;
+            if(p==0 || q==0)
+            {
+                root=p+q;
+                NS[root].par=0;
+                return;
+            }
             root=p;
-            NS[p].par=0;
+            NS[root].par=0;
             find_kth(NS[p].sz);
             NS[root].rc=q;
             NS[q].par=root;
-            NS[root].par=0;
             recalc(root);
         }
 
         // Merge [l, r]th nodes into subtree of NS[NS[root].lc].rc, and return it
         int interval(int l, int r)
         {
-            assert(1<l && r<NS[root].sz);
-            find_kth(r+1);
-            int x=root;
-            root=NS[x].lc;
-            NS[root].par=0;
-            find_kth(l-1);
-            NS[x].lc=root;
-            NS[root].par=x;
-            root=x;
-            return NS[NS[root].lc].rc;
+            assert(1<=l && r<=NS[root].sz);
+            int sz=NS[root].sz, ret, x;
+
+            if(r<sz)
+            {
+                find_kth(r+1);
+                x=root;
+                root=NS[x].lc;
+                NS[root].par=0;
+            }
+
+            if(l>1)
+            {
+                find_kth(l-1);
+                ret=NS[root].rc;
+            }
+            else ret=root;
+
+            if(r<sz)
+            {
+                NS[root].par=x;
+                NS[x].lc=root;
+                root=x;
+            }
+            return ret;
         }
 
         // Update val to range [l, r]
         void update(int l, int r, bool rev, pmm lazy)
         {
-            assert(1<l && r<NS[root].sz);
+            assert(1<=l && r<=NS[root].sz);
             int p=interval(l, r);
             apply(p, rev, lazy);
             recalc(NS[p].par);
-            recalc(root);
+            recalc(NS[NS[p].par].par);
         }
         
         // Query range [l, r]
         Node query(int l, int r)
         {
-            assert(1<l && r<NS[root].sz);
+            assert(1<=l && r<=NS[root].sz);
             int p=interval(l, r);
             return NS[p];
         }
@@ -253,15 +277,13 @@ int main()
     int N, Q;
     scanf("%d%d", &N, &Q);
     SplayTree::SplayTree T;
-    T.root=T.newNode(0);
 
     for(int i=1; i<=N; i++)
     {
         int x;
         scanf("%d", &x);
-        T.insert(i, T.newNode(x));
+        T.insert(i-1, T.newNode(x));
     }
-    T.insert(N+1, T.newNode(0));
 
     while(Q--)
     {
@@ -270,32 +292,32 @@ int main()
         if(t==0)
         {
             int p, x;
-            scanf("%d%d", &p, &x); p++;
+            scanf("%d%d", &p, &x);
             T.insert(p, T.newNode(x));
         }
         else if(t==1)
         {
             int p;
-            scanf("%d", &p); p+=2;
+            scanf("%d", &p); p++;
             T.find_kth(p);
             T.erase();
         }
         else if(t==2)
         {
             int l, r;
-            scanf("%d%d", &l, &r); l+=2; r++;
+            scanf("%d%d", &l, &r); l++;
             T.update(l, r, true, pmm(1, 0));
         }
         else if(t==3)
         {
             int l, r, x, y;
-            scanf("%d%d%d%d", &l, &r, &x, &y); l+=2; r++;
+            scanf("%d%d%d%d", &l, &r, &x, &y); l++;
             T.update(l, r, false, pmm(x, y));
         }
         else
         {
             int l, r;
-            scanf("%d%d", &l, &r); l+=2; r++;
+            scanf("%d%d", &l, &r); l++;
             printf("%d\n", T.query(l, r).sum.x);
         }
     }

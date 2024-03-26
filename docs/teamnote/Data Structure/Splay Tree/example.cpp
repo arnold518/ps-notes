@@ -34,13 +34,11 @@ namespace SplayTree
         }
     };
 
-    // MUST include leftmost, rightmost dummy elements
     struct SplayTree
     {
-        SplayTree() { NS=vector<Node>(1); }
+        SplayTree() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
@@ -110,9 +108,11 @@ namespace SplayTree
             NS[x].par=NS[p].par;
             NS[p].par=x;
             if(q) NS[q].par=p;
-            if(p==root) root=x;
-            else if(NS[NS[x].par].lc==p) NS[NS[x].par].lc=x;
-            else NS[NS[x].par].rc=x;
+            if(NS[x].par!=0)
+            {
+                if(NS[NS[x].par].lc==p) NS[NS[x].par].lc=x;
+                else NS[NS[x].par].rc=x;
+            }
 
             recalc(p);
             recalc(x);
@@ -122,6 +122,8 @@ namespace SplayTree
         // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x)
         {
+            root=x;
+            if(x==0) return;
             prop_anc(x);
             while(NS[x].par)
             {
@@ -129,7 +131,6 @@ namespace SplayTree
                 if(q) rotate((NS[p].lc==x)==(NS[q].lc==p) ? p : x);
                 rotate(x);
             }
-            prop(root);
         }
 
         // Find kth node in subtree of node
@@ -147,6 +148,7 @@ namespace SplayTree
         // Insert node x after the kth node in subtree of node
         void insert(int node, int k, int x)
         {
+            if(node==0) return;
             assert(0<=k && k<=NS[node].sz);
             prop(node);
 
@@ -176,46 +178,68 @@ namespace SplayTree
         // Erase root of tree
         void erase()
         {
+            assert(root!=0);
             prop(root);
+
             int p=NS[root].lc, q=NS[root].rc;
+            if(p==0 || q==0)
+            {
+                root=p+q;
+                NS[root].par=0;
+                return;
+            }
             root=p;
-            NS[p].par=0;
+            NS[root].par=0;
             find_kth(NS[p].sz);
             NS[root].rc=q;
             NS[q].par=root;
-            NS[root].par=0;
             recalc(root);
         }
 
         // Merge [l, r]th nodes into subtree of NS[NS[root].lc].rc, and return it
         int interval(int l, int r)
         {
-            assert(1<l && r<NS[root].sz);
-            find_kth(r+1);
-            int x=root;
-            root=NS[x].lc;
-            NS[root].par=0;
-            find_kth(l-1);
-            NS[x].lc=root;
-            NS[root].par=x;
-            root=x;
-            return NS[NS[root].lc].rc;
+            assert(1<=l && r<=NS[root].sz);
+            int sz=NS[root].sz, ret, x;
+
+            if(r<sz)
+            {
+                find_kth(r+1);
+                x=root;
+                root=NS[x].lc;
+                NS[root].par=0;
+            }
+
+            if(l>1)
+            {
+                find_kth(l-1);
+                ret=NS[root].rc;
+            }
+            else ret=root;
+
+            if(r<sz)
+            {
+                NS[root].par=x;
+                NS[x].lc=root;
+                root=x;
+            }
+            return ret;
         }
 
         // Update val to range [l, r]
-        void update(int l, int r, ll val)
+        void update(int l, int r, ll lazy)
         {
-            assert(1<l && r<NS[root].sz);
+            assert(1<=l && r<=NS[root].sz);
             int p=interval(l, r);
-            apply(p, val);
+            apply(p, lazy);
             recalc(NS[p].par);
-            recalc(root);
+            recalc(NS[NS[p].par].par);
         }
         
         // Query range [l, r]
         Node query(int l, int r)
         {
-            assert(1<l && r<NS[root].sz);
+            assert(1<=l && r<=NS[root].sz);
             int p=interval(l, r);
             return NS[p];
         }
@@ -224,20 +248,18 @@ namespace SplayTree
 
 void test_splay_tree()
 {
-    vector<int> A={0, 1, 10, 100, 1000, 10000, 0};
+    vector<int> A={0, 1, 10, 100, 1000, 10000};
     SplayTree::SplayTree T;
 
-    T.root=T.newNode(0);
-    for(int i=1; i<=5; i++) T.insert(i, T.newNode(A[i]));
-    T.insert(6, T.newNode(0));
+    for(int i=1; i<=5; i++) T.insert(i-1, T.newNode(A[i]));
 
-    assert(T.query(3, 5).sum == 1110);
-    T.insert(3, T.newNode(100000)); // A = [0, 1, 10, 100000, 100, 1000, 10000, 0]
-    assert(T.query(2, 4).sum == 100011);
-    T.find_kth(6); T.erase(); // A = [0, 1, 10, 100000, 100, 10000, 0]
-    assert(T.query(5, 6).sum == 10100);
-    T.update(3, 5, 2); // A = [0, 1, 12, 100002, 102, 10000, 0]
-    assert(T.query(2, 4).sum == 100015);
+    assert(T.query(2, 4).sum == 1110);
+    T.insert(2, T.newNode(100000)); // A = [1, 10, 100000, 100, 1000, 10000]
+    assert(T.query(1, 3).sum == 100011);
+    T.find_kth(5); T.erase(); // A = [1, 10, 100000, 100, 10000]
+    assert(T.query(4, 5).sum == 10100);
+    T.update(2, 4, 2); // A = [1, 12, 100002, 102, 10000]
+    assert(T.query(1, 3).sum == 100015);
 }
 
 int main()

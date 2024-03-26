@@ -14,13 +14,11 @@ namespace SplayTree
         Node() {}
     };
 
-    // MUST include leftmost, rightmost dummy elements
     struct SplayTree
     {
-        SplayTree() { NS=vector<Node>(1); }
+        SplayTree() { NS=vector<Node>(1); root=0; }
         int newNode(ll x) { NS.push_back(Node(x)); return NS.size()-1; }
 
-        // root must be initialized
         // NS[0] : NIL node
         int root;
         vector<Node> NS;
