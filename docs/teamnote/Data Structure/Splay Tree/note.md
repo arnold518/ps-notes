@@ -191,7 +191,7 @@ namespace SplayTree
             if(NS[x].par!=0)
             {
                 if(NS[NS[x].par].lc==p) NS[NS[x].par].lc=x;
-                else NS[NS[x].par].rc=x;
+                else if(NS[NS[x].par].rc==p) NS[NS[x].par].rc=x;
             }
 
             recalc(p);

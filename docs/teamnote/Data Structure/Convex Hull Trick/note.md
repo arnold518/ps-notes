@@ -57,12 +57,13 @@ namespace CHT
     ll divfloor(ll u, ll d) { return u/d - ((u^d)<0 && u%d); }
     ll divceil(ll u, ll d) { return u/d + ((u^d)>0 && u%d); }
 
+    // Get cross point of line p, q
+    // If all queries are integer, change 'Frac' to 'div'
+    Frac cross(const Line &p, const Line &q) { return Frac(p.b-q.b, q.a-p.a); } // dir + : divfloor, dir - : divceil
+
     // min/max : ?, slope : ?, dir : ?
     struct CHT
     {
-        // Get cross point of line p, q
-        // If all queries are integer, change 'Frac' to 'div'
-        Frac cross(const Line &p, const Line &q) { return Frac(p.b-q.b, q.a-p.a); } // dir + : divfloor, dir - : divceil
         deque<Line> V;
     
         // Insert line p = ax+b
