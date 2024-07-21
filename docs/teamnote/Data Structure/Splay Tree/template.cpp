@@ -45,7 +45,7 @@ namespace SplayTree
         void rotate(int x) {}
 
         // Make x the root of tree
-        // ammortized O(\log N), should be called after consuming time to visit any internal node
+        // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x) {}
 
         // Find kth node in subtree of node

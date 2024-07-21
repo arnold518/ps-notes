@@ -199,7 +199,7 @@ namespace SplayTree
         }
 
         // Make x the root of tree
-        // ammortized O(\log N), should be called after consuming time to visit any internal node
+        // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x)
         {
             root=x;
@@ -276,7 +276,7 @@ namespace SplayTree
             recalc(root);
         }
 
-        // Merge [l, r]th nodes into subtree of NS[NS[root].lc].rc, and return it
+        // Merge [l, r]th nodes into a subtree (maybe NS[NS[root].lc].rc), and return it
         int interval(int l, int r)
         {
             assert(1<=l && r<=NS[root].sz);
@@ -377,7 +377,7 @@ namespace SplayTree
         void rotate(int x) {}
 
         // Make x the root of tree
-        // ammortized O(\log N), should be called after consuming time to visit any internal node
+        // ammortized O(logN), should be called after consuming time to visit any internal node
         void splay(int x) {}
 
         // Find kth node in subtree of node
