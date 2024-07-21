@@ -41,7 +41,7 @@ namespace CHT
             V.push_back(p);
         }
     
-        // Get min (or max) value at x in O(\log N)
+        // Get min (or max) value at x in O(logN)
         ll query(ll x)
         {
             assert(!V.empty());

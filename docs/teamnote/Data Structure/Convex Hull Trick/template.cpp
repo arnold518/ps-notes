@@ -25,7 +25,7 @@ namespace CHT
         // cross(V[i-1], V[i]) < (or >) cross(V[i], V[i+1]) ('dir')
         void push(Line p) {}
     
-        // Get min (or max) value at x in O(\log N)
+        // Get min (or max) value at x in O(logN)
         ll query(ll x) {}
     
         // Get min (or max) value at x in ammortized O(1)
