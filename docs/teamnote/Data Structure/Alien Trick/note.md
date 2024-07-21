@@ -38,7 +38,7 @@ $$dp[i][k] = min_{j<i} (dp[j][k-1] + cost(j, i))$$
     </center>
 
     !!! complexity
-        $O(T(N)logX)$  
+        $O(T(N)\log X)$  
         ($T(N)$ : $dp2[N]$을 한번 구하기 위해 필요한 시간)
 
 - **Restore Solution**

@@ -10,7 +10,7 @@ tags:
 
 !!! definition "Definition 1"
     **Biconnected graph**는 2개 이상의 정점을 갖고 있으며, 1개의 정점을 제거하여도 연결되어 있는 무방향 그래프이다.  
-    즉, 2개 이상의 정점을 갖고 있는 단절점이 없는 무방향 그래프이다.
+    즉, 2개 이상의 정점을 갖고 있는 단절점이 없는 무방향 연결그래프이다.
 
 !!! definition "Definition 2"
     **Biconnected component**는 maximal biconnected subgraph이다.  

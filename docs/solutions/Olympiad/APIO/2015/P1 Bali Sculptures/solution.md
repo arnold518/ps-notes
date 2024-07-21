@@ -66,14 +66,14 @@ DP가 최적해를 보장하기 위해서는 전체 문제를 최적으로 풀�
 또한, 최상위 비트부터 아래쪽으로, 최적해의 비트를 결정해 나가고 있는 방식으로 문제를 해결하니, 최적해를 무조건 찾을 수 있다.
 $T$번째 비트가 $0$이 될 수 있는지 확인하기 위해서는 $dp[N][A], dp[N][A+1], \cdots, dp[N][B]$ 중에 참인 것이 있는지 확인하면 된다.
 
-$logX$개의 비트 각각을 $O(N^2)$개의 상태 하나를 $O(N)$번의 transition으로 문제를 해결하니, 전체 $O(N^3logX)$에 문제를 해결할 수 있다.
+$\log X$개의 비트 각각을 $O(N^2)$개의 상태 하나를 $O(N)$번의 transition으로 문제를 해결하니, 전체 $O(N^3\log X)$에 문제를 해결할 수 있다.
 
 !!! checkpoint "CheckPoint"
-    **Definition 1**과 같이 DP를 정의하면 최고 비트부터 하나씩 최적해를 결정할 수 있고, $O(N^3logX)$에 문제를 해결할 수 있다.
+    **Definition 1**과 같이 DP를 정의하면 최고 비트부터 하나씩 최적해를 결정할 수 있고, $O(N^3\log X)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
     <center>
-    Time Complexity : $O(N^3logX)$
+    Time Complexity : $O(N^3\log X)$
     </center>
 
 ### Subtask 5
@@ -92,11 +92,11 @@ transition은 **Subtask 4**의 경우와 거의 유사하다.
 $T$번째 비트가 $0$이 될 수 있는지 확인하기 위해서는 $dp[N]$이 $B$보다 작거나 같은지 확인하면 된다.
 
 !!! checkpoint "CheckPoint"
-    구간의 개수를 최소화시키면 된다는 점을 이용하면 **Definition 2**와 같이 DP를 수정하면 최고 비트부터 하나씩 최적해를 결정할 수 있고, $O(N^2logX)$에 문제를 해결할 수 있다.
+    구간의 개수를 최소화시키면 된다는 점을 이용하면 **Definition 2**와 같이 DP를 수정하면 최고 비트부터 하나씩 최적해를 결정할 수 있고, $O(N^2\log X)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
     <center>
-    Time Complexity : $O(N^2logX)$
+    Time Complexity : $O(N^2\log X)$
     </center>
 
 ## Code
