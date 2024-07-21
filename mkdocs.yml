@@ -141,6 +141,7 @@ nav:
       - Data Structures :
           - Segment Tree Beats : algorithms/Data Structures/Segment Tree Beats/algorithm.md
       - Graphs:
+          - Biconnected Component : algorithms/Graphs/Biconnected Component/algorithm.md
           - Flows : 
               - Ford–Fulkerson method : algorithms/Graphs/Flows/Ford-Fulkerson method/algorithm.md
               - Edmond-Karp algorithm : algorithms/Graphs/Flows/Edmond-Karp algorithm/algorithm.md
@@ -171,10 +172,10 @@ nav:
   - Study:
       - study/index.md
       - Random Platinum Defence: study/Random Platinum Defence/rpd.md
-      - Practice :
-          - UCPC 2023 예선 : study/Practice/UCPC 2023 예선/post.md
-          - SCPC 2023 Round 1 : study/Practice/SCPC 2023 Round 1/post.md
-          - OI Review : study/Practice/OI Review/post.md
+      - OI Review : study/OI Review/post.md
+      - Contest :
+          - UCPC 2023 예선 : study/Contest/UCPC 2023 예선/post.md
+          - SCPC 2023 Round 1 : study/Contest/SCPC 2023 Round 1/post.md
   - Personal Team Note:
       - teamnote/index.md
       - String :

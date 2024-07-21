@@ -1,7 +1,7 @@
 # Study
 
 - [Random Platinum Defence](./Random Platinum Defence/rpd)
-- Practice
-    - [UCPC 2023 예선](./Practice/UCPC 2023 예선/post)
-    - [SCPC 2023 Round 1](./Practice/SCPC 2023 Round 1/post)
-    - [OI Review](./Practice/OI%20Review/post)
+- [OI Review](./OI Review/post)
+- Contest
+    - [UCPC 2023 예선](./Contest/UCPC 2023 예선/post)
+    - [SCPC 2023 Round 1](./Contest/SCPC 2023 Round 1/post)

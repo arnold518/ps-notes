@@ -15,3 +15,6 @@
 | 2024-03-05 |  [2764](https://www.acmicpc.net/problem/2764)  |           8           |         12         |        0        |       20      |
 | 2024-03-05 | [27844](https://www.acmicpc.net/problem/27844) |           7           |         24         |        1        |       51      |
 | 2024-03-07 | [20701](https://www.acmicpc.net/problem/20701) |           14          |          6         |        0        |       20      |
+| 2024-05-22 | [16529](https://www.acmicpc.net/problem/16529) |           6           |          7         |        0        |       13      |
+| 2024-05-22 | [18208](https://www.acmicpc.net/problem/18208) |           10          |         10         |        0        |       20      |
+| 2024-05-22 | [24614](https://www.acmicpc.net/problem/24614) |           31          |         22         |        0        |       53      |

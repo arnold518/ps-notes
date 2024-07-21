@@ -19,7 +19,6 @@ tags:
 
 ## Property
 
-### Property 1
 !!! property "Property 1"
     $$fail[i]+1≥fail[i+1]$$
 
@@ -34,7 +33,8 @@ tags:
 이는 $i$를 증가시킬 때마다 $fail[i+1]$는 최대 $1$증가할 수 있다는 의미이다.
 따라서 $fail[i]$를 $1$부터 $N$까지 계산하면 $fail[i]$는 최대 $N$번 증가, 최대 $N$번 감소함을 알 수 있다.
 
-### Property 2
+---
+
 !!! property "Property 2"
     $fail$의 정의에서 “최대” 조건을 무시한, 즉 $S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 길이들의 집합을 $F[i]$라 하자.
     $F[i]$는 $fail[i], fail[fail[i]], fail[fail[fail[i]]], \cdots$ 의 형태로 구성된다.

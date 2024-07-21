@@ -439,19 +439,17 @@ namespace SplayTree
 ``` cpp linenums="1" title="example"
 void test_splay_tree()
 {
-    vector<int> A={0, 1, 10, 100, 1000, 10000, 0};
+    vector<int> A={0, 1, 10, 100, 1000, 10000};
     SplayTree::SplayTree T;
 
-    T.root=T.newNode(0);
-    for(int i=1; i<=5; i++) T.insert(i, T.newNode(A[i]));
-    T.insert(6, T.newNode(0));
+    for(int i=1; i<=5; i++) T.insert(i-1, T.newNode(A[i]));
 
-    assert(T.query(3, 5).sum == 1110);
-    T.insert(3, T.newNode(100000)); // A = [0, 1, 10, 100000, 100, 1000, 10000, 0]
-    assert(T.query(2, 4).sum == 100011);
-    T.find_kth(6); T.erase(); // A = [0, 1, 10, 100000, 100, 10000, 0]
-    assert(T.query(5, 6).sum == 10100);
-    T.update(3, 5, 2); // A = [0, 1, 12, 100002, 102, 10000, 0]
-    assert(T.query(2, 4).sum == 100015);
+    assert(T.query(2, 4).sum == 1110);
+    T.insert(2, T.newNode(100000)); // A = [1, 10, 100000, 100, 1000, 10000]
+    assert(T.query(1, 3).sum == 100011);
+    T.find_kth(5); T.erase(); // A = [1, 10, 100000, 100, 10000]
+    assert(T.query(4, 5).sum == 10100);
+    T.update(2, 4, 2); // A = [1, 12, 100002, 102, 10000]
+    assert(T.query(1, 3).sum == 100015);
 }
 ```

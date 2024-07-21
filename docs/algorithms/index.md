@@ -4,6 +4,7 @@
 - Data Structures
     - [Segment Tree Beats](./Data Structures/Segment Tree Beats/algorithm)
 - Graphs
+    - [Biconnected Component](./Graphs/Biconnected Component/algorithm)
     - Flows
         - [Ford–Fulkerson method](./Graphs/Flows/Ford-Fulkerson method/algorithm)
         - [Edmond-Karp algorithm](./Graphs/Flows/Edmond-Karp algorithm/algorithm)
