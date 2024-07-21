@@ -121,7 +121,7 @@
     IDFT에서는 $\omega_n$을 $\omega_n^{-1}$로 바꾸고, 마지막에 $n$으로 나누어 준다.
 
     !!! complexity
-        $O(NlogN)$
+        $O(N\log N)$
 
 - **Convolution**
 
@@ -133,7 +133,7 @@
     총 3번의 DFT 함수를 호출한다.
     
     !!! complexity
-        $O(NlogN)$
+        $O(N\log N)$
 
 ## Code
 

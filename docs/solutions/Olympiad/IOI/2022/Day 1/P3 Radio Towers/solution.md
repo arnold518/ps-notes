@@ -103,14 +103,14 @@ $$H_i, H_k \le max(H_{i+1}, H_{i+2}, ..., H_{k-1})-D$$
     $dp1[i]= \max_{j<i}{dp2[j]+1}$ ($H_j+D \le H_i$)  
     $dp2[i]= \max_{j<i}{dp1[j]+1}$ ($H_j-D \ge H_i$)
 
-**Definition 2**과 같이 DP를 정의하면 이제 inversion을 구하는 것과 같이 Segment Tree나 Fenwick Tree를 이용하여 쿼리당 $O(NlogN)$, 전체 $O(QNlogN)$에 문제를 해결할 수 있다.
+**Definition 2**과 같이 DP를 정의하면 이제 inversion을 구하는 것과 같이 Segment Tree나 Fenwick Tree를 이용하여 쿼리당 $O(N\log N)$, 전체 $O(QN\log N)$에 문제를 해결할 수 있다.
 
 !!! checkpoint "CheckPoint"
     **Observation 2**로 인해 선택된 송신탑들의 사이사이에 송신탑들을 끼워 넣은 수열의 길이를 최대화하면 답을 구할 수 있다.
-    이는 **Definition 2**의 DP를 이용하면 단순한 형태의 전이이니 Segment Tree나 Fenwick Tree를 이용하여 쿼리당 $O(NlogN)$, 전체 $O(QNlogN)$에 문제를 해결할 수 있다.
+    이는 **Definition 2**의 DP를 이용하면 단순한 형태의 전이이니 Segment Tree나 Fenwick Tree를 이용하여 쿼리당 $O(N\log N)$, 전체 $O(QN\log N)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    Time Complexity : $O(QNlogN)$
+    Time Complexity : $O(QN\log N)$
 
 
 ### Subtask 5
@@ -147,17 +147,17 @@ DP 풀이로는 각 쿼리에 대해 $O(N)$ 이하의 시간에 문제를 해결
 
 따라서, 결론적으로는 $D$가 $K$를 넘어가는 순간, 차이가 정확히 $K$인 두 칸 $(i, j)$을 제거하면 새로운 최적해를 얻을 수 있다.
 이 과정을 set을 이용하여 관리할 수 있고, $D$를 증가시키며 시간에 따라 삭제되는 점들을 구할 수 있다.
-쿼리가 주어지면, $D$ 미만의 시간에 삭제된 점들의 개수를 세면 되니 Set과 이분탐색을 이용하여 $L=0, R=N-1$으로 고정된 상태에서는 $O((N+Q)logN)$에 문제를 해결할 수 있다.
+쿼리가 주어지면, $D$ 미만의 시간에 삭제된 점들의 개수를 세면 되니 Set과 이분탐색을 이용하여 $L=0, R=N-1$으로 고정된 상태에서는 $O((N+Q)\log N)$에 문제를 해결할 수 있다.
 
 !!! checkpoint "CheckPoint"
     **Observation 3**에 의해 증감이 바뀌는, 즉 $H_{i-1}<H_i>H_{i+1}$이거나 $H_{i-1}>H_i<H_{i+1}$인 수들 중에서만 선택하여도 최적해를 얻을 수 있다.  
     $D=1$일 때는 이를 모두 선택하면 최적해이고, $D$를 증가시켜가며 최적해의 변화를 구한다.  
     최적해에서 인접한 두 칸의 차이 중 최솟값을 $K$라 할 때, $D$가 $K$를 넘어가는 순간, 차이가 정확히 $K$인 두 칸 $(i, j)$을 제거하면 새로운 최적해를 얻을 수 있다.  
     이 과정을 set을 이용하여 관리할 수 있고, $D$를 증가시키며 시간에 따라 삭제되는 점들을 구할 수 있다.  
-    쿼리가 주어지면, $D$ 미만의 시간에 삭제된 점들의 개수를 세면 되니 Set과 이분탐색을 이용하여 $L=0, R=N-1$으로 고정된 상태에서는 $O((N+Q)logN)$에 문제를 해결할 수 있다.
+    쿼리가 주어지면, $D$ 미만의 시간에 삭제된 점들의 개수를 세면 되니 Set과 이분탐색을 이용하여 $L=0, R=N-1$으로 고정된 상태에서는 $O((N+Q)\log N)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    Time Complexity : $O((N+Q)logN)$
+    Time Complexity : $O((N+Q)\log N)$
 
 ### Subtask 6 (Full)
 
@@ -170,7 +170,7 @@ $L=0, R=N-1$이 아니라고 해도 풀이의 큰 틀은 변하지 않는다.
 이를 검사하기 위해서는 구간에 포함되고 아직 삭제되지 않은 점들 중 가장 왼쪽 점, 가장 오른쪽 점을 구해야 한다.
 이는 $T_i \ge D$, $L \le i$인 $i$ 중 최솟값을 구하는 문제이니, Segment Tree 위에서의 이분탐색을 통해 해결할 수 있다.
 
-따라서, Persistent Segment Tree와 Segment Tree 위에서의 이분탐색을 통해 각 쿼리당 $O(logN)$, 전체 $O((N+Q)logN)$에 문제를 해결할 수 있다.
+따라서, Persistent Segment Tree와 Segment Tree 위에서의 이분탐색을 통해 각 쿼리당 $O(\log N)$, 전체 $O((N+Q)\log N)$에 문제를 해결할 수 있다.
 
 !!! checkpoint "CheckPoint"
     $L=0, R=N-1$이 아니면 구간 $[L, R]$에 포함되며, $D$ 미만의 시간에 삭제된 점들의 개수를 세야 한다.
@@ -180,10 +180,10 @@ $L=0, R=N-1$이 아니라고 해도 풀이의 큰 틀은 변하지 않는다.
     이를 검사하기 위해서는 구간에 포함되고 아직 삭제되지 않은 점들 중 가장 왼쪽 점, 가장 오른쪽 점을 구해야 한다.
     이는 $T_i \ge D$, $L \le i$인 $i$ 중 최솟값을 구하는 문제이니, Segment Tree 위에서의 이분탐색을 통해 해결할 수 있다.
 
-    따라서, Persistent Segment Tree와 Segment Tree 위에서의 이분탐색을 통해 각 쿼리당 $O(logN)$, 전체 $O((N+Q)logN)$에 문제를 해결할 수 있다.
+    따라서, Persistent Segment Tree와 Segment Tree 위에서의 이분탐색을 통해 각 쿼리당 $O(\log N)$, 전체 $O((N+Q)\log N)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    Time Complexity : $O((N+Q)logN)$
+    Time Complexity : $O((N+Q)\log N)$
 
 ## Code
 ``` cpp linenums="1"

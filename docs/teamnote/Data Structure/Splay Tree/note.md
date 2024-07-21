@@ -47,10 +47,10 @@
     ![image 1](./3.png){width=70%}
     </center>
     
-    Splay 연산은 ammortized $O(logN)$의 시간복잡도를 갖고 있기 때문에, 트리 내부의 노드를 접근할 때에는 시간을 소모한 후 splay 연산을 실행하여야 한다.
+    Splay 연산은 ammortized $O(\log N)$의 시간복잡도를 갖고 있기 때문에, 트리 내부의 노드를 접근할 때에는 시간을 소모한 후 splay 연산을 실행하여야 한다.
 
     !!! complexity
-        Ammortized $O(logN)$
+        Ammortized $O(\log N)$
 
 ---
 
@@ -80,7 +80,7 @@ Splay 연산을 이용하여 나머지 기능들을 다음과 같이 구현한�
     이 노드에 대하여 Update / Query를 실행한다.
 
 !!! complexity
-    Ammortized $O(logN)$
+    Ammortized $O(\log N)$
 
 ## Code
 
@@ -199,7 +199,7 @@ namespace SplayTree
         }
 
         // Make x the root of tree
-        // ammortized O(logN), should be called after consuming time to visit any internal node
+        // ammortized O(\log N), should be called after consuming time to visit any internal node
         void splay(int x)
         {
             root=x;
@@ -377,7 +377,7 @@ namespace SplayTree
         void rotate(int x) {}
 
         // Make x the root of tree
-        // ammortized O(logN), should be called after consuming time to visit any internal node
+        // ammortized O(\log N), should be called after consuming time to visit any internal node
         void splay(int x) {}
 
         // Find kth node in subtree of node

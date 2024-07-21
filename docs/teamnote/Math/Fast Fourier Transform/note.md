@@ -104,7 +104,7 @@
     IDFT에서는 $\omega_n$을 $\omega_n^{-1}$로 바꾸고, 마지막에 $n$으로 나누어 준다.
 
     !!! complexity
-        $O(NlogN)$
+        $O(N\log N)$
 
 - **Convolution** (`MAXV * MAXV * N <= double_range`)
 
@@ -116,7 +116,7 @@
     총 3번의 DFT 함수를 호출한다.
     
     !!! complexity
-        $O(NlogN)$
+        $O(N\log N)$
 
 - **Convolution2** (`MAXV * N <= double_range`)
     
@@ -139,7 +139,7 @@
     각각을 DFT할 때는 **Property 4**를 이용하여 2번만의 DFT 함수를 호출하고, 총 5번의 DFT 함수를 호출한다.
 
     !!! complexity
-        $O(NlogN)$
+        $O(N\log N)$
 
 
 ## Code

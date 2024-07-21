@@ -204,13 +204,13 @@ $S$가 lyndon word라면, $S$의 suffix array를 구했을 때 첫 번째 칸이
 
 따라서, 전체 문자열 $S$의 suffix array를 구한 후, 사전순으로 가장 작은 suffix $T$를 제거하고, 현재의 suffix array 위에서 남은 prefix에 대하여 이를 반복하면 $S$의 lyndon decomposition을 구할 수 있다.
 
-시간복잡도는 suffix array를 구하는 시간복잡도 $O(N)$ 혹은 $O(NlogN)$과 같다.
+시간복잡도는 suffix array를 구하는 시간복잡도 $O(N)$ 혹은 $O(N\log N)$과 같다.
 
 !!! algorithm "Algorithm 1"
     전체 문자열 $S$의 suffix array를 구한 후, 사전순으로 가장 작은 suffix $T$를 제거하고, 현재의 suffix array 위에서 남은 prefix에 대하여 이를 반복하면 $S$의 lyndon decomposition을 구할 수 있다.
 
 !!! complexity
-    Time Complexity : $O(N)$ or $O(NlogN)$
+    Time Complexity : $O(N)$ or $O(N\log N)$
 
 ### Duval Algorithm
 

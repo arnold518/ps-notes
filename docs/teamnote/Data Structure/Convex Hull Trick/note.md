@@ -30,7 +30,7 @@
     쿼리로 주어진 $x$를 이용하여 삽입된 직선들 사이의 교점들에 대한 이분탐색을 통해 최적의 직선을 찾고, 함숫값을 구한다.
     
     !!! complexity
-        $O(logN)$
+        $O(\log N)$
 
 - **Query2**
 
@@ -80,7 +80,7 @@ namespace CHT
             V.push_back(p);
         }
     
-        // Get min (or max) value at x in O(logN)
+        // Get min (or max) value at x in O(\log N)
         ll query(ll x)
         {
             assert(!V.empty());
@@ -136,7 +136,7 @@ namespace CHT
         // cross(V[i-1], V[i]) < (or >) cross(V[i], V[i+1]) ('dir')
         void push(Line p) {}
     
-        // Get min (or max) value at x in O(logN)
+        // Get min (or max) value at x in O(\log N)
         ll query(ll x) {}
     
         // Get min (or max) value at x in ammortized O(1)

@@ -147,18 +147,18 @@ $N \times N$ 격자판이 있고, 그 중 $M$개의 칸에는 $(X_i, Y_i)$에 �
     $dp2[v]:=$ $v$까지 이동하였으며, 현재 내려가는 상태일 때의 가중치 합의 최댓값  
 
 **Definition 1**과 같은 DP 정의를 통하여 모든 칸들을 왼쪽에서 오른쪽으로 보며 DP값들을 구해줄 수 있다.
-마지막으로, **Observation 4**에서 자기보다 왼쪽 아래, 왼쪽 위의 칸들에서 DP값을 받아와야 하는데, 이는 inversion의 수를 셀 때와 비슷하게 segment tree나 fenwick tree 등을 이용하여 전이를 $O(logN)$만에 해결할 수 있다.
+마지막으로, **Observation 4**에서 자기보다 왼쪽 아래, 왼쪽 위의 칸들에서 DP값을 받아와야 하는데, 이는 inversion의 수를 셀 때와 비슷하게 segment tree나 fenwick tree 등을 이용하여 전이를 $O(\log N)$만에 해결할 수 있다.
 
-따라서, 전체 칸의 수가 $O(N+M)$개이고, DP 계산에 드는 시간은 칸당 $O(logN)$이니, $O((N+M)logN)$에 문제를 해결할 수 있다.
+따라서, 전체 칸의 수가 $O(N+M)$개이고, DP 계산에 드는 시간은 칸당 $O(\log N)$이니, $O((N+M)\log N)$에 문제를 해결할 수 있다.
 
 !!! checkpoint "CheckPoint"
     **Observation 4**에서 이동할 때 들러야 하는 칸도 총 $M$개이니, 모든 $x$에 대하여 $y=1$, $y=N$인 칸들에 $0$의 가중치를 추가하면 총 $O(N+M)$개의 칸에 대하여 DP를 진행해도 된다.
     **Definition 1**과 같은 DP 정의를 통하여 모든 칸들을 왼쪽에서 오른쪽으로 보며 DP값들을 구해줄 수 있다.
-    이 때, **Observation 4**에서 자기보다 왼쪽 아래, 왼쪽 위의 칸들에서 DP값을 받아와야 하는데, 이는 inversion의 수를 셀 때와 비슷하게 segment tree나 fenwick tree 등을 이용하여 전이를 $O(logN)$만에 해결할 수 있다.  
-    따라서, 전체 칸의 수가 $O(N+M)$개이고, DP 계산에 드는 시간은 칸당 $O(logN)$이니, $O((N+M)logN)$에 문제를 해결할 수 있다.
+    이 때, **Observation 4**에서 자기보다 왼쪽 아래, 왼쪽 위의 칸들에서 DP값을 받아와야 하는데, 이는 inversion의 수를 셀 때와 비슷하게 segment tree나 fenwick tree 등을 이용하여 전이를 $O(\log N)$만에 해결할 수 있다.  
+    따라서, 전체 칸의 수가 $O(N+M)$개이고, DP 계산에 드는 시간은 칸당 $O(\log N)$이니, $O((N+M)\log N)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    Time Complexity : $O((N+M)logN)$
+    Time Complexity : $O((N+M)\log N)$
 
 ## Code
 ``` cpp linenums="1"

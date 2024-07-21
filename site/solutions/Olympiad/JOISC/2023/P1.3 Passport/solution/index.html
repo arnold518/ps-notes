@@ -1393,17 +1393,17 @@ Time Complexity : <span class="arithmatex">\(O(N^2)\)</span>
 <h3 id="subtask-5-full">Subtask 5 (Full)<a class="headerlink" href="#subtask-5-full" title="Permanent link">&para;</a></h3>
 <p>이제 실제로 <span class="arithmatex">\(N^2\)</span>개의 간선을 이을 수 없는 상황인데, 간선의 형태가 구간에 있는 모든 정점에서 특정한 점을 연결하는 형태이므로, Segment Tree를 사용하여 최적화할 수 있다.
 각 정점을 리프로 하는 Segment Tree를 dummy node로 만들고, Segment Tree의 루트로 방향을 부여하면 특정 구간에서 정점으로 간선을 이을 수 있다.
-한 구간에서 정점으로 간선을 연결하는데 <span class="arithmatex">\(O(logN)\)</span>개의 간선만 필요하니, 전체 그래프의 정점은 <span class="arithmatex">\(O(N)\)</span>, 간선은 <span class="arithmatex">\(O(NlogN)\)</span>개이다.</p>
+한 구간에서 정점으로 간선을 연결하는데 <span class="arithmatex">\(O(\log N)\)</span>개의 간선만 필요하니, 전체 그래프의 정점은 <span class="arithmatex">\(O(N)\)</span>, 간선은 <span class="arithmatex">\(O(N\log N)\)</span>개이다.</p>
 <p>하지만 Segment Tree의 간선들은 가중치가 <span class="arithmatex">\(0\)</span>이기 때문에 단순한 BFS를 사용할 수는 없다.
-Segment Tree에 속하는 간선들은 가중치가 <span class="arithmatex">\(0\)</span>, 나머지 간선들은 모두 가중치가 1로 전체 그래프의 간선들의 가중치가 <span class="arithmatex">\(0\)</span> 혹은 <span class="arithmatex">\(1\)</span>이니 01-BFS를 사용하면 <span class="arithmatex">\(O(NlogN)\)</span>에 문제를 해결할 수 있다.</p>
+Segment Tree에 속하는 간선들은 가중치가 <span class="arithmatex">\(0\)</span>, 나머지 간선들은 모두 가중치가 1로 전체 그래프의 간선들의 가중치가 <span class="arithmatex">\(0\)</span> 혹은 <span class="arithmatex">\(1\)</span>이니 01-BFS를 사용하면 <span class="arithmatex">\(O(N\log N)\)</span>에 문제를 해결할 수 있다.</p>
 <div class="admonition example">
 <p class="admonition-title">CheckPoint</p>
-<p><span class="arithmatex">\(O(N^2)\)</span>개의 간선을 Segment Tree를 사용하여 <span class="arithmatex">\(O(NlogN)\)</span>개의 간선들로 압축할 수 있다. 이제, 이 그래프에서 가중치가 <span class="arithmatex">\(0\)</span> 혹은 <span class="arithmatex">\(1\)</span>이니 01-BFS를 사용하면 <span class="arithmatex">\(O(NlogN)\)</span>에 문제를 해결할 수 있다.</p>
+<p><span class="arithmatex">\(O(N^2)\)</span>개의 간선을 Segment Tree를 사용하여 <span class="arithmatex">\(O(N\log N)\)</span>개의 간선들로 압축할 수 있다. 이제, 이 그래프에서 가중치가 <span class="arithmatex">\(0\)</span> 혹은 <span class="arithmatex">\(1\)</span>이니 01-BFS를 사용하면 <span class="arithmatex">\(O(N\log N)\)</span>에 문제를 해결할 수 있다.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Complexity</p>
 <p><center>
-Time Complexity : <span class="arithmatex">\(O(NlogN)\)</span>
+Time Complexity : <span class="arithmatex">\(O(N\log N)\)</span>
 </center></p>
 </div>
 <h2 id="_7">코드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>

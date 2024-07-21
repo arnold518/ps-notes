@@ -23,7 +23,7 @@ tags:
 |:---------------------------:|:-----------------------------------:|:---------------:|
 | [Property 1](./#property-1) |         $sz(A) \cdot sz(B)$         |     $O(N^2)$    |
 | [Property 2](./#property-2) | $min(K, sz(A)) \cdot min(K, sz(B))$ |     $O(NK)$     |
-| [Property 3](./#property-3) |         $min(sz(A), sz(B))$         |    $O(NlogN)$   |
+| [Property 3](./#property-3) |         $min(sz(A), sz(B))$         |    $O(N\log N)$   |
 | [Property 4](./#property-4) |          $min(h(A), h(B))$          |      $O(N)$     |
 | [Property 5](./#property-5) |            $sz(A)+sz(B)$            |   $O(Nlog^2N)$  |
 
@@ -57,14 +57,14 @@ tags:
 ## Property 3
 
 !!! property "Property 3"
-    $A$, $B$를 합치기 위해서 $min(sz(A), sz(B))$의 시간이 필요할 때, 전체 시간복잡도 $O(NlogN)$에 합칠 수 있다.
+    $A$, $B$를 합치기 위해서 $min(sz(A), sz(B))$의 시간이 필요할 때, 전체 시간복잡도 $O(N\log N)$에 합칠 수 있다.
     **(Small to Large)**
 
 !!! proof
     집합에서 더 크기가 작은 집합을 큰 집합쪽에 합쳐주는 과정을 반복할 때 어떤 원소 $u$가 다른 집합으로 옮겨가기 위해서는 집합의 크기가 2배 이상으로 커져야 한다.
-    즉, 모든 원소가 새로운 집합으로 옮겨가는 횟수가 $O(logN)$이니, 전체 시간복잡도는 $O(NlogN)$이다.
+    즉, 모든 원소가 새로운 집합으로 옮겨가는 횟수가 $O(\log N)$이니, 전체 시간복잡도는 $O(N\log N)$이다.
 
-**Property 1**과 같은 상황인데, dp의 전이가 특수한 형태여서 $min(sz(A), sz(B))$의 시간이 필요하다면 시간복잡도가 $O(NlogN)$임을 알려준다.
+**Property 1**과 같은 상황인데, dp의 전이가 특수한 형태여서 $min(sz(A), sz(B))$의 시간이 필요하다면 시간복잡도가 $O(N\log N)$임을 알려준다.
 예를 들어, 각 정점에서 크기 $sz(A)$의 자료구조를 관리해야 하며, 두 정점을 합칠 때 작은 자료구조의 모든 원소를 큰 자료구조에 넣어줄 수 있다면 이를 적용할 수 있다.
 
 ## Property 4
@@ -96,9 +96,9 @@ tags:
 
 !!! proof
     트리의 한 정점 $u$의 입장에서 루트까지 올라가며 시간복잡도를 계산하자.  
-    HLD의 논리에 의해 $u$가 루트까지 올라갈 때 통과하는 light edge의 수는 $O(logN)$개이다.
+    HLD의 논리에 의해 $u$가 루트까지 올라갈 때 통과하는 light edge의 수는 $O(\log N)$개이다.
     Light edge를 한번 타고 올라갈 때마다 Divide & Conquer으로 값들이 한 노드로 합쳐지고, 이후 체인의 값들 또한 Divide & Conquer으로 합쳐진다.
-    이렇게 light edge를 한번 통과하고 heavy chain들의 값을 하나로 합치는데 Divide & Conquer에서 정점당 $O(logN)$의 시간이 걸리니, 정점 하나당 전체 $O(log^2N)$의 시간이 걸린다.
+    이렇게 light edge를 한번 통과하고 heavy chain들의 값을 하나로 합치는데 Divide & Conquer에서 정점당 $O(\log N)$의 시간이 걸리니, 정점 하나당 전체 $O(log^2N)$의 시간이 걸린다.
     따라서, 전체 시간복잡도는 $O(Nlog^2N)$이다.
     
 위 내용을 응용하여, tree dp문제에서 update를 해야 할 때, 각 업데이트를 $O(log^2N)$에 해결할 수 있다.

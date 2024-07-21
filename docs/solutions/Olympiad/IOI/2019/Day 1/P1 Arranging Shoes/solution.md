@@ -33,7 +33,7 @@ $N$켤레의 신발이 있고, $i$번째 크기의 신발의 왼쪽 신발의 �
 ## Solution
 
 이와 같이 인접한 두 수를 swap하는 연산을 하여 수열을 변환하는 문제는, 최종 상태를 결정할 수만 있다면 단순 inversion의 개수를 구하는 문제로 변형된다.
-Inversion의 개수는 segment tree나 fenwick tree를 이용하여 $O(NlogN)$에 구할 수 있으니 최적의 최종 상태를 결정하는 것에 집중하자.
+Inversion의 개수는 segment tree나 fenwick tree를 이용하여 $O(N\log N)$에 구할 수 있으니 최적의 최종 상태를 결정하는 것에 집중하자.
 
 우선 $i$번째 신발에 대하여 오른쪽 신발이 왼쪽 신발의 왼쪽에 위치한다면 이 두 신발은 swap해야 한다.
 이 두 신발이 swap되는 순간은 어차피 두 신발이 붙어 있어야 하니, 각 신발의 왼쪽, 오른쪽 여부는 크게 중요하지 않고, 만약 오른쪽 신발이 왼쪽 신발의 왼쪽에 위치한다면 답에 $1$을 더해주기만 하면 된다.
@@ -58,13 +58,13 @@ Inversion의 개수는 segment tree나 fenwick tree를 이용하여 $O(NlogN)$�
     만약 $l$과 $r$을 가장 앞으로 당겨오지 않는 최적해가 존재한다면, 이 최적해에서 다른 신발들의 상대적 위치는 바꾸지 않고 $l$과 $r$을 가장 앞으로 당겨온 해 또한 최적해이다.
     즉, $l$과 $r$을 가장 앞으로 당겨오는 방법은 무조건 필요한 swap의 수만 사용하고, 추가적인 swap은 사용하지 않으니 최적해임을 알 수 있다.
 
-이제, 최적해의 형태를 구했으니 fenwick tree를 이용하여 필요한 swap의 수를 inversion의 개수로 $O(NlogN)$에 세주면 된다.
+이제, 최적해의 형태를 구했으니 fenwick tree를 이용하여 필요한 swap의 수를 inversion의 개수로 $O(N\log N)$에 세주면 된다.
 
 !!! checkpoint "CheckPoint"
-    최적해가 **Observation 1**와 같은 형태이니, fenwick tree를 이용하여 필요한 swap의 수를 inversion의 개수로 $O(NlogN)$에 셀 수 있다.
+    최적해가 **Observation 1**와 같은 형태이니, fenwick tree를 이용하여 필요한 swap의 수를 inversion의 개수로 $O(N\log N)$에 셀 수 있다.
 
 !!! complexity "Complexity"
-    Time Complexity : $O(NlogN)$
+    Time Complexity : $O(N\log N)$
 
 ## Code
 ``` cpp linenums="1"

@@ -1425,16 +1425,16 @@ Time Complexity : <span class="arithmatex">\(O(Q(N+M))\)</span>
 </div>
 <p>루트에서 임의의 정점까지의 경로에서 <span class="arithmatex">\(T\)</span>이하인 수들의 개수나 합은 Persistent Segment Tree를 활용하여 구할 수 있다.
 트리에서 DFS를 돌며, 자식의 PST는 부모의 PST에 간선이 지나는 <span class="arithmatex">\(C_i\)</span>를 추가한 형태로 PST를 구성한 후, 경로 <span class="arithmatex">\((S_k, T_k)\)</span>의 쿼리는 <span class="arithmatex">\(S_k\)</span>, <span class="arithmatex">\(T_k\)</span>, <span class="arithmatex">\(lca\)</span> 에서의 <span class="arithmatex">\(T\)</span>에 대한 쿼리를 날려 구할 수 있다.
-이분탐색에 <span class="arithmatex">\(O(logY)\)</span>, PST 쿼리에서 <span class="arithmatex">\(O(logM)\)</span>의 시간이 걸리니, 전체 <span class="arithmatex">\(O(NlogN+M+QlogYlogM)\)</span>에 문제를 해결할 수 있다.</p>
+이분탐색에 <span class="arithmatex">\(O(logY)\)</span>, PST 쿼리에서 <span class="arithmatex">\(O(logM)\)</span>의 시간이 걸리니, 전체 <span class="arithmatex">\(O(N\log N+M+QlogYlogM)\)</span>에 문제를 해결할 수 있다.</p>
 <div class="admonition example">
 <p class="admonition-title">CheckPoint</p>
 <p>필요한 쿼리는 트리에서의 Persistent Segment Tree를 이용하여 구할 수 있다.<br />
-전체 시간복잡도는 <span class="arithmatex">\(O(NlogN+M+QlogYlogM)\)</span>이다.</p>
+전체 시간복잡도는 <span class="arithmatex">\(O(N\log N+M+QlogYlogM)\)</span>이다.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Complexity</p>
 <p><center>
-Time Complexity : <span class="arithmatex">\(O(NlogN+M+QlogYlogM)\)</span>
+Time Complexity : <span class="arithmatex">\(O(N\log N+M+QlogYlogM)\)</span>
 </center></p>
 </div>
 <hr />
@@ -1443,17 +1443,17 @@ Time Complexity : <span class="arithmatex">\(O(NlogN+M+QlogYlogM)\)</span>
 <p>모든 쿼리에 대하여 동시에 이분탐색을 하고, 한 번 이분탐색을 할 때 <span class="arithmatex">\(T\)</span>와 <span class="arithmatex">\(C_i\)</span>들을 정렬한다.
 정렬된 순서대로 트리에 간선 가중치 업데이트, 경로의 가중치 합을 구할 수 있어야 한다.
 이는 Euler Tree Trick을 사용해서 트리를 일직선으로 핀 후, 구간 업데이트, 점 쿼리로 해결할 수 있으니 Segment Tree (Lazy Propagation 필요 없음)으로 구한다.
-이분탐색에 총 <span class="arithmatex">\(O(logY)\)</span>, 정렬 및 Segment Tree 쿼리에 <span class="arithmatex">\(O(logN)\)</span>의 시간이 걸리니, 전체 <span class="arithmatex">\(O(NlogN+M+QlogYlogN)\)</span>에 문제를 해결할 수 있다.</p>
+이분탐색에 총 <span class="arithmatex">\(O(logY)\)</span>, 정렬 및 Segment Tree 쿼리에 <span class="arithmatex">\(O(\log N)\)</span>의 시간이 걸리니, 전체 <span class="arithmatex">\(O(N\log N+M+QlogY\log N)\)</span>에 문제를 해결할 수 있다.</p>
 <div class="admonition example">
 <p class="admonition-title">CheckPoint</p>
 <p>오프라인 쿼리이니, Parallel Binary Search를 사용하면 간선 가중치 업데이트와 경로 가중치 합 쿼리 문제로 환원할 수 있다.
 이는 Euler Tree Trick으로 트리를 일직선으로 피고, Segment Tree를 활용하여 해결할 수 있다.<br />
-전체 시간복잡도는 <span class="arithmatex">\(O(NlogN+M+QlogYlogN)\)</span>이다.</p>
+전체 시간복잡도는 <span class="arithmatex">\(O(N\log N+M+QlogY\log N)\)</span>이다.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Complexity</p>
 <p><center>
-Time Complexity : <span class="arithmatex">\(O(NlogN+M+QlogYlogN)\)</span>
+Time Complexity : <span class="arithmatex">\(O(N\log N+M+QlogY\log N)\)</span>
 </center></p>
 </div>
 <p>마지막으로, 모든 <span class="arithmatex">\(C_i\)</span>가 다르다고 가정하였는데, <span class="arithmatex">\(C_i\)</span>가 같을 수 있다면 같은 <span class="arithmatex">\(C_i\)</span>중 일부만 사용하는 경우를 고려할 수 없다.

@@ -8,7 +8,7 @@ tags:
 
 # FFT (Fast Fourier Transform)
 
-FFT (Fast Fourier Transform)는 다항식 곱셈을 $O(NlogN)$의 시간복잡도에 하는 알고리즘이다.
+FFT (Fast Fourier Transform)는 다항식 곱셈을 $O(N\log N)$의 시간복잡도에 하는 알고리즘이다.
 
 <center>
 $A(x)=\displaystyle \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}$  
@@ -28,7 +28,7 @@ $A(x) \cdot B(x)=\displaystyle \sum_{i=0}^{n-1} \sum_{j=0}^{n-1} a_i b_j x^{i+j}
 1. $x_0, x_1, \cdots, x_{n-1}$에 대하여 다항식의 계수 $a_0, a_1, \cdots, a_{n-1}$을 알고 있을 때 다항식에 대입한 값들 $A(x_0), A(x_1), \cdots, A(x_{n-1})$ 구하기
 2. $x_0, x_1, \cdots, x_{n-1}$에 대하여 다항식에 대입한 값들 $A(x_0), A(x_1), \cdots, A(x_{n-1})$를 알고 있을 때 다항식의 계수 $a_0, a_1, \cdots, a_{n-1}$ 구하기
 
-이제, 위 두 가지 작업을 $O(NlogN)$의 시간복잡도에 실행할 수 있는 알고리즘과, 적당한 $x_0, x_1, \cdots, x_{n-1}$을 선택하면 된다.
+이제, 위 두 가지 작업을 $O(N\log N)$의 시간복잡도에 실행할 수 있는 알고리즘과, 적당한 $x_0, x_1, \cdots, x_{n-1}$을 선택하면 된다.
 
 ## DFT (Discrete Fourier Transform)
 
@@ -225,11 +225,11 @@ $DFT(A_0)$, $DFT(A_1)$를 구했다면, $O(N)$의 시간에 $DFT(A)$를 구할 �
     **Property 7**의 식을 이용하여 $DFT(A_0)$, $DFT(A_1)$의 결과를 합쳐준다.
 
 
-따라서 위 분할정복 알고리즘의 시간복잡도는 $T(N)=2T(\frac{N}{2})+O(N)$으로, $O(NlogN)$이다.
+따라서 위 분할정복 알고리즘의 시간복잡도는 $T(N)=2T(\frac{N}{2})+O(N)$으로, $O(N\log N)$이다.
 
 !!! complexity "Time Complexity"
     <center>
-    Time Complexity : $O(NlogN)$
+    Time Complexity : $O(N\log N)$
     </center>
 
 ### In-Place Computation

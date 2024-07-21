@@ -8,7 +8,7 @@ tags:
 
 # FWHT (Fast Walsh Hadamard Transform)
 
-**FFT**는 다음과 같은 형태의 convolution을 $O(NlogN)$에 계산할 수 있게 해준다.
+**FFT**는 다음과 같은 형태의 convolution을 $O(N\log N)$에 계산할 수 있게 해준다.
 
 $$
 c_i = \sum_{j+k=i} a_j \cdot b_k
@@ -477,10 +477,10 @@ $$
     \end{bmatrix}
     $$
 
-시간 복잡도는 $logN$차원 **DFT**이고, 각 차원이 크기 $2$인 행렬곱이므로 $O(NlogN)$이다.
+시간 복잡도는 $\log N$차원 **DFT**이고, 각 차원이 크기 $2$인 행렬곱이므로 $O(N\log N)$이다.
 
 !!! complexity "Time Complexity"
-    Time Complexity : $O(NlogN)$
+    Time Complexity : $O(N\log N)$
 
 ### XOR Convolution
 

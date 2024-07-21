@@ -35,7 +35,7 @@
     마지막으로, 쪼개진 자식 노드의 서브트리 중 루트 노드와 같은 쪽에 속하는 서브트리를 루트 노드의 자식으로 넣어 준다.
 
     !!! complexity
-        Expected $O(logN)$
+        Expected $O(\log N)$
 
 - **Merge**
 
@@ -49,7 +49,7 @@
     이후, 루트가 된 트리의 자식 서브트리 중 나머지 트리의 방향에 있는 서브트리를 재귀적으로 Merge 한다.
 
     !!! complexity
-        Expected $O(logN)$
+        Expected $O(\log N)$
 
 ---
 
@@ -72,7 +72,7 @@ Merge와 Split 연산을 이용하여 나머지 기능들을 다음과 같이 �
     트리를 $l-1, r-l+1, sz-r$개의 노드로 구성된 트리로 Split한 후, 가운데 노드에 대한 Update / Query를 실행한 후 다시 Merge한다.
 
 !!! complexity
-    Expected $O(logN)$
+    Expected $O(\log N)$
 
 ## Code
 

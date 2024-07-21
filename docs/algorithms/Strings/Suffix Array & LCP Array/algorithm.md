@@ -32,6 +32,6 @@ tags:
 
 ### Manber-Myers Algorithm
 
-Manber-Myers Algorithm은 총 $O(logN)$개의 단계로 구성되는데, 각 단계에서 접미사들을 앞의 $2^i$개 문자만 이용하여 정렬한다.
+Manber-Myers Algorithm은 총 $O(\log N)$개의 단계로 구성되는데, 각 단계에서 접미사들을 앞의 $2^i$개 문자만 이용하여 정렬한다.
 즉, 처음에는 $1$개의 문자만 보고 정렬한 후, 이 결과를 이용하여 $2$개, $4$개, $\cdots$의 문자에 대하여 정렬한다.
 
