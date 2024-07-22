@@ -1,4 +1,4 @@
-# Aho-Corasick
+# Aho Corasick
 
 ## Problem
 

@@ -180,7 +180,7 @@ nav:
       - teamnote/index.md
       - String :
           - KMP (Prefix Function) : teamnote/String/KMP/note.md
-          - Aho-Corasick : teamnote/String/Aho-Corasick/note.md
+          - Aho Corasick : teamnote/String/Aho Corasick/note.md
           - Z Function : teamnote/String/Z/note.md
           - Manacher : teamnote/String/Manacher/note.md
           - Suffix Array, LCP Array : teamnote/String/Suffix Array, LCP Array/note.md
