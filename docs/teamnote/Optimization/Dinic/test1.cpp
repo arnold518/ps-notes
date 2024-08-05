@@ -1,3 +1,5 @@
+// https://loj.ac/p/127
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -5,28 +7,30 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-namespace Dinic
+struct Dinic
 {
-    const int MAXV = 1200;
-    const int INF = 2147483647;
+	typedef long long T;
 
-    struct Edge { int v, c, r; };
+    const static int MAXV = 1200;
+    const T INF = numeric_limits<T>::max();
+
+    struct Edge { int v; T c; int r; };
 
     int N, src, snk;
     vector<Edge> adj[MAXV+10];
     int lvl[MAXV+10], pos[MAXV+10];
-    int lim;
+    T lim;
 
-    void init(int _N)
+    Dinic(int _N)
     {
         N=_N;
-        for(int i=1; i<=N; i++) adj[i].clear();
+        for(int i=1; i<=N; i++) adj[i]=vector<Edge>();
     }
 
-    void add_edge(int u, int v, int c)
+    void add_edge(int u, int v, T c, bool dir) // directed edge : dir = true, undirected edge : dir = false
     {
         adj[u].push_back({v, c, adj[v].size()});
-        adj[v].push_back({u, 0, adj[u].size()-1});
+        adj[v].push_back({u, dir ? 0 : c, adj[u].size()-1});
     }
 
     bool bfs()
@@ -48,14 +52,14 @@ namespace Dinic
         return lvl[snk];
     }
 
-    int dfs(int now, int flow)
+    T dfs(int now, T flow)
     {
         if(now==snk) return flow;
         for(; pos[now]<adj[now].size(); pos[now]++)
         {
             auto &[nxt, c, r] = adj[now][pos[now]];
             if(lvl[nxt]!=lvl[now]+1 || !c) continue;
-            int f=dfs(nxt, min(flow, c));
+            T f=dfs(nxt, min(flow, c));
             if(f)
             {
                 c-=f;
@@ -66,19 +70,19 @@ namespace Dinic
         return 0;
     }
 
-    ll flow(int _src, int _snk)
+    T flow(int _src, int _snk)
     {
         src=_src; snk=_snk;
 
-        ll ans=0;
-        for(lim=(1<<30); lim>0; lim>>=1)
+        T ans=0;
+        for(lim=INF; lim>0; lim>>=1)
         {
             while(bfs())
             {
                 for(int i=1; i<=N; i++) pos[i]=0;
                 while(1)
                 {
-                    int t=dfs(src, INF);
+                    T t=dfs(src, INF);
                     if(!t) break;
                     ans+=t;
                 }
@@ -86,18 +90,18 @@ namespace Dinic
         }
         return ans;
     }
-}
+};
 
 int main()
 {
     int N, M, S, T;
     scanf("%d%d%d%d", &N, &M, &S, &T);
-    Dinic::init(N);
+    Dinic dinic(N);
     for(int i=1; i<=M; i++)
     {
         int u, v, c;
         scanf("%d%d%d", &u, &v, &c);
-        Dinic::add_edge(u, v, c);
+        dinic.add_edge(u, v, c, true);
     }
-    printf("%lld\n", Dinic::flow(S, T));
+    printf("%lld\n", dinic.flow(S, T));
 }
