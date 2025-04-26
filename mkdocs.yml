@@ -131,7 +131,7 @@ nav:
           - POI: a.md
           - KOI: a.md
       - BOJ:
-          - 28304 : solutions/BOJ/28304/solution.md
+          a.md
       - Codeforces:
           a.md
       - Atcoder:
