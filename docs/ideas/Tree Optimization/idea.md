@@ -25,7 +25,7 @@ tags:
 | [Property 2](./#property-2) | $min(K, sz(A)) \cdot min(K, sz(B))$ |     $O(NK)$     |
 | [Property 3](./#property-3) |         $min(sz(A), sz(B))$         |    $O(N\log N)$   |
 | [Property 4](./#property-4) |          $min(h(A), h(B))$          |      $O(N)$     |
-| [Property 5](./#property-5) |            $sz(A)+sz(B)$            |   $O(Nlog^2N)$  |
+| [Property 5](./#property-5) |            $sz(A)+sz(B)$            |   $O(N\log^2N)$  |
 
 </center>
 
@@ -83,7 +83,7 @@ tags:
 ## Property 5
 
 !!! property "Property 5"
-    $A$, $B$를 합치기 위해서 $sz(A)+sz(B)$의 시간이 필요할 때, 전체 시간복잡도 $O(Nlog^2N)$에 합칠 수 있다.
+    $A$, $B$를 합치기 위해서 $sz(A)+sz(B)$의 시간이 필요할 때, 전체 시간복잡도 $O(N\log^2N)$에 합칠 수 있다.
     **(JOIOC18 Cats or Dogs)**
 
     트리에서 HLD를 하여, 모든 간선을 heavy edge와 light edge로 구분한다.
@@ -98,8 +98,8 @@ tags:
     트리의 한 정점 $u$의 입장에서 루트까지 올라가며 시간복잡도를 계산하자.  
     HLD의 논리에 의해 $u$가 루트까지 올라갈 때 통과하는 light edge의 수는 $O(\log N)$개이다.
     Light edge를 한번 타고 올라갈 때마다 Divide & Conquer으로 값들이 한 노드로 합쳐지고, 이후 체인의 값들 또한 Divide & Conquer으로 합쳐진다.
-    이렇게 light edge를 한번 통과하고 heavy chain들의 값을 하나로 합치는데 Divide & Conquer에서 정점당 $O(\log N)$의 시간이 걸리니, 정점 하나당 전체 $O(log^2N)$의 시간이 걸린다.
-    따라서, 전체 시간복잡도는 $O(Nlog^2N)$이다.
+    이렇게 light edge를 한번 통과하고 heavy chain들의 값을 하나로 합치는데 Divide & Conquer에서 정점당 $O(\log N)$의 시간이 걸리니, 정점 하나당 전체 $O(\log^2N)$의 시간이 걸린다.
+    따라서, 전체 시간복잡도는 $O(N\log^2N)$이다.
     
-위 내용을 응용하여, tree dp문제에서 update를 해야 할 때, 각 업데이트를 $O(log^2N)$에 해결할 수 있다.
-각 chain을 합치는 과정을 segment tree에 저장하여 persistent 하게 Divide & Conquer을 관리할 수 있다면, 같은 논리로 한 정점이 루트까지 올라가며 자료구조를 업데이트하는 시간이 $O(log^2N)$이다.
+위 내용을 응용하여, tree dp문제에서 update를 해야 할 때, 각 업데이트를 $O(\log^2N)$에 해결할 수 있다.
+각 chain을 합치는 과정을 segment tree에 저장하여 persistent 하게 Divide & Conquer을 관리할 수 있다면, 같은 논리로 한 정점이 루트까지 올라가며 자료구조를 업데이트하는 시간이 $O(\log^2N)$이다.

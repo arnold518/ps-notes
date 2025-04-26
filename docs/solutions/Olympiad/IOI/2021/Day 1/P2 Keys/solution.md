@@ -107,7 +107,7 @@ $S_u$의 크기가 최소가 되는 정점 $u$는 **Observation 1**과 같이 $v
 
 전체 알고리즘은 위와 같이 정점들의 집합을 관리하며, 각 집합에서 밖으로 나갈 수 있는 한 정점 $par(v)$를 이용하여 functional graph를 만들고, 루트에 해당하는 사이클을 묶어서 한 집합으로 만든 후 새로운 $par(v)$를 구해주어야 한다.
 이를 효율적으로 관리하기 위하여 Union Find와 각 정점의 열쇠 집합과 나가는 간선들의 집합을 관리하기 위하여 Set과 Small to Large를 이용하면 된다.
-전체 시간복잡도는 Set에서 Small to Large를 해야 하니, $O((N+M)log^2M)$이 된다.
+전체 시간복잡도는 Set에서 Small to Large를 해야 하니, $O((N+M)\log^2M)$이 된다.
 
 !!! checkpoint "CheckPoint"
     간선 $(u, v, c)$에 대하여 $R_u=c$이면, **Observation 2**에 의해 $S_u \supseteq S_v$가 성립한다.
@@ -119,10 +119,10 @@ $S_u$의 크기가 최소가 되는 정점 $u$는 **Observation 1**과 같이 $v
     트리의 루트에 속하는 정점들은 더 이상 밖으로 나가는 간선을 찾을 수 없다는 의미이니, 집합 밖으로 이동할 수 없고, 따라서 답으로 가능한 정점들은 오직 루트에 속한 정점들이다.
 
     이를 효율적으로 관리하기 위하여 Union Find와 각 정점의 열쇠 집합과 나가는 간선들의 집합을 관리하기 위하여 Set과 Small to Large를 이용하면 된다.
-    전체 시간복잡도는 Set에서 Small to Large를 해야 하니, $O((N+M)log^2M)$이 된다.
+    전체 시간복잡도는 Set에서 Small to Large를 해야 하니, $O((N+M)\log^2M)$이 된다.
 
 !!! complexity "Complexity"
-    Time Complexity : $O((N+M)log^2M)$
+    Time Complexity : $O((N+M)\log^2M)$
 
 ## Code
 ``` cpp linenums="1"

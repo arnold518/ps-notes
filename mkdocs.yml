@@ -94,110 +94,110 @@ extra:
 copyright: Copyright &copy; 2023 - 2025 Jaemin Park
 
 nav:
-  - Home: index.md
-  - 문제 풀이:
-      - solutions/index.md
-      - Olympiad:
-          - IOI:
-              - 2022:
-                  - Day 1:
-                      - P1 Catfish Farm : solutions/Olympiad/IOI/2022/Day 1/P1 Catfish Farm/solution.md
-                      - P2 Prisoner Challenge : solutions/Olympiad/IOI/2022/Day 1/P2 Prisoner Challenge/solution.md
-                      - P3 Radio Towers : solutions/Olympiad/IOI/2022/Day 1/P3 Radio Towers/solution.md
-              - 2021:
-                  - Day 1:
-                      - P2 Keys : solutions/Olympiad/IOI/2021/Day 1/P2 Keys/solution.md
-                  - Day 2:
-                      - P1 Mutating DNA : solutions/Olympiad/IOI/2021/Day 2/P1 Mutating DNA/solution.md
-              - 2019:
-                  - Day 1:
-                      - P1 Arranging Shoes : solutions/Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution.md
-                      - P2 Split the Attractions : solutions/Olympiad/IOI/2019/Day 1/P2 Split the Attractions/solution.md
-                      - P3 Rectangles : solutions/Olympiad/IOI/2019/Day 1/P3 Rectangles/solution.md
-          - KOISC: a.md
-          - JOI: a.md
-          - JOISC:
-              - 2023:
-                  - P1.1 Two Currencies : solutions/Olympiad/JOISC/2023/P1.1 Two Currencies/solution.md
-                  - P1.3 Passport : solutions/Olympiad/JOISC/2023/P1.3 Passport/solution.md
-                  - P2.2 Council : solutions/Olympiad/JOISC/2023/P2.2 Council/solution.md
-          - JOIOC: a.md
-          - APIO:
-              - 2019:
-                  - P1 Strange Device : solutions/Olympiad/APIO/2019/P1 Strange Device/solution.md
-              - 2015:
-                  - P1 Bali Sculptures : solutions/Olympiad/APIO/2015/P1 Bali Sculptures/solution.md
-                  - P2 Jakarta Skyscrapers : solutions/Olympiad/APIO/2015/P2 Jakarta Skyscrapers/solution.md
-          - POI: a.md
-          - KOI: a.md
-      - BOJ:
-          a.md
-      - Codeforces:
-          a.md
-      - Atcoder:
-          a.md
-  - 알고리즘 & 자료구조 정리:
-      - algorithms/index.md
-      - Data Structures :
-          - Segment Tree Beats : algorithms/Data Structures/Segment Tree Beats/algorithm.md
-      - Graphs:
-          - Biconnected Component : algorithms/Graphs/Biconnected Component/algorithm.md
-          - Flows : 
-              - Ford–Fulkerson method : algorithms/Graphs/Flows/Ford-Fulkerson method/algorithm.md
-              - Edmond-Karp algorithm : algorithms/Graphs/Flows/Edmond-Karp algorithm/algorithm.md
-              - Min Cost Max Flow : algorithms/Graphs/Flows/Min Cost Max Flow/algorithm.md
-          - Theorems :
-              - Kőnig's theorem : algorithms/Graphs/Theorems/Kőnig's theorem/algorithm.md
-      - Strings:
-          - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
-          - KMP : algorithms/Strings/KMP/algorithm.md
-          - Aho-Corasick : algorithms/Strings/Aho-Corasick/algorithm.md
-          - Z Function : algorithms/Strings/Z Function/algorithm.md
-          - Suffix Array & LCP Array : algorithms/Strings/Suffix Array & LCP Array/algorithm.md
-          - Suffix Automaton : algorithms/Strings/Suffix Automaton/algorithm.md
-          - Eertree : algorithms/Strings/Eertree/algorithm.md
-          - Lyndon Decomposition : algorithms/Strings/Lyndon Decomposition/algorithm.md
-      - Math:
-          - Polynomials and Series :
-              - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
-              - FWHT : algorithms/Math/Polynomials and Series/FWHT/algorithm.md
-      - Team Note: algorithms/Team Note/teamnote.md
-  - 아이디어 & 테크닉 모음:
-      - ideas/index.md
-      - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
-      - Potential Method : ideas/Potential Method/idea.md
-      - Tree Optimization : ideas/Tree Optimization/idea.md
-      - Tree Optimization 2 (with HLD) : ideas/Tree Optimization 2 (with HLD)/idea.md
-      - Number of Triangles in Undirected Graph : ideas/Number of Triangles in Graph/idea.md
-  - Study:
-      - study/index.md
-      - Random Platinum Defence: study/Random Platinum Defence/rpd.md
-      - OI Review : study/OI Review/post.md
-      - Contest :
-          - UCPC 2023 예선 : study/Contest/UCPC 2023 예선/post.md
-          - SCPC 2023 Round 1 : study/Contest/SCPC 2023 Round 1/post.md
-  - Personal Team Note:
-      - teamnote/index.md
-      - String :
-          - KMP (Prefix Function) : teamnote/String/KMP/note.md
-          - Aho Corasick : teamnote/String/Aho Corasick/note.md
-          - Z Function : teamnote/String/Z/note.md
-          - Manacher : teamnote/String/Manacher/note.md
-          - Suffix Array, LCP Array : teamnote/String/Suffix Array, LCP Array/note.md
-      - Optimization : a.md
-      - Graph : a.md
-      - Math :
-          - Fast Fourier Transform : teamnote/Math/Fast Fourier Transform/note.md
-          - Number Theoretic Transform : teamnote/Math/Number Theoretic Transform/note.md
-      - Data Structure:
-          - Convex Hull Trick : teamnote/Data Structure/Convex Hull Trick/note.md
-          - Alien Trick : teamnote/Data Structure/Alien Trick/note.md
-          - Monotone Queue Optimization : teamnote/Data Structure/Monotone Queue Optimization/note.md
-          - Treap : teamnote/Data Structure/Treap/note.md
-          - Splay Tree : teamnote/Data Structure/Splay Tree/note.md
-      - Geometry : a.md
-      - Note : a.md
-      - Theorem : a.md
-      - Misc : 
-          - Mint Struct : teamnote/Misc/Mint/note.md
-  - Tags: tags.md
+    - Home: index.md
+    - 문제 풀이:
+        - solutions/index.md
+        - Olympiad:
+            - IOI:
+                - 2022:
+                    - Day 1:
+                        - P1 Catfish Farm : solutions/Olympiad/IOI/2022/Day 1/P1 Catfish Farm/solution.md
+                        - P2 Prisoner Challenge : solutions/Olympiad/IOI/2022/Day 1/P2 Prisoner Challenge/solution.md
+                        - P3 Radio Towers : solutions/Olympiad/IOI/2022/Day 1/P3 Radio Towers/solution.md
+                - 2021:
+                    - Day 1:
+                        - P2 Keys : solutions/Olympiad/IOI/2021/Day 1/P2 Keys/solution.md
+                    - Day 2:
+                        - P1 Mutating DNA : solutions/Olympiad/IOI/2021/Day 2/P1 Mutating DNA/solution.md
+                - 2019:
+                    - Day 1:
+                        - P1 Arranging Shoes : solutions/Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution.md
+                        - P2 Split the Attractions : solutions/Olympiad/IOI/2019/Day 1/P2 Split the Attractions/solution.md
+                        - P3 Rectangles : solutions/Olympiad/IOI/2019/Day 1/P3 Rectangles/solution.md
+            - KOISC: a.md
+            - JOI: a.md
+            - JOISC:
+                - 2023:
+                    - P1.1 Two Currencies : solutions/Olympiad/JOISC/2023/P1.1 Two Currencies/solution.md
+                    - P1.3 Passport : solutions/Olympiad/JOISC/2023/P1.3 Passport/solution.md
+                    - P2.2 Council : solutions/Olympiad/JOISC/2023/P2.2 Council/solution.md
+            - JOIOC: a.md
+            - APIO:
+                - 2019:
+                    - P1 Strange Device : solutions/Olympiad/APIO/2019/P1 Strange Device/solution.md
+                - 2015:
+                    - P1 Bali Sculptures : solutions/Olympiad/APIO/2015/P1 Bali Sculptures/solution.md
+                    - P2 Jakarta Skyscrapers : solutions/Olympiad/APIO/2015/P2 Jakarta Skyscrapers/solution.md
+            - POI: a.md
+            - KOI: a.md
+        - BOJ:
+            a.md
+        - Codeforces:
+            a.md
+        - Atcoder:
+            a.md
+    - 알고리즘 & 자료구조 정리:
+        - algorithms/index.md
+        - Data Structures :
+            - Segment Tree Beats : algorithms/Data Structures/Segment Tree Beats/algorithm.md
+        - Graphs:
+            - Biconnected Component : algorithms/Graphs/Biconnected Component/algorithm.md
+            - Flows : 
+                - Ford–Fulkerson method : algorithms/Graphs/Flows/Ford-Fulkerson method/algorithm.md
+                - Edmond-Karp algorithm : algorithms/Graphs/Flows/Edmond-Karp algorithm/algorithm.md
+                - Min Cost Max Flow : algorithms/Graphs/Flows/Min Cost Max Flow/algorithm.md
+            - Theorems :
+                - Kőnig's theorem : algorithms/Graphs/Theorems/Kőnig's theorem/algorithm.md
+        - Strings:
+            - Prefix Function : algorithms/Strings/Prefix Function/algorithm.md
+            - KMP : algorithms/Strings/KMP/algorithm.md
+            - Aho-Corasick : algorithms/Strings/Aho-Corasick/algorithm.md
+            - Z Function : algorithms/Strings/Z Function/algorithm.md
+            - Suffix Array & LCP Array : algorithms/Strings/Suffix Array & LCP Array/algorithm.md
+            - Suffix Automaton : algorithms/Strings/Suffix Automaton/algorithm.md
+            - Eertree : algorithms/Strings/Eertree/algorithm.md
+            - Lyndon Decomposition : algorithms/Strings/Lyndon Decomposition/algorithm.md
+        - Math:
+            - Polynomials and Series :
+                - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
+                - FWHT : algorithms/Math/Polynomials and Series/FWHT/algorithm.md
+        - Team Note: algorithms/Team Note/teamnote.md
+    - 아이디어 & 테크닉 모음:
+        - ideas/index.md
+        - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
+        - Potential Method : ideas/Potential Method/idea.md
+        - Tree Optimization : ideas/Tree Optimization/idea.md
+        - Tree Optimization 2 (with HLD) : ideas/Tree Optimization 2 (with HLD)/idea.md
+        - Number of Triangles in Undirected Graph : ideas/Number of Triangles in Graph/idea.md
+    - Study:
+        - study/index.md
+        - Random Platinum Defence: study/Random Platinum Defence/rpd.md
+        - OI Review : study/OI Review/post.md
+        - Contest :
+            - UCPC 2023 예선 : study/Contest/UCPC 2023 예선/post.md
+            - SCPC 2023 Round 1 : study/Contest/SCPC 2023 Round 1/post.md
+    - Personal Team Note:
+        - teamnote/index.md
+        - String :
+            - KMP (Prefix Function) : teamnote/String/KMP/note.md
+            - Aho Corasick : teamnote/String/Aho Corasick/note.md
+            - Z Function : teamnote/String/Z/note.md
+            - Manacher : teamnote/String/Manacher/note.md
+            - Suffix Array, LCP Array : teamnote/String/Suffix Array, LCP Array/note.md
+        - Optimization : a.md
+        - Graph : a.md
+        - Math :
+            - Fast Fourier Transform : teamnote/Math/Fast Fourier Transform/note.md
+            - Number Theoretic Transform : teamnote/Math/Number Theoretic Transform/note.md
+        - Data Structure:
+            - Convex Hull Trick : teamnote/Data Structure/Convex Hull Trick/note.md
+            - Alien Trick : teamnote/Data Structure/Alien Trick/note.md
+            - Monotone Queue Optimization : teamnote/Data Structure/Monotone Queue Optimization/note.md
+            - Treap : teamnote/Data Structure/Treap/note.md
+            - Splay Tree : teamnote/Data Structure/Splay Tree/note.md
+        - Geometry : a.md
+        - Note : a.md
+        - Theorem : a.md
+        - Misc : 
+            - Mint Struct : teamnote/Misc/Mint/note.md
+    - Tags: tags.md
