@@ -72,15 +72,15 @@ $C_i \leq T$인 통행료들의 합을 구하여 통행료들의 합이 $Y_k$보
 
 루트에서 임의의 정점까지의 경로에서 $T$이하인 수들의 개수나 합은 Persistent Segment Tree를 활용하여 구할 수 있다.
 트리에서 DFS를 돌며, 자식의 PST는 부모의 PST에 간선이 지나는 $C_i$를 추가한 형태로 PST를 구성한 후, 경로 $(S_k, T_k)$의 쿼리는 $S_k$, $T_k$, $lca$ 에서의 $T$에 대한 쿼리를 날려 구할 수 있다.
-이분탐색에 $O(logY)$, PST 쿼리에서 $O(\log M)$의 시간이 걸리니, 전체 $O(N\log N+M+QlogY\log M)$에 문제를 해결할 수 있다.
+이분탐색에 $O(\log Y)$, PST 쿼리에서 $O(\log M)$의 시간이 걸리니, 전체 $O(N\log N+M+Q\log Y\log M)$에 문제를 해결할 수 있다.
 
 !!! checkpoint "CheckPoint"
     필요한 쿼리는 트리에서의 Persistent Segment Tree를 이용하여 구할 수 있다.  
-    전체 시간복잡도는 $O(N\log N+M+QlogY\log M)$이다.
+    전체 시간복잡도는 $O(N\log N+M+Q\log Y\log M)$이다.
 
 !!! complexity "Complexity"
     <center>
-    Time Complexity : $O(N\log N+M+QlogY\log M)$
+    Time Complexity : $O(N\log N+M+Q\log Y\log M)$
     </center>
 
 ---
@@ -91,16 +91,16 @@ $Q$번의 이분탐색을 해야 하니, Parallel Binary Search를 사용하자.
 모든 쿼리에 대하여 동시에 이분탐색을 하고, 한 번 이분탐색을 할 때 $T$와 $C_i$들을 정렬한다.
 정렬된 순서대로 트리에 간선 가중치 업데이트, 경로의 가중치 합을 구할 수 있어야 한다.
 이는 Euler Tree Trick을 사용해서 트리를 일직선으로 핀 후, 구간 업데이트, 점 쿼리로 해결할 수 있으니 Segment Tree (Lazy Propagation 필요 없음)으로 구한다.
-이분탐색에 총 $O(logY)$, 정렬 및 Segment Tree 쿼리에 $O(\log N)$의 시간이 걸리니, 전체 $O(N\log N+M+QlogY\log N)$에 문제를 해결할 수 있다.
+이분탐색에 총 $O(\log Y)$, 정렬 및 Segment Tree 쿼리에 $O(\log N)$의 시간이 걸리니, 전체 $O(N\log N+M+Q\log Y\log N)$에 문제를 해결할 수 있다.
 
 !!! checkpoint "CheckPoint"
     오프라인 쿼리이니, Parallel Binary Search를 사용하면 간선 가중치 업데이트와 경로 가중치 합 쿼리 문제로 환원할 수 있다.
     이는 Euler Tree Trick으로 트리를 일직선으로 피고, Segment Tree를 활용하여 해결할 수 있다.  
-    전체 시간복잡도는 $O(N\log N+M+QlogY\log N)$이다.
+    전체 시간복잡도는 $O(N\log N+M+Q\log Y\log N)$이다.
 
 !!! complexity "Complexity"
     <center>
-    Time Complexity : $O(N\log N+M+QlogY\log N)$
+    Time Complexity : $O(N\log N+M+Q\log Y\log N)$
     </center>
 
 마지막으로, 모든 $C_i$가 다르다고 가정하였는데, $C_i$가 같을 수 있다면 같은 $C_i$중 일부만 사용하는 경우를 고려할 수 없다.
