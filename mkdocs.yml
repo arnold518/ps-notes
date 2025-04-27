@@ -95,7 +95,7 @@ copyright: Copyright &copy; 2023 - 2025 Jaemin Park
 
 nav:
     - Home: index.md
-    - 문제 풀이:
+    - Problem Solving:
         - solutions/index.md
         - Olympiad:
             - IOI:
@@ -136,7 +136,7 @@ nav:
             a.md
         - Atcoder:
             a.md
-    - 알고리즘 & 자료구조 정리:
+    - Algorithms & Data Structures:
         - algorithms/index.md
         - Data Structures :
             - Segment Tree Beats : algorithms/Data Structures/Segment Tree Beats/algorithm.md
@@ -161,8 +161,7 @@ nav:
             - Polynomials and Series :
                 - FFT : algorithms/Math/Polynomials and Series/FFT/algorithm.md
                 - FWHT : algorithms/Math/Polynomials and Series/FWHT/algorithm.md
-        - Team Note: algorithms/Team Note/teamnote.md
-    - 아이디어 & 테크닉 모음:
+    - Ideas & Techniques:
         - ideas/index.md
         - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
         - Potential Method : ideas/Potential Method/idea.md

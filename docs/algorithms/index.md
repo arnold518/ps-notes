@@ -1,4 +1,4 @@
-# 알고리즘 & 자료구조 정리
+# Algorithms & Data Structures
 
 ## Table of Contents
 - Data Structures
@@ -24,10 +24,6 @@
     - Polynomials and Series
         - [FFT](./Math/Polynomials and Series/FFT/algorithm)
         - [FWHT](./Math/Polynomials and Series/FWHT/algorithm)
-
-## Team Note
-
-- [Personal Team Note](./Team Note/teamnote)
 
 ## Todo
 - Max Flow Min Cost theorem

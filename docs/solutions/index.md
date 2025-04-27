@@ -1,4 +1,4 @@
-# 문제 풀이
+# Problem Solving
 
 ## Table of Contents
 - Olympiad

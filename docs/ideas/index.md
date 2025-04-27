@@ -1,4 +1,4 @@
-# 아이디어 & 테크닉 모음
+# Ideas & Techniques
 
 ## Table of Contents
 
