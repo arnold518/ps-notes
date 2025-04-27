@@ -4,4 +4,8 @@
 
 - [Random Platinum Defence](Random Platinum Defence/rpd.md)
 - [OI Review](OI Review/post.md)
-- Contest Reviews
+
+### Contest Reviews
+
+## Todo
+
