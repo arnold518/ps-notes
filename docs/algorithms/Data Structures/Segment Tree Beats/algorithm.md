@@ -164,7 +164,7 @@ tag의 입장에서, 이는 **Property 1**에 의해, 노드의 proper subtree�
 
 ---
 
-**Property 2**에서 실제로 방문하는 정점들의 개수의 ammortized complexity를 [Potential Method](../../../../ideas/Potential Method/idea/)를 이용하여 구하자.
+**Property 2**에서 실제로 방문하는 정점들의 개수의 ammortized complexity를 [Potential Method](../../../ideas/Potential Method/idea.md)를 이용하여 구하자.
 현재 segment tree의 상태를 $S$라 할 때 potential function $\Phi(S)$를 정의하자.
 
 !!! definition "Definition 1"

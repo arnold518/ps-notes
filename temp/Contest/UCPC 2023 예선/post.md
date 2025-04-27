@@ -156,7 +156,7 @@ $$A_i - B_j - K(i-j) = (A_i - Ki) + (-B_j + Kj)$$
 위와 같이 두 경우 모두 변수 분리가능하니 앞쪽부터 누적 최댓값을 계산하면 $O(N)$만에 해결할 수 있다.
 
 ## J. 다섯 용사의 검
-[Solution](../../../../solutions/BOJ/28304/solution)
+[Solution](../../../solutions/BOJ/28304/solution.md)
 
 ## K. 세미나 배정
 

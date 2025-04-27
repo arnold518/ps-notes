@@ -21,11 +21,11 @@ tags:
 
 |                             |    Time needed to merge $A$, $B$    | Time Complexity |
 |:---------------------------:|:-----------------------------------:|:---------------:|
-| [Property 1](./#property-1) |         $sz(A) \cdot sz(B)$         |     $O(N^2)$    |
-| [Property 2](./#property-2) | $min(K, sz(A)) \cdot min(K, sz(B))$ |     $O(NK)$     |
-| [Property 3](./#property-3) |         $min(sz(A), sz(B))$         |    $O(N\log N)$   |
-| [Property 4](./#property-4) |          $min(h(A), h(B))$          |      $O(N)$     |
-| [Property 5](./#property-5) |            $sz(A)+sz(B)$            |   $O(N\log^2N)$  |
+| [Property 1](#property-1) |         $sz(A) \cdot sz(B)$         |     $O(N^2)$    |
+| [Property 2](#property-2) | $min(K, sz(A)) \cdot min(K, sz(B))$ |     $O(NK)$     |
+| [Property 3](#property-3) |         $min(sz(A), sz(B))$         |    $O(N\log N)$   |
+| [Property 4](#property-4) |          $min(h(A), h(B))$          |      $O(N)$     |
+| [Property 5](#property-5) |            $sz(A)+sz(B)$            |   $O(N\log^2N)$  |
 
 </center>
 

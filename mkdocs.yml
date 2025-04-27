@@ -68,12 +68,12 @@ markdown_extensions:
       permalink: true
 
 extra_javascript:
-  - ../javascripts/mathjax.js
+  - assets/javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
-  - ../stylesheets/extra.css
+  - assets/stylesheets/extra.css
 
 
 plugins:
@@ -162,37 +162,8 @@ nav:
         - SCC of Tournament Graph : ideas/SCC of Tournament Graph/idea.md
         - Potential Method : ideas/Potential Method/idea.md
         - Tree Optimization : ideas/Tree Optimization/idea.md
-        - Tree Optimization 2 (with HLD) : ideas/Tree Optimization 2 (with HLD)/idea.md
-        - Number of Triangles in Undirected Graph : ideas/Number of Triangles in Graph/idea.md
-    - Study:
+    - Study Records:
         - study/index.md
         - Random Platinum Defence: study/Random Platinum Defence/rpd.md
         - OI Review : study/OI Review/post.md
-        - Contest :
-            - UCPC 2023 예선 : study/Contest/UCPC 2023 예선/post.md
-            - SCPC 2023 Round 1 : study/Contest/SCPC 2023 Round 1/post.md
-    - Personal Team Note:
-        - teamnote/index.md
-        - String :
-            - KMP (Prefix Function) : teamnote/String/KMP/note.md
-            - Aho Corasick : teamnote/String/Aho Corasick/note.md
-            - Z Function : teamnote/String/Z/note.md
-            - Manacher : teamnote/String/Manacher/note.md
-            - Suffix Array, LCP Array : teamnote/String/Suffix Array, LCP Array/note.md
-        - Optimization : a.md
-        - Graph : a.md
-        - Math :
-            - Fast Fourier Transform : teamnote/Math/Fast Fourier Transform/note.md
-            - Number Theoretic Transform : teamnote/Math/Number Theoretic Transform/note.md
-        - Data Structure:
-            - Convex Hull Trick : teamnote/Data Structure/Convex Hull Trick/note.md
-            - Alien Trick : teamnote/Data Structure/Alien Trick/note.md
-            - Monotone Queue Optimization : teamnote/Data Structure/Monotone Queue Optimization/note.md
-            - Treap : teamnote/Data Structure/Treap/note.md
-            - Splay Tree : teamnote/Data Structure/Splay Tree/note.md
-        - Geometry : a.md
-        - Note : a.md
-        - Theorem : a.md
-        - Misc : 
-            - Mint Struct : teamnote/Misc/Mint/note.md
     - Tags: tags.md

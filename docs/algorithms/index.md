@@ -2,28 +2,28 @@
 
 ## Table of Contents
 - Data Structures
-    - [Segment Tree Beats](./Data Structures/Segment Tree Beats/algorithm)
+    - [Segment Tree Beats](Data Structures/Segment Tree Beats/algorithm.md)
 - Graphs
-    - [Biconnected Component](./Graphs/Biconnected Component/algorithm)
+    - [Biconnected Component](Graphs/Biconnected Component/algorithm.md)
     - Flows
-        - [Ford–Fulkerson method](./Graphs/Flows/Ford-Fulkerson method/algorithm)
-        - [Edmond-Karp algorithm](./Graphs/Flows/Edmond-Karp algorithm/algorithm)
-        - [Min Cost Max Flow](./Graphs/Flows/Min Cost Max Flow/algorithm)
+        - [Ford–Fulkerson method](Graphs/Flows/Ford-Fulkerson method/algorithm.md)
+        - [Edmond-Karp algorithm](Graphs/Flows/Edmond-Karp algorithm/algorithm.md)
+        - [Min Cost Max Flow](Graphs/Flows/Min Cost Max Flow/algorithm.md)
     - Theorems
-        - [Kőnig's theorem](./Graphs/Theorems/Kőnig's theorem/algorithm)
+        - [Kőnig's theorem](Graphs/Theorems/Kőnig's theorem/algorithm.md)
 - Strings
-    - [Prefix Function](./Strings/Prefix Function/algorithm)
-    - [KMP](./Strings/KMP/algorithm)
-    - [Aho-Corasick](./Strings/Aho-Corasick/algorithm)
-    - [Z Function](./Strings/Z Function/algorithm)
-    - [Suffix Array & LCP Array](./Strings/Suffix Array & LCP Array/algorithm)
-    - [Suffix Automaton](./Strings/Suffix Automaton/algorithm)
-    - [Eertree](./Strings/Eertree/algorithm)
-    - [Lyndon Decomposition](./Strings/Lyndon Decomposition/algorithm)
+    - [Prefix Function](Strings/Prefix Function/algorithm.md)
+    - [KMP](Strings/KMP/algorithm.md)
+    - [Aho-Corasick](Strings/Aho-Corasick/algorithm.md)
+    - [Z Function](Strings/Z Function/algorithm.md)
+    - [Suffix Array & LCP Array](Strings/Suffix Array & LCP Array/algorithm.md)
+    - [Suffix Automaton](Strings/Suffix Automaton/algorithm.md)
+    - [Eertree](Strings/Eertree/algorithm.md)
+    - [Lyndon Decomposition](Strings/Lyndon Decomposition/algorithm.md)
 - Math
     - Polynomials and Series
-        - [FFT](./Math/Polynomials and Series/FFT/algorithm)
-        - [FWHT](./Math/Polynomials and Series/FWHT/algorithm)
+        - [FFT](Math/Polynomials and Series/FFT/algorithm.md)
+        - [FWHT](Math/Polynomials and Series/FWHT/algorithm.md)
 
 ## Todo
 - Max Flow Min Cost theorem
