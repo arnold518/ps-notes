@@ -1,5 +1,5 @@
 ---
-title: JOISC 2023 P1.1 Two Currencies
+title: JOISC 2023 D1P1 Two Currencies
 tags:
     - binary_search
     - data_structures
@@ -13,7 +13,7 @@ tags:
     - ~ solution
 ---
 
-# JOISC 2023 P1.1 Two Currencies
+# JOISC 2023 D1P1 Two Currencies
 
 ## Problem
 

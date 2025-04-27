@@ -4,27 +4,23 @@
 - Olympiad
     - IOI
         - 2022
-            - Day 1
-                - [P1 Catfish Farm](./Olympiad/IOI/2022/Day 1/P1 Catfish Farm/solution)
-                - [P2 Prisoner Challenge](./Olympiad/IOI/2022/Day 1/P2 Prisoner Challenge/solution)
-                - [P3 Radio Towers](./Olympiad/IOI/2022/Day 1/P3 Radio Towers/solution)
+            - [D1P1 Catfish Farm](./Olympiad/IOI/2022/D1P1 Catfish Farm/solution)
+            - [D1P2 Prisoner Challenge](./Olympiad/IOI/2022/D1P2 Prisoner Challenge/solution)
+            - [D1P3 Radio Towers](./Olympiad/IOI/2022/D1P3 Radio Towers/solution)
         - 2021
-            - Day 1
-                - [P2 Keys](./Olympiad/IOI/2021/Day 1/P2 Keys/solution)
-            - Day 2
-                - [P1 Mutating DNA](./Olympiad/IOI/2021/Day 2/P1 Mutating DNA/solution)
+            - [D1P2 Keys](./Olympiad/IOI/2021/D1P2 Keys/solution)
+            - [D2P1 Mutating DNA](./Olympiad/IOI/2021/D2P1 Mutating DNA/solution)
         - 2019
-            - Day 1
-                - [P1 Arranging Shoes](./Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution)
-                - [P2 Split the Attractions](./Olympiad/IOI/2019/Day 1/P2 Split the Attractions/solution)
-                - [P3 Rectangles](./Olympiad/IOI/2019/Day 1/P3 Rectangles/solution)
+            - [D1P1 Arranging Shoes](./Olympiad/IOI/2019/D1P1 Arranging Shoes/solution)
+            - [D1P2 Split the Attractions](./Olympiad/IOI/2019/D1P2 Split the Attractions/solution)
+            - [D1P3 Rectangles](./Olympiad/IOI/2019/D1P3 Rectangles/solution)
     - KOISC
     - JOI
     - JOISC
         - 2023
-            - [P1.1 Two Currencies](./Olympiad/JOISC/2023/P1.1 Two Currencies/solution)
-            - [P1.3 Passport](./Olympiad/JOISC/2023/P1.3 Passport/solution)
-            - [P2.2 Council](./Olympiad/JOISC/2023/P2.2 Council/solution)
+            - [D1P1 Two Currencies](./Olympiad/JOISC/2023/D1P1 Two Currencies/solution)
+            - [D1P3 Passport](./Olympiad/JOISC/2023/D1P3 Passport/solution)
+            - [D2P2 Council](./Olympiad/JOISC/2023/D2P2 Council/solution)
     - JOIOC
     - APIO
         - 2019

@@ -1,5 +1,5 @@
 ---
-title: IOI 2022 Day 1 P2 Prisoner Challenge
+title: IOI 2022 D1P2 Prisoner Challenge
 tags:
     - ~ solution
     - ad_hoc
@@ -8,7 +8,7 @@ tags:
     - dp
 ---
 
-# IOI 2022 Day 1 P2 Prisoner Challenge
+# IOI 2022 D1P2 Prisoner Challenge
 
 ## Problem
 

@@ -1,5 +1,5 @@
 ---
-title: IOI 2019 Day 1 P1 Arranging Shoes
+title: IOI 2019 D1P1 Arranging Shoes
 tags:
     - data_structures
     - greedy
@@ -7,7 +7,7 @@ tags:
     - ~ solution
 ---
 
-# IOI 2019 Day 1 P1 Arranging Shoes
+# IOI 2019 D1P1 Arranging Shoes
 
 ## Problem
 

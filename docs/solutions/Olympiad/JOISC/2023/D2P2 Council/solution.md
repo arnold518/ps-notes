@@ -1,5 +1,5 @@
 ---
-title: JOISC 2023 P2.2 Council
+title: JOISC 2023 D2P2 Council
 tags:
     - ~ solution
     - bitmask
@@ -7,7 +7,7 @@ tags:
     - dp_sum_over_subsets
 ---
 
-# JOISC 2023 P2.2 Council
+# JOISC 2023 D2P2 Council
 
 ## Problem
 

@@ -1,12 +1,12 @@
 ---
-title: IOI 2021 Day 2 P1 Mutating DNA
+title: IOI 2021 D2P1 Mutating DNA
 tags:
     - ~ solution
     - greedy
     - prefix_sum
 ---
 
-# IOI 2021 Day 2 P1 Mutating DNA
+# IOI 2021 D2P1 Mutating DNA
 
 ## Problem
 

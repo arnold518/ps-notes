@@ -1,5 +1,5 @@
 ---
-title: JOISC 2023 P1.3 Passport
+title: JOISC 2023 D1P3 Passport
 tags:
     - 0_1_bfs
     - data_structures
@@ -9,7 +9,7 @@ tags:
     - ~ solution
 ---
 
-# JOISC 2023 P1.3 Passport
+# JOISC 2023 D1P3 Passport
 
 ## Problem
 

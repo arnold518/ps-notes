@@ -1,12 +1,12 @@
 ---
-title: IOI 2022 Day 1 P1 Catfish Farm
+title: IOI 2022 D1P1 Catfish Farm
 tags:
     - ~ solution
     - dp
     - segtree
 ---
 
-# IOI 2022 Day 1 P1 Catfish Farm
+# IOI 2022 D1P1 Catfish Farm
 
 ## Problem
 

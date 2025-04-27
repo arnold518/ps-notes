@@ -1,5 +1,5 @@
 ---
-title: IOI 2021 Day 1 P2 Keys
+title: IOI 2021 D1P2 Keys
 tags:
     - ~ solution
     - data_structures
@@ -10,7 +10,7 @@ tags:
     - smaller_to_larger
 ---
 
-# IOI 2021 Day 1 P2 Keys
+# IOI 2021 D1P2 Keys
 
 ## Problem
 

@@ -100,27 +100,23 @@ nav:
         - Olympiad:
             - IOI:
                 - 2022:
-                    - Day 1:
-                        - P1 Catfish Farm : solutions/Olympiad/IOI/2022/Day 1/P1 Catfish Farm/solution.md
-                        - P2 Prisoner Challenge : solutions/Olympiad/IOI/2022/Day 1/P2 Prisoner Challenge/solution.md
-                        - P3 Radio Towers : solutions/Olympiad/IOI/2022/Day 1/P3 Radio Towers/solution.md
+                    - D1P1 Catfish Farm : solutions/Olympiad/IOI/2022/D1P1 Catfish Farm/solution.md
+                    - D1P2 Prisoner Challenge : solutions/Olympiad/IOI/2022/D1P2 Prisoner Challenge/solution.md
+                    - D1P3 Radio Towers : solutions/Olympiad/IOI/2022/D1P3 Radio Towers/solution.md
                 - 2021:
-                    - Day 1:
-                        - P2 Keys : solutions/Olympiad/IOI/2021/Day 1/P2 Keys/solution.md
-                    - Day 2:
-                        - P1 Mutating DNA : solutions/Olympiad/IOI/2021/Day 2/P1 Mutating DNA/solution.md
+                    - D1P2 Keys : solutions/Olympiad/IOI/2021/D1P2 Keys/solution.md
+                    - D2P1 Mutating DNA : solutions/Olympiad/IOI/2021/D2P1 Mutating DNA/solution.md
                 - 2019:
-                    - Day 1:
-                        - P1 Arranging Shoes : solutions/Olympiad/IOI/2019/Day 1/P1 Arranging Shoes/solution.md
-                        - P2 Split the Attractions : solutions/Olympiad/IOI/2019/Day 1/P2 Split the Attractions/solution.md
-                        - P3 Rectangles : solutions/Olympiad/IOI/2019/Day 1/P3 Rectangles/solution.md
+                    - D1P1 Arranging Shoes : solutions/Olympiad/IOI/2019/D1P1 Arranging Shoes/solution.md
+                    - D1P2 Split the Attractions : solutions/Olympiad/IOI/2019/D1P2 Split the Attractions/solution.md
+                    - D1P3 Rectangles : solutions/Olympiad/IOI/2019/D1P3 Rectangles/solution.md
             - KOISC: a.md
             - JOI: a.md
             - JOISC:
                 - 2023:
-                    - P1.1 Two Currencies : solutions/Olympiad/JOISC/2023/P1.1 Two Currencies/solution.md
-                    - P1.3 Passport : solutions/Olympiad/JOISC/2023/P1.3 Passport/solution.md
-                    - P2.2 Council : solutions/Olympiad/JOISC/2023/P2.2 Council/solution.md
+                    - D1P1 Two Currencies : solutions/Olympiad/JOISC/2023/D1P1 Two Currencies/solution.md
+                    - D1P3 Passport : solutions/Olympiad/JOISC/2023/D1P3 Passport/solution.md
+                    - D2P2 Council : solutions/Olympiad/JOISC/2023/D2P2 Council/solution.md
             - JOIOC: a.md
             - APIO:
                 - 2019:

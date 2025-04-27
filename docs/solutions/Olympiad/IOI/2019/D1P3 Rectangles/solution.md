@@ -1,5 +1,5 @@
 ---
-title: IOI 2019 Day 1 P3 Rectangles
+title: IOI 2019 D1P3 Rectangles
 tags:
     - implementation
     - sorting
@@ -7,7 +7,7 @@ tags:
     - ~ solution
 ---
 
-# IOI 2019 Day 1 P3 Rectangles
+# IOI 2019 D1P3 Rectangles
 
 ## Problem
 

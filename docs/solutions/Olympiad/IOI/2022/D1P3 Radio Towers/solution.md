@@ -1,5 +1,5 @@
 ---
-title: IOI 2022 Day 1 P3 Radio Towers
+title: IOI 2022 D1P3 Radio Towers
 tags:
     - ~ solution
     - data_structures
@@ -9,7 +9,7 @@ tags:
     - tree_set
 ---
 
-# IOI 2022 Day 1 P3 Radio Towers
+# IOI 2022 D1P3 Radio Towers
 
 ## Problem
 

@@ -1,5 +1,5 @@
 ---
-title: IOI 2019 Day 1 P2 Split the Attractions
+title: IOI 2019 D1P2 Split the Attractions
 tags:
     - ad_hoc
     - centroid
@@ -11,7 +11,7 @@ tags:
     - ~ solution
 ---
 
-# IOI 2019 Day 1 P2 Split the Attractions
+# IOI 2019 D1P2 Split the Attractions
 
 ## Problem
 
