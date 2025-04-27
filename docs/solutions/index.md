@@ -31,7 +31,6 @@
     - POI
     - KOI
 - BOJ
-    - [28304](./BOJ/28304/solution)
 - Codeforces
 - Atcoder
 
