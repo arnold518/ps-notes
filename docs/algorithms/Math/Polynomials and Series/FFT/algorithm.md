@@ -344,7 +344,7 @@ $$
 p=a \times 2^b + 1
 $$
 
-<div class="center-block" markdown>
+<div style="text-align:center" markdown>
 
 |      $p$      | $a$ | $b$| $\omega$ |
 |:-------------:|:---:|:--:|:--------:|
