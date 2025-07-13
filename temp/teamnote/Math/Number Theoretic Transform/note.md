@@ -15,7 +15,7 @@
     p=a \times 2^b + 1
     $$
 
-    <div class="center-table" markdown>
+    <div class="center-block" markdown>
 
     |       p       |  a  |  b | $\omega$ |
     |:-------------:|:---:|:--:|:--------:|

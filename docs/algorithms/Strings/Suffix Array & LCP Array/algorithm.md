@@ -15,7 +15,7 @@ tags:
 
 예를 들어, 문자열 $S$=**"GATAGACA"**의 Suffix Array는 $SA[i]=$**[8, 6, 4, 2, 7, 5, 1, 3]**이다.
 
-<div class="center-table" markdown>
+<div class="center-block" markdown>
 
 | $SA[i]$ | suffix   |
 |:-------:|----------|

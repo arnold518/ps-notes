@@ -17,7 +17,7 @@ tags:
 따라서, 이진 트리에서 자식 노드 두개의 값만을 합쳐주는 문제로 생각한다.  
 아래 글에서 $A, B$는 왼쪽, 오른쪽 정점을 의미하며, $sz(A)$는 정점 $A$의 서브트리의 크기, $h(A)$는 정점 $A$의 서브트리의 높이로 정의한다.
 
-<div class="center-table" markdown>
+<div class="center-block" markdown>
 
 |                             |    Time needed to merge $A$, $B$    | Time Complexity |
 |:---------------------------:|:-----------------------------------:|:---------------:|

@@ -28,7 +28,7 @@ $t$의 구간들 $[l_i, r_i]$이 $N$개 주어질 때, 적어도 하나의 구�
 우선, $y$의 주기가 $B$임에 착안하여 $t$가 $B$씩 증가함에 따라 순서쌍 $(x, y)$가 어떻게 변하는지 관찰하자.
 $0 \leq k < B$에 대하여, $t=k, k+B, k+2B, \cdots, k+nB$일 때 $x$는 다음과 같이 변한다.
 
-<div class="center-table" markdown>
+<div class="center-block" markdown>
 
 |    $t$   | $x\ (mod \ A)$ |
 |:--------:|:--------------:|

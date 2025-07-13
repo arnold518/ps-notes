@@ -344,9 +344,9 @@ $$
 p=a \times 2^b + 1
 $$
 
-<div class="center-table" markdown>
+<div class="center-block" markdown>
 
-|       p       |  a  |  b | $\omega$ |
+|      $p$      | $a$ | $b$| $\omega$ |
 |:-------------:|:---:|:--:|:--------:|
 |  998,244,353  | 119 | 23 |     3    |
 | 2,281,701,377 |  17 | 27 |     3    |
