@@ -22,9 +22,7 @@ tags:
     아래 그림과 같이 palindrome의 성질에 의해 다른 부분문자열들은 가장 긴 길이의 palindrome에 의해 $i$번째 문자를 추가하기 전 이미 등장했던 부분문자열이다.  
     따라서, $i$번째 문자를 추가하였을 때 최대 $1$개의 새로운 palindrome인 부분문자열이 등장할 수 있고, 전체 문자열 $S$의 서로 다른 모든 palindrome인 부분문자열들은 최대 $N$개이다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 ## Structure
 

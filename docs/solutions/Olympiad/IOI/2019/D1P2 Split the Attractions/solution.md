@@ -70,9 +70,7 @@ $Q$에서 dfs를 하면서, dfs 방문 순서대로 처음 $p$개의 정점을 $
 그래프의 임의의 spanning tree를 잡고, 이 트리의 centroid를 잡자.
 Centroid를 기준으로 트리를 서브트리들로 분할하면, 정의에 의해 남는 서브트리들은 크기 $\frac{N}{2}$ 이하가 된다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 **(Case 1)** Centroid를 제거한 후 남은 서브트리들 중 크기 $a$ 이상인 서브트리가 존재한다.  
 크기 $a$ 이상인 서브트리 한개를 집합 $A$에 배정한 후, centroid를 포함한 나머지 정점들을 집합 $B$에 배정하였다고 생각하자.

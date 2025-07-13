@@ -140,9 +140,7 @@ void update(int node, int tl, int tr, int l, int r, int k)
     - 노드 $v$가 나타내는 구간의 $maxv$(최댓값)을 구하기 위해서는, $v, par[v], par[par[v]], ...$를 차례대로 보며 tag가 있는 첫 번째 정점의 값을 읽으면 된다.
     - 노드 $v$가 나타내는 구간의 $smax$(최댓값보다 작은 원소들의 최댓값)을 구하기 위해서는 $v$의 proper subtree의 tag 중 최대값을 읽으면 된다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 이제, update 함수를 실행할 때 tag의 입장에서 어떤 변화가 일어나는지 관찰해보자.
 
@@ -153,10 +151,8 @@ tag의 입장에서, 이는 **Property 1**에 의해, 노드의 proper subtree�
 
 아래 그림은 전체 구간에 대한 $k=4$의 update 함수가 실행될 때의 예시이다.
 
-<center>
-![image 2](./2.png)
-![image 3](./3.png)
-</center>
+![image 2](./2.png){: .center}
+![image 3](./3.png){: .center}
 
 !!! property "Property 2"
     Segment tree beats의 update 함수는 구간 안에 완전히 포함되는 노드들에 대하여 루트에서 시작하여 구간 안에 완전히 포함된 tag들 중 $k$ 이상인 tag에 모두 도달할 때까지 재귀를 반복한다.

@@ -15,7 +15,7 @@
     p=a \times 2^b + 1
     $$
 
-    <center>
+    <div class="center-table" markdown>
 
     |       p       |  a  |  b | $\omega$ |
     |:-------------:|:---:|:--:|:--------:|
@@ -26,7 +26,7 @@
     |  104,857,601  |  25 | 22 |     3    |
     | 1,092,616,193 | 521 | 21 |     3    |
     
-    </center>
+    </div>
 
 !!! definition "Definition 1"
     다항식 $A(x)=\displaystyle \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}$ 에 대한 DFT와 IDFT를 다음과 같이 정의한다.
@@ -105,11 +105,13 @@
         A(x)=A_0(x^2)+xA_1(x^2)
         $$
 
-        <center>
-        $y_k=(y_0)_k+\omega_n^k(y_1)_k$  
-        $y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$  
-        $(k=0, 1, \cdots, \frac{n}{2}-1)$
-        </center>
+        $$
+        \begin{gather}
+        y_k=(y_0)_k+\omega_n^k(y_1)_k \\
+        y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k \\
+        (k=0, 1, \cdots, \frac{n}{2}-1)
+        \end{gather}
+        $$
 
     $DFT(A)$에서 짝수 번째 계수들과 홀수 번째 계수들을 각각 분리하여 $DFT(A_0)$과 $DFT(A_1)$을 재귀적으로 구한다.
     **Property 2**의 식을 이용하여 $O(N)$에 $DFT(A_0)$, $DFT(A_1)$의 결과를 합쳐준다.

@@ -10,11 +10,13 @@ tags:
 
 FFT (Fast Fourier Transform)는 다항식 곱셈을 $O(N\log N)$의 시간복잡도에 하는 알고리즘이다.
 
-<center>
-$A(x)=\displaystyle \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}$  
-$B(x)=\displaystyle \sum_{i=0}^{n-1}b_ix^i=b_0+b_1x+b_2x^2+\cdots+b_{n-1}x^{n-1}$  
-$A(x) \cdot B(x)=\displaystyle \sum_{i=0}^{n-1} \sum_{j=0}^{n-1} a_i b_j x^{i+j}$
-</center>
+$$
+\begin{gather}
+A(x) = \sum_{i=0}^{n-1} a_i x^i = a_0 + a_1 x + a_2 x^2 + \cdots + a_{n-1} x^{n-1} \\
+B(x) = \sum_{i=0}^{n-1} b_i x^i = b_0 + b_1 x + b_2 x^2 + \cdots + b_{n-1} x^{n-1} \\
+A(x) \cdot B(x) = \sum_{i=0}^{n-1} \sum_{j=0}^{n-1} a_i b_j x^{i+j}
+\end{gather}
+$$
 
 ## Idea
 
@@ -157,19 +159,29 @@ $$
 
 위 다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 하자.
 
-<center>
-$A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots+a_{n-2}x^{\frac{n}{2}-1}$
-</center>
-<center>
-$A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}$
-</center>
+$$
+\begin{gather}
+A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots+a_{n-2}x^{\frac{n}{2}-1} \\
+A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}
+\end{gather}
+$$
 
 !!! definition "Definition 3"
     다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.  
-    $A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots+a_{n-2}x^{\frac{n}{2}-1}$  
-    $A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}$  
-    $DFT(A_0(x))=((y_0)_0, (y_0)_1, (y_0)_2, \cdots, (y_0)_{\frac{n}{2}-1})$  
-    $DFT(A_1(x))=((y_1)_0, (y_1)_1, (y_1)_2, \cdots, (y_1)_{\frac{n}{2}-1})$
+
+    $$
+    \begin{gather}
+    A_0(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i}x^i=a_0+a_2x+a_4x^2+\cdots+a_{n-2}x^{\frac{n}{2}-1} \\
+    A_1(x)=\displaystyle \sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i=a_1+a_3x+a_5x^2+\cdots+a_{n-1}x^{\frac{n}{2}-1}
+    \end{gather}
+    $$
+
+    $$
+    \begin{gather}
+    DFT(A_0(x))=((y_0)_0, (y_0)_1, (y_0)_2, \cdots, (y_0)_{\frac{n}{2}-1}) \\
+    DFT(A_1(x))=((y_1)_0, (y_1)_1, (y_1)_2, \cdots, (y_1)_{\frac{n}{2}-1})
+    \end{gather}
+    $$
 
 위 식들에서 다음과 같은 사실을 확인할 수 있다.
 
@@ -204,18 +216,22 @@ $$
 
 따라서 다음과 같이 정리할 수 있다.
 
-<center>
-$y_k=(y_0)_k+\omega_n^k(y_1)_k$  
-$y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$  
-$(k=0, 1, \cdots, \frac{n}{2}-1)$
-</center>
+$$
+\begin{gather}
+y_k=(y_0)_k+\omega_n^k(y_1)_k \\
+y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k \\
+(k=0, 1, \cdots, \frac{n}{2}-1)
+\end{gather}
+$$
 
 !!! property "Property 7"
-    <center>
-    $y_k=(y_0)_k+\omega_n^k(y_1)_k$  
-    $y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$  
-    $(k=0, 1, \cdots, \frac{n}{2}-1)$
-    </center>
+    $$
+    \begin{gather}
+    y_k=(y_0)_k+\omega_n^k(y_1)_k \\
+    y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k \\
+    (k=0, 1, \cdots, \frac{n}{2}-1)
+    \end{gather}
+    $$
 
 $DFT(A_0)$, $DFT(A_1)$를 구했다면, $O(N)$의 시간에 $DFT(A)$를 구할 수 있다.
 
@@ -228,9 +244,7 @@ $DFT(A_0)$, $DFT(A_1)$를 구했다면, $O(N)$의 시간에 $DFT(A)$를 구할 �
 따라서 위 분할정복 알고리즘의 시간복잡도는 $T(N)=2T(\frac{N}{2})+O(N)$으로, $O(N\log N)$이다.
 
 !!! complexity "Time Complexity"
-    <center>
     Time Complexity : $O(N\log N)$
-    </center>
 
 ### In-Place Computation
 
@@ -330,7 +344,7 @@ $$
 p=a \times 2^b + 1
 $$
 
-<center>
+<div class="center-table" markdown>
 
 |       p       |  a  |  b | $\omega$ |
 |:-------------:|:---:|:--:|:--------:|
@@ -341,7 +355,7 @@ $$
 |  104,857,601  |  25 | 22 |     3    |
 | 1,092,616,193 | 521 | 21 |     3    |
 
-</center>
+</div>
 
 ### Implementation
 ``` cpp linenums="1"

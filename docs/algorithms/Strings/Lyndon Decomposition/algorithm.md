@@ -27,9 +27,7 @@ Lyndon word의 예로는 **"a"**, **"ab"**, **"aab"**, **"abb"**, **"abcd"**, **
     $S$와 $S'$을 비교하면, 앞부분은 $S'$으로 동일하고, $S$는 뒤에 문자열이 이어지니 사전순으로 비교했을 때 $S$가 더 크다.
     따라서, $S$가 lyndon word임에 모순이다.
 
-    <center>
-    ![image 1](./1.png){width=70%}
-    </center>
+    ![image 1](./1.png){: .center style="width:70%"}
 
 <br>
 
@@ -44,10 +42,8 @@ Lyndon word의 예로는 **"a"**, **"ab"**, **"aab"**, **"abb"**, **"abcd"**, **
     $S$가 lyndon word라고 하고, $S$의 proper suffix $S'$에서 시작하는 cyclic shift $C$를 생각하자.
     $S<S'$이고, **Property 1**에 의해 $S$와 $C$을 앞에서부터 비교하였을 때 최초로 다른 문자는 $S'$이 끝나기 전에 등장한다.
     따라서, $S$와 $C$의 대소관계는 $S$와 $S'$의 대소관계와 동일하며, $S<C$이다.
-
-    <center>
-    ![image 2](./2.png){width=90%}
-    </center>
+    
+    ![image 2](./2.png){: .center style="width:90%"}
 
     ($\Leftarrow$)  
     $S$는 $S$의 모든 cyclic shift보다 사전순으로 작다고 하자.
@@ -62,9 +58,7 @@ Lyndon word의 예로는 **"a"**, **"ab"**, **"aab"**, **"abb"**, **"abcd"**, **
     따라서 $C$과 $S$를 앞에서부터 비교하였을 때 최초로 다른 문자는 $S'$이 끝나기 전에 등장하고, $S<C$이니 $S<S'$이 성립한다.
     따라서 $S$는 lyndon word이다.
 
-    <center>
-    ![image 3](./3.png){width=90%}
-    </center>
+    ![image 3](./3.png){: .center style="width:90%"}
 
 **Property 2**에 의해, lyndon word는 "$S$가 $S$의 모든 proper suffix보다 사전순으로 작다"는 조건이나 "$S$는 $S$의 모든 cyclic shift보다 사전순으로 작다"는 조건을 만족시키면 된다.
 
@@ -84,9 +78,7 @@ Lyndon word의 예로는 **"a"**, **"ab"**, **"aab"**, **"abb"**, **"abcd"**, **
     $L_2$로 시작하는 cyclic shift $L_2+L_1$의 경우, 가정에 의해서 $L_1+L_2 < L_2+L_1$이다.  
     $L_2$의 suffix로 시작하는 cyclic shift $S''$의 경우, lyndon word의 정의에 의해 $L_2<\text{suff} L_2$이니 $L_1+L_2<L_2+L_1<S''$이다.
 
-    <center>
-    ![image 4](./4.png){width=80%}
-    </center>
+    ![image 4](./4.png){: .center style="width:80%"}
 
     ($\Leftarrow$)  
     $L_2+L_1$은 $L_1+L_2$의 cyclic shift이고, 따라서 **Property 2**에 의해 $L_1+L_2<L_2+L_1$이다.
@@ -107,9 +99,7 @@ Lyndon word의 예로는 **"a"**, **"ab"**, **"aab"**, **"abb"**, **"abcd"**, **
     $L_1+L_2=L_1+L_1+S$, $L_2+L_1=L_1+S+L_1$을 비교하면, $L_1+S$, $S+L_1$을 비교한 것과 같고 $S+L_1$은 $L_2$의 cyclic shift이기 때문에 **Property 2**에 의해 $L_1+S<S+L_1$가 성립한다.
     따라서 $L_1+L_2<L_2+L_1$가 성립한다.
     
-    <center>
-    ![image 5](./5.png){width=90%}
-    </center>
+    ![image 4](./4.png){: .center style="width:90%"}
 
     ($\Leftarrow$)  
     $L_1+L_2<L_2+L_1$가 성립한다면 **Property 4**에 의해 $L_1+L_2$는 lyndon word이다.
@@ -154,9 +144,7 @@ Lyndon word의 예로는 **"a"**, **"ab"**, **"aab"**, **"abb"**, **"abcd"**, **
     따라서 lyndon decomposition은 유일하다.
 
 
-    <center>
-    ![image 6](./6.png){width=80%}
-    </center>
+    ![image 6](./6.png){: .center style="width:80%"}
 
 ## Algorithm
 

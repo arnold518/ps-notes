@@ -24,9 +24,7 @@ Tournament graph는 매우 복잡한 형태이니, 이를 구조화시키기 위
 
     즉, 서로 다른 두 SCC에 속하는 정점 $(u, v)$에 대하여 $u$가 왼쪽 집합의 정점, $v$가 오른쪽 집합의 정점이면 $(u, v)$ 방향의 간선이 존재한다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 ## Property 2
 
@@ -42,9 +40,7 @@ Tournament graph는 매우 복잡한 형태이니, 이를 구조화시키기 위
     만약 위 식을 만족하는 $u_i$가 없다면, 맨 앞이나 맨 뒤에 $v$를 무조건 추가할 수 있다.
     위 과정을 반복하면 귀납적으로 hamiltonian path를 구할 수 있다.
 
-<center>
-![image 2](./2.png)
-</center>
+![image 2](./2.png){: .center}
 
 ## Property 3
 
@@ -64,9 +60,7 @@ Tournament graph는 매우 복잡한 형태이니, 이를 구조화시키기 위
     $[l, r]$의 SCC들이 하나의 SCC로 묶이게 될 때에는, 구간의 각 hamiltonian cycle들을 순서대로 나열하면 새로운 SCC의 hamiltonian cycle을 구할 수 있다.
     위 과정을 반복하면 전체 그래프를 hamiltonian cycle들로 쪼갤 수 있다.
 
-<center>
-![image 3](./3.png)
-</center>
+![image 3](./3.png){: .center}
 
 ## Implementation
 

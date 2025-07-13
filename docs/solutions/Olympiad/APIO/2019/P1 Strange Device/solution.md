@@ -28,7 +28,7 @@ $t$의 구간들 $[l_i, r_i]$이 $N$개 주어질 때, 적어도 하나의 구�
 우선, $y$의 주기가 $B$임에 착안하여 $t$가 $B$씩 증가함에 따라 순서쌍 $(x, y)$가 어떻게 변하는지 관찰하자.
 $0 \leq k < B$에 대하여, $t=k, k+B, k+2B, \cdots, k+nB$일 때 $x$는 다음과 같이 변한다.
 
-<center>
+<div class="center-table" markdown>
 
 |    $t$   | $x\ (mod \ A)$ |
 |:--------:|:--------------:|
@@ -38,7 +38,7 @@ $0 \leq k < B$에 대하여, $t=k, k+B, k+2B, \cdots, k+nB$일 때 $x$는 다음
 | $\vdots$ |    $\vdots$    |
 |  $k+nB$  |    $k+nB+n$    |
 
-</center>
+</div>
 
 $t$가 $B$ 증가할 때마다 $x$는 $(mod \ A)$ 속에서 $B+1$씩 증가한다는 사실을 관찰할 수 있다.
 주기를 구하기 위해 $x_k \equiv x_{k+nB} \ (mod \ A)$인 최소 $n$을 구하자.
@@ -64,9 +64,7 @@ $0$을 기준으로 원형 구간들을 모두 쪼개고, 전체 구간들을 �
 마지막으로, $1 \leq A, B \leq 10^{18}$이니 $T=\frac{AB}{gcd(A, B+1)}$가 `long long` 자료형의 범위를 벗어날 수 있으므로, $min(T, 10^{18})$의 값을 사용하여 overflow를 방지할 수 있다.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(N\log N)$
-    </center>
 
 ## Code
 ``` cpp linenums="1"

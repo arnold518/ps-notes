@@ -4,9 +4,7 @@
 !!! definition
 !!! complexity
 
-<center>
-![image 1](./1.png){width=100%}
-</center>
+![image 1](./1.png){: .center style="width:100%;"}
 
 ## Problem
 

@@ -47,9 +47,7 @@ Edmond-Karp algorithm에서 **BFS**는 $O(E)$의 시간이 걸리고, BFS의 실
     하지만 추가된 모든 역간선 $(v, u)$는 더 큰 $lvl[v]$에서 더 작은 $lvl[u]$로 이어지는 간선이니, 최단경로가 감소할 수 없다.
     따라서, 임의의 정점 $v$로 가는 최단경로의 길이 $lvl[v]$는 단조증가한다.
 
-    <center>
-    ![image 1](./1.png){width=70%}
-    </center>
+    ![image 1](./1.png){: .center style="width:70%;"}
 
 !!! property "Property 2"
     $G_f$에서 어떤 간선 $(u, v)$가 saturated 되어 삭제된 후, 다시 $(u, v)$가 추가되기 위해서는 $lvl[u]$가 적어도 $2$ 증가한다.
@@ -66,9 +64,7 @@ Edmond-Karp algorithm에서 **BFS**는 $O(E)$의 시간이 걸리고, BFS의 실
 
     위 식에 의해 $lvl[u]$는 적어도 $2$ 증가한다.
 
-    <center>
-    ![image 2](./2.png)
-    </center>
+    ![image 2](./2.png){: .center style="width:100%;"}
 
 !!! property "Property 3"
     BFS의 실행 횟수 (**Algorithm 1**의 3번째 while문의 실행 횟수)는 최대 $O(VE)$회이다.

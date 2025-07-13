@@ -52,9 +52,7 @@ $Q$개의 쿼리가 주어지며, $i$번 쿼리에서는 $S_i$번 정점에서 $
     **Observation 1**을 이용하여 Naive하게 구현하면 $O(Q(N+M))$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(Q(N+M))$
-    </center>
 
 ### Subtask 4 (Full)
 
@@ -79,9 +77,7 @@ $C_i \leq T$인 통행료들의 합을 구하여 통행료들의 합이 $Y_k$보
     전체 시간복잡도는 $O(N\log N+M+Q\log Y\log M)$이다.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(N\log N+M+Q\log Y\log M)$
-    </center>
 
 ---
 
@@ -99,9 +95,7 @@ $Q$번의 이분탐색을 해야 하니, Parallel Binary Search를 사용하자.
     전체 시간복잡도는 $O(N\log N+M+Q\log Y\log N)$이다.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(N\log N+M+Q\log Y\log N)$
-    </center>
 
 마지막으로, 모든 $C_i$가 다르다고 가정하였는데, $C_i$가 같을 수 있다면 같은 $C_i$중 일부만 사용하는 경우를 고려할 수 없다.
 이는 단순히 임의로 tie-breaking rule을 적용한 후, 이분탐색을 정렬된 $C_i$들의 배열에 대해서 시행함으로서 해결할 수 있다.

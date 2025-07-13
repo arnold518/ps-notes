@@ -73,13 +73,11 @@ $S$의 특정 문자까지 진행한 후, 현재 Trie에서 보고 있는 노드
 
 ---
 
-
-<center>
-![image 1](./1.svg){width=60%}
-
+![image 1](./1.svg){: .center style="width:60%;" }
+/// caption
 “a”, “ab”, “bc”, “bca”, “c”, “caa”가 문자열 $T_1$, $T_2$, $…$, $T_k$일 때 Trie를 나타낸 그림이다.  
 파란색 간선이 failure Link, 초록색 간선이 suffix Link를 의미한다.
-</center>
+///
 
 ## Implementation
 

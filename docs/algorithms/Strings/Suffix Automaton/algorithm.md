@@ -52,9 +52,7 @@ Suffix automaton에서 각 정점(state)가 의미하는 것은 바로 이 정�
     $endpos$ 집합이 같으니, $p$는 $endpos$ 집합의 임의의 위치에서부터 왼쪽으로 $|p|$만큼 이동하여 얻을 수 있고, $q$ 또한 그 위치에서부터 왼쪽으로 $|q|$만큼 이동하여 얻을 수 있다.
     따라서 $p$와 $q$는 끝점을 공유하고 있는 형태이고, $q$는 $p$의 suffix이다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 !!! property "Property 4"
     $S$의 부분문자열 $p$, $q$에 대하여 $endpos(p)$, $endpos(q)$의 관계는 다음과 같다.
@@ -110,9 +108,7 @@ $endpos$ 집합이 바뀌는 순간 바뀐 정점을 suffix link $link(v)$로 �
 다음은 문자열 **"abcbc"**에 대한 suffix automaton과 suffix link의 예시이다.
 각 정점에는 $longest(v)$가 적혀 있다.
 
-<center>
-![image 2](./2.png)
-</center>
+![image 2](./2.png){: .center}
 
 ## Algorithm
 
@@ -147,9 +143,7 @@ $cur$로 간선 $c$를 이용하여 연결되는 정점들은, $c$를 추가하�
 **(Case 2)** 만약 $len(p)+1=len(q)$라면, $q$가 우리가 대응시켜야 할 정확한 상태이다.
 $q$의 $endpos$ 집합에 마지막 인덱스가 추가되는 형태이니, 그래프에서 바꿔야 할 것은 이제 없고 $link(cur)=q$로 설정해주면 된다.
 
-<center>
-![image 3](./3.png)
-</center>
+![image 3](./3.png){: .center}
 
 **(Case 3)** 만약 $len(p)+1<len(q)$라면 우리가 대응시켜야 할 상태는 아직 그래프에 존재하지 않는다.
 $q$의 $endpos$ 집합은 길이가 $len(q)$인 부분문자열에 대응되지만, 마지막 인덱스를 포함하는 $endpos$는 길이가 $len(p)+1$이니 $q$와는 $endpos$ 집합이 다르다.
@@ -160,9 +154,7 @@ $link(clone)$은 원래 $link(q)$가 가리키던 정점이 되고, $link(q)$는
 마지막으로 $q$로 들어오던 일부 간선들을 $clone$으로 바꾸어줘야 하는데, $p$의 suffix들에서 $c$의 간선을 타고 이동하면 $q$로 오는 간선들을 $clone$으로 옮겨주면 된다.
 이는 $v=p$에서부터 $link(v)$를 타고 이동하며 $v$에서 간선 $c$를 타고 이동하였을 때 $q$가 아닌 정점으로 이동하기 전까지 간선을 $q$에서 $clone$으로 바꾸어준다.
 
-<center>
-![image 4](./4.png)
-</center>
+![image 4](./4.png){: .center}
 
 마지막으로, 모든 문자를 추가한 후 $last$에서 suffix link를 타고 올라가면서 terminal state들을 모두 구할 수 있다.
 
@@ -271,9 +263,7 @@ $longest(v)$의 앞쪽에 하나의 문자를 추가하면 $endpos$ 집합이 $e
 
     구체적으로, suffix automaton에서 각 정점 $v$에 대응되는 부분문자열 $longest(v)$는 $rev(S)$의 suffix tree에서 $rev(longest(v))$를 의미한다.
 
-<center>
-![image 5](./5.png)
-</center>
+![image 5](./5.png){: .center}
 
 ## Implementation
 

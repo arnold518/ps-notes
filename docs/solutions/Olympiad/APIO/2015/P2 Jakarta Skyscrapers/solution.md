@@ -43,9 +43,7 @@ $i$번째 전령은 $B_i$번 빌딩에서 시작해서 $B_i+kP_i$ $(0 \leq B_i+k
     이 그래프에서 다익스트라 알고리즘으로 $O(N^2+NM)$의 시간에 최단경로를 구하여 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(NM\log N)$ or $O(N^2+NM)$
-    </center>
 
 
 ### Subtask 5 (Full)
@@ -84,9 +82,7 @@ $$
 구현할 때, 다익스트라의 구현이 충분히 빠르지 않으면 `AC`를 받기 힘드니 빠른 다익스트라의 구현을 사용할 수 있도록 주의하자.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(N\sqrt{M}\log N)$
-    </center>
 
 ## Code
 ``` cpp linenums="1"

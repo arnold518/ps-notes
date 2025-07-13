@@ -52,9 +52,7 @@ Flow network의 전체 flow 양은 음수가 될수도 있음에 주의하자.
 기존의 flow에 **Definition 2**의 조건을 만족시키며 $val(f)$를 증가시킬수 있는 새로운 flow를 찾아 흘려 보낸다.
 하지만, 이전에 한 선택이 결국 나중에 최적해를 찾을 수 없도록 만들 수 있다는 문제가 있다.
 
-<center>
-![image 1](./1.png){width=50%}
-</center>
+![image](1.png){: .center style="width:50%;" }
 
 위 그림과 같은 예시에서, 실제 maximum flow는 $2$이지만, 색칠된 부분과 같은 유량을 흘리고 시작하였을 때 더 이상 flow를 찾지 못한다.
 따라서 greedy 알고리즘을 적용하기 위해서는, 이전에 한 선택을 취소할 수 있어야 한다.
@@ -111,9 +109,7 @@ $G_f$는 flow network 이고, $G_f$의 임의의 flow $g$는 $f$에 더해 다�
 
     는 일대일 대응된다.
 
-<center>
-![image 2](./2.png){width=70%}
-</center>
+![image 2](./2.png){: .center style="width=70%;" }
 
 ---
 
@@ -121,9 +117,7 @@ $G$의 flow $f$와 $G_f$의 임의의 flow $g$의 일대일 대응 관계는 다
 $G$의 flow는 간선 가중치들의 선형 결합이 특정 값 이하로 제한되는, Linear Programming의 형태를 띄고 있기 때문에, 임의의 flow를 $|E|$차원의 벡터로 표현한다면, $f$는 convex polyhedron에서의 임의의 점으로 생각할 수 있다.
 $G_f$의 flow $g$는 같은 도형을 $f$의 점을 원점으로 평행이동한 모양과 같다.
 
-<center>
-![image 3](./3.png)
-</center>
+![image 3](./3.png){: .center }
 
 !!! property "Property 4"
     $G$의 임의의 flow는 Linear Programming의 조건에 부합하니, $|E|$차원 convex polyhedron으로 생각할 수 있다.  

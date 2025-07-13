@@ -13,9 +13,7 @@ KMP 알고리즘은 길이 $N$의 문자열 $S$에서 길이 $M$의 문자열 $T
 
 ## Algorithm
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 문자열 $S$를 앞에서부터 보며, $i$번째 prefix의 suffix를 $S$와 최대한 매칭시킨 $T$의 위치를 $j=match[i]$라 하자.
 

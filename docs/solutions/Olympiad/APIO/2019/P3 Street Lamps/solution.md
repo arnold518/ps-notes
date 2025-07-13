@@ -49,9 +49,7 @@ $a$번 정류장에서 $b$번 정류장 $(1 \leq a < b \leq N+1)$로 이동할 �
     
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O()$
-    </center>
 
 ## 코드
 ``` cpp linenums="1"

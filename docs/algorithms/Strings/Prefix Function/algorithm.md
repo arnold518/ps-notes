@@ -26,9 +26,7 @@ tags:
     $fail[i+1]$에서 마지막 문자를 제거하면, 즉 길이 $fail[i+1]-1$의 prefix는 $S[1 \cdots i]$의 prefix 이고, 동시에 suffix 이다.
     즉, $fail[i]$의 조건을 모두 만족하니, 최댓값인 $fail[i]$는 $fail[i+1]-1$보다는 크거나 같아야 한다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 이는 $i$를 증가시킬 때마다 $fail[i+1]$는 최대 $1$증가할 수 있다는 의미이다.
 따라서 $fail[i]$를 $1$부터 $N$까지 계산하면 $fail[i]$는 최대 $N$번 증가, 최대 $N$번 감소함을 알 수 있다.
@@ -39,9 +37,7 @@ tags:
     $fail$의 정의에서 “최대” 조건을 무시한, 즉 $S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 길이들의 집합을 $F[i]$라 하자.
     $F[i]$는 $fail[i], fail[fail[i]], fail[fail[fail[i]]], \cdots$ 의 형태로 구성된다.
 
-<center>
-![image 2](./2.png){width=90%}
-</center>
+![image 2](./2.png){: .center style="width:90%"}
 
 !!! proof
     $F[i]$를 귀납적으로 구하기 위하여 $j<i$인 모든 $j$에 대하여 $F[j]$를 구했다고 생각하자.
@@ -67,9 +63,7 @@ $x=fail[i]$라면 $x-1 \in F[i-1]$이니, 거꾸로 $j \in F[i-1]$인 모든 $j$
 이는 $S$에서 $S$를 찾는 KMP 알고리즘을 생각했을 때, 문자열을 최대 $N$칸 밀어가며 탐색하니 $O(N)$이라고 생각해도 된다.
 
 !!! complexity "Time Complexity"
-    <center>
     Time Complexity : $O(N)$
-    </center>
 
 ## Implementation
 

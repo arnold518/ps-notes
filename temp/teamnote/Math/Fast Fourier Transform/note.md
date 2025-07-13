@@ -79,20 +79,27 @@
 - **DFT / IDFT**
 
     !!! definition "Definition 2"
-        다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.  
-        $DFT(A_0(x))=((y_0)_0, (y_0)_1, (y_0)_2, \cdots, (y_0)_{\frac{n}{2}-1})$  
-        $DFT(A_1(x))=((y_1)_0, (y_1)_1, (y_1)_2, \cdots, (y_1)_{\frac{n}{2}-1})$
+        다항식 $A(x)$에서 짝수 번째 계수들을 모아 만든 다항식을 $A_0(x)$, 홀수 번째 계수들을 모아 만든 다항식을 $A_1(x)$라고 한다.
+        
+        $$
+        \begin{gather}
+        DFT(A_0(x))=((y_0)_0, (y_0)_1, (y_0)_2, \cdots, (y_0)_{\frac{n}{2}-1}) \\
+        DFT(A_1(x))=((y_1)_0, (y_1)_1, (y_1)_2, \cdots, (y_1)_{\frac{n}{2}-1})
+        \end{gather}
+        $$
     
     !!! property "Property 2"
         $$
         A(x)=A_0(x^2)+xA_1(x^2)
         $$
 
-        <center>
-        $y_k=(y_0)_k+\omega_n^k(y_1)_k$  
-        $y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k$  
-        $(k=0, 1, \cdots, \frac{n}{2}-1)$
-        </center>
+        $$
+        \begin{gather}
+        y_k=(y_0)_k+\omega_n^k(y_1)_k \\
+        y_{k+\frac{n}{2}}=(y_0)_k-\omega_n^k(y_1)_k \\
+        (k=0, 1, \cdots, \frac{n}{2}-1)
+        \end{gather}
+        $$
 
     $DFT(A)$에서 짝수 번째 계수들과 홀수 번째 계수들을 각각 분리하여 $DFT(A_0)$과 $DFT(A_1)$을 재귀적으로 구한다.
     **Property 2**의 식을 이용하여 $O(N)$에 $DFT(A_0)$, $DFT(A_1)$의 결과를 합쳐준다.
@@ -129,11 +136,13 @@
     
     $D=\sqrt{\text{MAXV}}$를 기준으로 $F(x)$와 $G(x)$를 $D$로 나눈 몫과 나머지로 분리한다.
     
-    <center>
-    $F(x) = F_1(x) \cdot D + F_2(x)$  
-    $G(x) = G_1(x) \cdot D + G_2(x)$  
-    $(F \cdot G)(x) = (F_1 \cdot G_1)(x) \cdot D^2 + (F_1 \cdot G_2 + F_2 \cdot G_1)(x) \cdot D + (F_2 \cdot G_2) (x)$
-    </center>
+    $$
+    \begin{gather}
+    F(x) = F_1(x) \cdot D + F_2(x)\\
+    G(x) = G_1(x) \cdot D + G_2(x)\\
+    (F \cdot G)(x) = (F_1 \cdot G_1)(x) \cdot D^2 + (F_1 \cdot G_2 + F_2 \cdot G_1)(x) \cdot D + (F_2 \cdot G_2) (x)
+    \end{gather}
+    $$
 
     $F_1(x), F_2(x), G_1(x), G_2(x)$를 각각 DFT한 후, 위 식과 같이 합치고 IDFT를 취하여 $(F \cdot G)(x)$를 얻는다.
     각각을 DFT할 때는 **Property 4**를 이용하여 2번만의 DFT 함수를 호출하고, 총 5번의 DFT 함수를 호출한다.

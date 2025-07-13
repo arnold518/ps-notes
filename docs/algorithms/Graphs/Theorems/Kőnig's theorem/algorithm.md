@@ -70,9 +70,7 @@ $$A_S = S \cap A, A_T = T \cap A, B_S = B \cap S, B_T = B \cap T$$
     Bipartite graph $G=(A \cup B, E)$에서 maximum matching의 크기는 **Definition 1**과 같이 정의된 flow network에서의 maximum flow의 값과 같다.
     **max flow min cut theorem**에 의해 이는 같은 flow network에서의 mininum cut의 크기와 같으며, 이는 $|A_T|+|B_S|$이다.
 
-<center>
-![image 1](./1.svg)
-</center>
+![image 1](./1.svg){: .center}
 
 $A_S$와 $B_T$ 사이에는 간선이 없음을 확인할 수 있다.
 만약 간선이 존재한다면 capcity가 $\infty$이니 cut의 크기도 $\infty$가 된다.

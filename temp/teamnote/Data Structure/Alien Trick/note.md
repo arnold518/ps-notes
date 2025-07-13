@@ -33,9 +33,7 @@ $$dp[i][k] = min_{j<i} (dp[j][k-1] + cost(j, i))$$
     정해진 $\lambda$를 이용하여 $dp2[N]$을 구하고, 이 때 사용한 transition의 개수를 주어진 $K$와 비교하여 $\lambda$를 반정수 범위에서 이분탐색한다.
     구한 $\lambda$에 대하여 $dp2[N]+\lambda K$가 답이다.
 
-    <center>
-    ![image 1](./1.png){width=100%}
-    </center>
+    ![image 1](./1.png){: .center style="width:100%"}
 
     !!! complexity
         $O(T(N)\log X)$  

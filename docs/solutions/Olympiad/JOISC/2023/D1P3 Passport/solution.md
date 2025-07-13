@@ -44,9 +44,7 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
 이 때 경로는 꼭 $X_k$에서 시작하여 $L$을 방문한 후 $R$를 방문할 필요 없이, 중간에 갈라져서 $L$로 가는 경로와 $R$로 가는 경로를 다르게 선택해도 된다.
 물론, 이 때에도 사용한 정점의 총 개수는 중복하지 않고 센다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 위 그림처럼, 최적해는 $X_k$에서 시작하여 한 경로를 따라 임의의 정점 $W$까지 이동 후, $W$에서 갈라져 $L$과 $R$로 각각 이동하는 형태이다.
 
@@ -64,10 +62,7 @@ $Q$개의 쿼리가 주어질 때, 각 쿼리별로 $X_k$번 도시에서 출발
     **Observation 2**에 의해 이러한 경로는 임의의 정점 $W$를 기준으로 $X_k \rightarrow W$, $W \rightarrow L$, $W \rightarrow R$ 3개의 최단 경로의 합을 구하는 문제로 생각할 수 있으니, BFS를 통해 $O(N^2)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(N^2)$
-    </center>
-
 
 ### Subtask 5 (Full)
 
@@ -82,9 +77,7 @@ Segment Tree에 속하는 간선들은 가중치가 $0$, 나머지 간선들은 
     $O(N^2)$개의 간선을 Segment Tree를 사용하여 $O(N\log N)$개의 간선들로 압축할 수 있다. 이제, 이 그래프에서 가중치가 $0$ 혹은 $1$이니 01-BFS를 사용하면 $O(N\log N)$에 문제를 해결할 수 있다.
 
 !!! complexity "Complexity"
-    <center>
     Time Complexity : $O(N\log N)$
-    </center>
 
 ## Code
 

@@ -27,9 +27,7 @@
     노드 $x$를 $x$의 부모 노드 $p$의 위치로 올린다.  
     ($x$의 $p$ 방향 자식을 노드 $q$라 했을 때, $x$의 부모, $p$의 부모, $q$의 부모, $x$의 $p$ 방향 자식, $p$의 $x$ 방향 자식, $p$의 부모 노드의 자식 이 변한다.)
 
-    <center>
-    ![image 1](./1.png){width=70%}
-    </center>
+    ![image 1](./1.png){: .center style="width:70%"}
 
 - **Splay**
 
@@ -39,13 +37,9 @@
     - $x$가 루트이면, 종료한다.
     - $x$의 부모가 루트이면, Rotate($x$) 한다. (Zig step)
     - $x$의 부모 $p$의 방향과, $p$의 부모 $g$의 방향이 같다면 Rotate($p$), Rotate($x$) 한다. (Zig-Zig step)
-    <center>
-    ![image 1](./2.png){width=70%}
-    </center>
+    ![image 2](./2.png){: .center style="width:70%"}
     - $x$의 부모 $p$의 방향과, $p$의 부모 $g$의 방향이 다르다면 Rotate($x$), Rotate($x$) 한다. (Zig-Zag step)
-    <center>
-    ![image 1](./3.png){width=70%}
-    </center>
+    ![image 3](./3.png){: .center style="width:70%"}
     
     Splay 연산은 ammortized $O(\log N)$의 시간복잡도를 갖고 있기 때문에, 트리 내부의 노드를 접근할 때에는 시간을 소모한 후 splay 연산을 실행하여야 한다.
 

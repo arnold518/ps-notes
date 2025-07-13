@@ -43,9 +43,7 @@ Minimum cost maximum flow 문제는 Maximum Flow를 갖는 flow들 중, cost의 
 
     만약 $val(f)=0$이라면, path는 없고 cycle들로만 분해된다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 ## Successive Shortest Path Algorithm
 
@@ -77,9 +75,7 @@ Minimum cost maximum flow 문제는 Maximum Flow를 갖는 flow들 중, cost의 
 !!! proof "Proof"
     원래 negative cycle이 없던 그래프에 $f$를 흘리고 나니 negative cycle이 생기기 위해서는 $P$에 flow를 흘림으로서 $G_f$에 생성된 새로운 간선들을 포함하는 negative cycle이 생겨야 한다.
 
-    <center>
-    ![image 2](./2.png){width=60%}
-    </center>
+    ![image 2](./2.png){: .center style="width:60%;"}
 
     하지만 위 그림처럼 $P$에 포함되는 $(u, v)$가 있고, $G_f$에서 $(v, u)$를 포함하는 negative cycle이 생겼다고 하면, $-a+b<0$이 성립하며, $b<a$가 된다.
     하지만 이는 $P$가 최단경로임에 모순이다.
@@ -210,9 +206,7 @@ MCMF의 가장 중요한 정리는 흐르는 value에 대한 min cost의 함수 
     - $G_f$에서 최단경로 $P$를 찾고, $\alpha$의 flow를 $P$를 따라 흘려 flow $g$를 얻었다.
     - $G_g$에서 최단경로 $Q$를 찾고, $\beta$의 flow를 $Q$를 따라 흘려 flow $h$를 얻었다.
 
-    <center>
-    ![image 3](./3.png){width=70%}
-    </center>
+    ![image 3](./3.png){: .center style="width:70%;"}
 
     최단경로 $P$보다 최단경로 $Q$가 더 짧다면, 위 그림과 같이 (flow, cost) 그래프에서 $f$와 $g$를 잇는 직선의 기울기보다 $g$와 $h$를 잇는 직선의 기울기가 더 작아야 한다.
     하지만 이렇다면 $g$보다 $f$에 $h-f$를 $g$와 같은 value를 가지도록 $\frac{\alpha}{\alpha+\beta}$를 곱하여 더한, $f+(h-f)\frac{\alpha}{\alpha+\beta}$가 더 작은 비용을 가진다는 것을 알 수 있다.
@@ -230,9 +224,7 @@ Minimum cost flow 문제는 convex polyhedron을 (flow, cost)의 좌표평면에
     Flow의 조건과 cost의 식이 모두 linear programming의 조건이라 생각할 수 있으니, flow와 cost를 포함한 모든 변수들은 convex polyhedron을 구성한다.
     Minimum cost flow 문제는 convex polyhedron을 (flow, cost)의 좌표평면에 사영한 모습이니, 도형은 convex하고 y좌표의 최솟값을 따라 직선을 이어도 convex하다.
 
-<center>
-![image 4](./4.png)
-</center>
+![image 4](./4.png){: .center}
 
 ## Reference
 

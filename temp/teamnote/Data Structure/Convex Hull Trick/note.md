@@ -2,9 +2,7 @@
 
 ## Problem
 
-<center>
-![image 1](./1.png){width=100%}
-</center>
+![image 1](./1.png){: .center}
 
 위 그림과 같이 문제 상황에 따라 `min/max` (최소/최대 쿼리), `slope` (삽입되는 직선들의 기울기 증가/감소), `dir` (삽입 직선들의 교점의 x좌표 증가/감소)이 결정된다.
 

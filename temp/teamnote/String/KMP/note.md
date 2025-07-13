@@ -14,17 +14,13 @@
 !!! property "Property 1"
     $$fail[i]+1≥fail[i+1]$$
 
-    <center>
-    ![image 1](./1.png){width=70%}
-    </center>
+    ![image 1](./1.png){: .center style="width:70%"}
 
 !!! property "Property 2"
     $fail$의 정의에서 “최대” 조건을 무시한, 즉 $S[1 \cdots i]$의 **prefix** 와 **suffix** 가 동일한 **proper prefix**의 길이들의 집합을 $F[i]$라 하자.
     $F[i]$는 $fail[i], fail[fail[i]], fail[fail[fail[i]]], \cdots$ 의 형태로 구성된다.
     
-    <center>
-    ![image 2](./2.png){width=70%}
-    </center>
+    ![image 2](./2.png){: .center style="width:70%"}
 
 - **Failure Function**  
   
@@ -41,9 +37,7 @@
     문자열 $S$를 앞에서부터 보며, $i$번째 문자까지 추가하였을 때, 뒤쪽부터 $T$와 최대한 매칭시킨 길이를 관리한다.
     $i$번째 문자를 추가하였을 때, 이전 매칭 길이부터 시작하여 failure function을 구할 때와 같이 $fail[j]$를 따라가며 새로 추가한 문자와 일치하는 새로운 길이를 찾는다.
     
-    <center>
-    ![image 3](./3.png){width=100%}
-    </center>
+    ![image 3](./3.png){: .center style="width:100%"}
 
     !!! complexity
         $$O(|S|+|T|)$$

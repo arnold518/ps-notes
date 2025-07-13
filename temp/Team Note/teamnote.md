@@ -359,9 +359,7 @@ void getLCP(string S) // S is 1-based (leading "?")
     $S$의 suffix automaton의 suffix link를 이어 연결한 tree는 $S$를 뒤집은 문자열 $rev(S)$의 suffix tree와 일치한다.  
     Suffix automaton에서 각 정점 $v$에 대응되는 부분문자열 $longest(v)$는 $rev(S)$의 suffix tree에서 $rev(longest(v))$를 의미한다.
 
-<center>
-![image 1](./1.png)
-</center>
+![image 1](./1.png){: .center}
 
 !!! algorithm
     - `void getSA(string S)` : $S$의 suffix automaton을 구함

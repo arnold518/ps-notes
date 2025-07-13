@@ -14,12 +14,11 @@
 
 문자열 $S$와 문자열 사전 $TV$가 주어졌을 때, $TV$의 trie를 만들고 이를 이용하여 $S$에서 $TV$의 모든 등장 위치를 탐색한다.
 
-<center>
-![image 1](./1.svg){width=40%}
-
-“a”, “ab”, “bc”, “bca”, “c”, “caa”가 문자열 $TV[0], TV[1], \cdots$일 때 Trie를 나타낸 그림이다.  
+![image 1](./1.svg){: .center style="width:60%;" }
+/// caption
+“a”, “ab”, “bc”, “bca”, “c”, “caa”가 문자열 $T_1$, $T_2$, $…$, $T_k$일 때 Trie를 나타낸 그림이다.  
 파란색 간선이 failure Link, 초록색 간선이 suffix Link를 의미한다.
-</center>
+///
 
 ## Algorithm
 
