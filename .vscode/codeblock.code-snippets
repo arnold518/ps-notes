@@ -1,0 +1,12 @@
+{
+	"Codeblock Snippet": {
+		"prefix": ["code", "codeblock"],
+		"scope": "markdown",
+		"body": [
+			"``` cpp linenums=\"1\"",
+			"$1",
+			"```"
+		],
+		"description": "Insert an algorithm block"
+	}
+  }

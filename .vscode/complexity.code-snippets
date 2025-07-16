@@ -1,0 +1,11 @@
+{
+	"Complexity Snippet": {
+		"prefix": ["comp", "complexity"],
+		"scope": "markdown",
+		"body": [
+			"!!! complexity",
+			"\tTime Complexity : $$O($1)$"
+		],
+		"description": "Insert a complexity block"
+	}
+  }

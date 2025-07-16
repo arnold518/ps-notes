@@ -1,0 +1,11 @@
+{
+	"Checkpoint Snippet": {
+		"prefix": ["chkp", "checkpoint"],
+		"scope": "markdown",
+		"body": [
+			"!!! checkpoint",
+			"\t$1"
+		],
+		"description": "Insert a checkpoint block"
+	}
+  }

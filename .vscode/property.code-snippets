@@ -1,0 +1,11 @@
+{
+	"Property Snippet": {
+		"prefix": ["prop", "property"],
+		"scope": "markdown",
+		"body": [
+			"!!! property \"Property $1\"",
+			"\t$2"
+		],
+		"description": "Insert property block"
+	}
+  }

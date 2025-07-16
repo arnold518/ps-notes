@@ -1,0 +1,11 @@
+{
+	"Proof Snippet": {
+		"prefix": ["prf", "proof"],
+		"scope": "markdown",
+		"body": [
+			"!!! proof",
+			"\t$1"
+		],
+		"description": "Insert a proof block"
+	}
+  }

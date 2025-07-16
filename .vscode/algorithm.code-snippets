@@ -1,0 +1,11 @@
+{
+	"Algorithm Snippet": {
+		"prefix": ["algo", "algorithm"],
+		"scope": "markdown",
+		"body": [
+			"!!! algorithm \"Algorithm $1\"",
+			"\t$2"
+		],
+		"description": "Insert an algorithm block"
+	}
+  }

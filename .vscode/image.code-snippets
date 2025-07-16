@@ -1,0 +1,10 @@
+{
+	"Image Snippet": {
+		"prefix": ["img", "image"],
+		"scope": "markdown",
+		"body": [
+			"![](./$1){: .center style=\"width:100%;\"}"
+		],
+		"description": "Insert an image"
+	}
+}

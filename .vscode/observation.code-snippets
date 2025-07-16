@@ -1,0 +1,11 @@
+{
+	"Observation Snippet": {
+		"prefix": ["obs", "observation"],
+		"scope": "markdown",
+		"body": [
+			"!!! observation \"Observation $1\"",
+			"\t$2"
+		],
+		"description": "Insert an observation block"
+	}
+  }

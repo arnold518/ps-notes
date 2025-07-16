@@ -1,0 +1,14 @@
+{
+	"Inout Snippet": {
+	    "prefix": ["io", "inout"],
+	    "scope": "markdown",
+	    "body": [
+			"!!! inout \"Input\"",
+			"\t$1",
+			"",
+			"!!! inout \"Output\"",
+			"\t$2"
+	    ],
+	    "description": "Insert a inout div"
+	}
+  }
