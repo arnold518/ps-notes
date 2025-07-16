@@ -1,0 +1,17 @@
+{
+	"Header Snippet": {
+		"prefix": ["head", "header"],
+		"scope": "markdown",
+		"body": [
+			"---",
+			"title: $1",
+			"tags:",
+			"\t- ~ $2",
+			"\t- ",
+			"---",
+			"",
+			"# $1"
+		],
+		"description": "Insert a header block"
+	}
+  }
