@@ -1,0 +1,181 @@
+.md-typeset .admonition {
+  font-size: 90%;
+}
+li {
+}
+.md-typeset {
+  font-size: .72rem;
+}
+.md-typeset div.arithmatex {
+  overflow: initial;
+}
+.md-typeset code {
+  font-size: 100%;
+}
+table.highlighttable {
+  font-size: .95em
+}
+.highlighttable .linenos {
+  font-size: 100%;
+}
+
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:root {
+  --md-admonition-icon--complexity: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0a256 256 0 1 1 0 512 256 256 0 1 1 0-512zm-24 120v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>');
+  --md-admonition-icon--property: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1h4m6-10h3v2h-3v-2M1 11h3v2H1v-2M13 1v3h-2V1h2M4.92 3.5l2.13 2.14-1.42 1.41L3.5 4.93 4.92 3.5m12.03 2.13 2.12-2.13 1.43 1.43-2.13 2.12-1.42-1.42Z"/></svg>');
+  --md-admonition-icon--observation: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1h4m6-10h3v2h-3v-2M1 11h3v2H1v-2M13 1v3h-2V1h2M4.92 3.5l2.13 2.14-1.42 1.41L3.5 4.93 4.92 3.5m12.03 2.13 2.12-2.13 1.43 1.43-2.13 2.12-1.42-1.42Z"/></svg>');
+  --md-admonition-icon--algorithm: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M81.816,67.398l3.04-5.279c0.179-0.31,0.179-0.69,0-1s-0.509-0.5-0.866-0.5h-2.573v-8.203c0-0.829-0.672-1.5-1.5-1.5H62.911  L51.735,39.74l3.204-5.564c0.179-0.31,0.179-0.69,0-1s-0.509-0.5-0.866-0.5h-2.656v-5.26h18.387c2.206,0,4-1.794,4-4v-14  c0-2.206-1.794-4-4-4H30.03c-2.206,0-4,1.794-4,4v6.5H8.417c-0.828,0-1.5,0.671-1.5,1.5v35c0,0.829,0.672,1.5,1.5,1.5h7.5  c0.828,0,1.5-0.671,1.5-1.5s-0.672-1.5-1.5-1.5h-6v-32H26.03v4.5c0,2.206,1.794,4,4,4h18.387v5.26h-2.49  c-0.357,0-0.688,0.19-0.866,0.5s-0.179,0.69,0,1l3.144,5.459L36.922,50.917H32.5c-0.828,0-1.5,0.671-1.5,1.5s0.672,1.5,1.5,1.5  h4.422l11.581,11.581c0.375,0.375,0.884,0.586,1.414,0.586s1.039-0.211,1.414-0.586l11.58-11.581h15.506v6.703h-2.574  c-0.357,0-0.688,0.19-0.866,0.5s-0.179,0.69,0,1l3.041,5.279c-6.149,0.861-11,5.815-11.681,12.019h-5.17c-0.828,0-1.5,0.671-1.5,1.5  s0.672,1.5,1.5,1.5h5.17c0.75,6.832,6.552,12.167,13.58,12.167c7.535,0,13.666-6.131,13.666-13.667  C93.583,74.027,88.453,68.327,81.816,67.398z M30.03,9.417h39.773l-0.006,14H30.03V9.417z M52.344,34.677L50,38.746l-2.344-4.069  H52.344z M49.917,61.255l-8.839-8.838l8.839-8.838l8.838,8.838L49.917,61.255z M82.261,62.62l-2.344,4.069l-2.344-4.069H82.261z   M79.917,90.583c-5.33,0-9.667-4.336-9.667-9.667c0-5.33,4.337-9.667,9.667-9.667s9.666,4.336,9.666,9.667  C89.583,86.247,85.247,90.583,79.917,90.583z M30.292,80.917c0,0.829-0.672,1.5-1.5,1.5h-4.667c-0.828,0-1.5-0.671-1.5-1.5v-27  H21.25c-0.828,0-1.5-0.671-1.5-1.5s0.672-1.5,1.5-1.5H27c0.828,0,1.5,0.671,1.5,1.5s-0.672,1.5-1.5,1.5h-1.375v25.5h3.167  C29.62,79.417,30.292,80.088,30.292,80.917z M42.291,80.917c0,0.829-0.672,1.5-1.5,1.5h-6.249c-0.828,0-1.5-0.671-1.5-1.5  s0.672-1.5,1.5-1.5h6.249C41.619,79.417,42.291,80.088,42.291,80.917z M56.917,80.917c0,0.829-0.672,1.5-1.5,1.5h-6.5  c-0.828,0-1.5-0.671-1.5-1.5s0.672-1.5,1.5-1.5h6.5C56.245,79.417,56.917,80.088,56.917,80.917z"/></svg>');
+  --md-admonition-icon--definition: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');
+  --md-admonition-icon--inout: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.72 21.78a.75.75 0 0 0 1.06-1.06L5.56 17.5h14.69a.75.75 0 0 0 0-1.5H5.56l3.22-3.22a.75.75 0 1 0-1.06-1.06l-4.5 4.5a.75.75 0 0 0 0 1.06l4.5 4.5Zm8.56-9.5a.75.75 0 1 1-1.06-1.06L18.44 8H3.75a.75.75 0 0 1 0-1.5h14.69l-3.22-3.22a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5Z"/></svg>');
+  --md-admonition-icon--checkpoint: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M64 32C64 14.3 49.7 0 32 0S0 14.3 0 32v448c0 17.7 14.3 32 32 32s32-14.3 32-32V352l64.3-16.1c41.1-10.3 84.6-5.5 122.5 13.4 44.2 22.1 95.5 24.8 141.7 7.4l34.7-13c12.5-4.7 20.8-16.6 20.8-30V66.1c0-23-24.2-38-44.8-27.7l-9.6 4.8c-46.3 23.2-100.8 23.2-147.1 0-35.1-17.6-75.4-22-113.5-12.5L64 48V32z"/></svg>');
+  --md-admonition-icon--proof: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 9H7V7h10m0 6H7v-2h10m-3 6H7v-2h7M12 3a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m7 0h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg>');
+}
+
+.md-typeset .admonition.complexity,
+.md-typeset details.complexity {
+  border-color: rgb(0, 191, 165);
+  text-align: center;
+}
+.md-typeset .complexity > .admonition-title,
+.md-typeset .complexity > summary {
+  text-align: left;
+  background-color: rgba(0, 191, 165, 0.1);
+}
+.md-typeset .complexity > .admonition-title::before,
+.md-typeset .complexity > summary::before {
+  background-color: rgb(0, 191, 165);
+  -webkit-mask-image: var(--md-admonition-icon--complexity);
+          mask-image: var(--md-admonition-icon--complexity);
+}
+
+.md-typeset .admonition.property,
+.md-typeset details.property {
+  border-color: rgb(68, 138, 255);
+  text-align: left;
+}
+.md-typeset .property > .admonition-title,
+.md-typeset .property > summary {
+  text-align: left;
+  background-color: rgba(68, 138, 255, 0.1);
+}
+.md-typeset .property > .admonition-title::before,
+.md-typeset .property > summary::before {
+  background-color: rgb(68, 138, 255);
+  -webkit-mask-image: var(--md-admonition-icon--property);
+          mask-image: var(--md-admonition-icon--property);
+}
+
+.md-typeset .admonition.observation,
+.md-typeset details.observation {
+  border-color: rgb(68, 138, 255);
+  text-align: left;
+}
+.md-typeset .observation > .admonition-title,
+.md-typeset .observation > summary {
+  text-align: left;
+  background-color: rgba(68, 138, 255, 0.1);
+}
+.md-typeset .observation > .admonition-title::before,
+.md-typeset .observation > summary::before {
+  background-color: rgb(68, 138, 255);
+  -webkit-mask-image: var(--md-admonition-icon--observation);
+          mask-image: var(--md-admonition-icon--observation);
+}
+
+.md-typeset .admonition.algorithm,
+.md-typeset details.algorithm {
+  border-color: rgb(236, 42, 210);
+  text-align: left;
+}
+.md-typeset .algorithm > .admonition-title,
+.md-typeset .algorithm > summary {
+  text-align: left;
+  background-color: rgba(236, 42, 210, 0.1);
+}
+.md-typeset .algorithm > .admonition-title::before,
+.md-typeset .algorithm > summary::before {
+  background-color: rgb(236, 42, 210);
+  -webkit-mask-image: var(--md-admonition-icon--algorithm);
+          mask-image: var(--md-admonition-icon--algorithm);
+}
+
+.md-typeset .admonition.definition,
+.md-typeset details.definition {
+  border-color: rgb(255, 135, 23);
+  text-align: left;
+}
+.md-typeset .definition > .admonition-title,
+.md-typeset .definition > summary {
+  text-align: left;
+  background-color: rgba(255, 135, 23, 0.1);
+}
+.md-typeset .definition > .admonition-title::before,
+.md-typeset .definition > summary::before {
+  background-color: rgb(255, 135, 23);
+  -webkit-mask-image: var(--md-admonition-icon--definition);
+          mask-image: var(--md-admonition-icon--definition);
+}
+
+.md-typeset .admonition.inout,
+.md-typeset details.inout {
+  border-color: rgb(122, 122, 122);
+  text-align: left;
+}
+.md-typeset .inout > .admonition-title,
+.md-typeset .inout > summary {
+  text-align: left;
+  background-color: rgba(122, 122, 122, 0.1);
+}
+.md-typeset .inout > .admonition-title::before,
+.md-typeset .inout > summary::before {
+  background-color: rgb(122, 122, 122);
+  -webkit-mask-image: var(--md-admonition-icon--inout);
+          mask-image: var(--md-admonition-icon--inout);
+}
+
+.md-typeset .admonition.checkpoint,
+.md-typeset details.checkpoint {
+  border-color: rgb(124, 77, 255);
+  text-align: left;
+}
+.md-typeset .checkpoint > .admonition-title,
+.md-typeset .checkpoint > summary {
+  text-align: left;
+  background-color: rgba(124, 77, 255, 0.1);
+}
+.md-typeset .checkpoint > .admonition-title::before,
+.md-typeset .checkpoint > summary::before {
+  background-color: rgb(124, 77, 255);
+  -webkit-mask-image: var(--md-admonition-icon--checkpoint);
+          mask-image: var(--md-admonition-icon--checkpoint);
+}
+
+.md-typeset .admonition.proof,
+.md-typeset details.proof {
+  border-color: rgb(0, 176, 255);
+  text-align: left;
+}
+.md-typeset .proof > .admonition-title,
+.md-typeset .proof > summary {
+  text-align: left;
+  background-color: rgba(0, 176, 255, 0.1);
+}
+.md-typeset .proof > .admonition-title::before,
+.md-typeset .proof > summary::before {
+  background-color: rgb(0, 176, 255);
+  -webkit-mask-image: var(--md-admonition-icon--proof);
+          mask-image: var(--md-admonition-icon--proof);
+}
+
+@media print {
+  /* Adjusts positioning of admonition icon */
+  .md-typeset :is(.admonition-title,summary):before {
+    top: 0.6rem;
+    left: 0.6rem;
+  }
+}

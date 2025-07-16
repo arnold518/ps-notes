@@ -1,0 +1,3734 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../FFT/algorithm/">
+      
+      
+        <link rel="next" href="../../../../../ideas/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>FWHT (Fast Walsh Hadamard Transform) - Problem Solving Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-L0MHM11ZXZ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-L0MHM11ZXZ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-L0MHM11ZXZ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fwht-fast-walsh-hadamard-transform" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../../../.." title="Problem Solving Notes" class="md-header__button md-logo" aria-label="Problem Solving Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Problem Solving Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FWHT (Fast Walsh Hadamard Transform)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="공유" aria-label="공유" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/arnold518/ps-notes" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    arnold518/ps-notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../solutions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Problem Solving
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Algorithms & Data Structures
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Ideas & Techniques
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study Records
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Problem Solving Notes" class="md-nav__button md-logo" aria-label="Problem Solving Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Problem Solving Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/arnold518/ps-notes" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    arnold518/ps-notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../solutions/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Problem Solving
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Problem Solving
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Olympiad
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Olympiad
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    IOI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            IOI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1_1" id="__nav_2_2_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2022
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2022/D1P1%20Catfish%20Farm/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P1 Catfish Farm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2022/D1P2%20Prisoner%20Challenge/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P2 Prisoner Challenge
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2022/D1P3%20Radio%20Towers/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P3 Radio Towers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1_2" id="__nav_2_2_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2021
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2021/D1P2%20Keys/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P2 Keys
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2021/D2P1%20Mutating%20DNA/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D2P1 Mutating DNA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1_3" id="__nav_2_2_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            2019
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2019/D1P1%20Arranging%20Shoes/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P1 Arranging Shoes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2019/D1P2%20Split%20the%20Attractions/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P2 Split the Attractions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/IOI/2019/D1P3%20Rectangles/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P3 Rectangles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KOISC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    JOISC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            JOISC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_4_1" id="__nav_2_2_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2023
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/JOISC/2023/D1P1%20Two%20Currencies/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P1 Two Currencies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/JOISC/2023/D1P3%20Passport/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D1P3 Passport
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/JOISC/2023/D2P2%20Council/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    D2P2 Council
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOIOC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6" id="__nav_2_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    APIO
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            APIO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6_1" id="__nav_2_2_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            2019
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/APIO/2019/P1%20Strange%20Device/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P1 Strange Device
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6_2" id="__nav_2_2_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2015
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            2015
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/APIO/2015/P1%20Bali%20Sculptures/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P1 Bali Sculptures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../solutions/Olympiad/APIO/2015/P2%20Jakarta%20Skyscrapers/solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2 Jakarta Skyscrapers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    POI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KOI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BOJ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Codeforces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../a.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Atcoder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Algorithms & Data Structures
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithms & Data Structures
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Data Structures
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data Structures
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Data%20Structures/Segment%20Tree%20Beats/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Segment Tree Beats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Graphs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Graphs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Graphs/Biconnected%20Component/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Biconnected Component
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Flows
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Flows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Graphs/Flows/Ford-Fulkerson%20method/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ford–Fulkerson method
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Graphs/Flows/Edmond-Karp%20algorithm/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Edmond-Karp algorithm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Graphs/Flows/Min%20Cost%20Max%20Flow/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Min Cost Max Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Theorems
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Theorems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Graphs/Theorems/K%C5%91nig%27s%20theorem/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kőnig's theorem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Strings
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Strings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/Prefix%20Function/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prefix Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/KMP/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/Aho-Corasick/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aho-Corasick
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/Z%20Function/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Z Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/Suffix%20Array%20%26%20LCP%20Array/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Suffix Array & LCP Array
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/Suffix%20Automaton/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Suffix Automaton
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/Eertree/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eertree
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Strings/Lyndon%20Decomposition/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lyndon Decomposition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1" id="__nav_3_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Polynomials and Series
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Polynomials and Series
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FFT/algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    FWHT
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    FWHT
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extension-of-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension of FFT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extension of FFT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dft-as-matrix-multiplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      DFT as Matrix Multiplication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-dft" class="md-nav__link">
+    <span class="md-ellipsis">
+      MultiDimensional DFT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise Convolution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise Convolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xor-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      XOR Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and-or-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      AND / OR Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../ideas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Ideas & Techniques
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Ideas & Techniques
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ideas/SCC%20of%20Tournament%20Graph/idea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SCC of Tournament Graph
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ideas/Potential%20Method/idea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Potential Method
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ideas/Tree%20Optimization/idea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tree Optimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Study Records
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Study Records
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../study/Random%20Platinum%20Defence/rpd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Random Platinum Defence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../study/OI%20Review/post/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OI Review
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contest Review
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contest Review
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../study/Contest%20Review/20250711/post/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SCPC 2025 Round 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extension-of-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension of FFT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extension of FFT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dft-as-matrix-multiplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      DFT as Matrix Multiplication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-dft" class="md-nav__link">
+    <span class="md-ellipsis">
+      MultiDimensional DFT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise Convolution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise Convolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xor-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      XOR Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and-or-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      AND / OR Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../../tags/#tag:fft" class="md-tag">fft</a>
+      
+    
+      
+      
+      
+        <a href="../../../../../tags/#tag:math" class="md-tag">math</a>
+      
+    
+      
+      
+      
+        <a href="../../../../../tags/#tag:-algorithm" class="md-tag">~ algorithm</a>
+      
+    
+  </nav>
+
+
+  
+  
+
+
+<h1 id="fwht-fast-walsh-hadamard-transform">FWHT (Fast Walsh Hadamard Transform)<a class="headerlink" href="#fwht-fast-walsh-hadamard-transform" title="Permanent link">&para;</a></h1>
+<p><strong>FFT</strong>는 다음과 같은 형태의 convolution을 <span class="arithmatex">\(O(N\log N)\)</span>에 계산할 수 있게 해준다.</p>
+<div class="arithmatex">\[
+c_i = \sum_{j+k=i} a_j \cdot b_k
+\]</div>
+<p><strong>FWHT</strong>는 이를 더 확장하여, convolution의 형태가 덧셈이 아닌, <strong>bitwise xor</strong>, <strong>bitwise and</strong>, <strong>bitwise or</strong> 등의 다양한 연산들 <span class="arithmatex">\(\star\)</span> 에 대하여 가능하게 하는 알고리즘이다.</p>
+<div class="arithmatex">\[
+c_i = \sum_{j \star k=i} a_j \cdot b_k
+\]</div>
+<h2 id="extension-of-fft">Extension of FFT<a class="headerlink" href="#extension-of-fft" title="Permanent link">&para;</a></h2>
+<h3 id="dft-as-matrix-multiplication">DFT as Matrix Multiplication<a class="headerlink" href="#dft-as-matrix-multiplication" title="Permanent link">&para;</a></h3>
+<p>우선, <strong>DFT</strong>를 다항식에 대입할 값들 <span class="arithmatex">\(x_0, x_1, \cdots, x_{n-1}\)</span>로, <span class="arithmatex">\(\omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}\)</span>를 선택했을 때의 함숫값을 구하는 과정으로 생각하지 말고, 행렬곱의 개념으로 생각하자.</p>
+<div class="arithmatex">\[
+DFT(a_0, a_1, \cdots, a_{n-1})=(A(\omega_n^0), A(\omega_n^1), \cdots, A(\omega_n^{n-1}))=(y_0, y_1, \cdots, y_{n-1})
+\]</div>
+<div class="arithmatex">\[
+=
+\begin{bmatrix}
+    \omega_n^{0 \cdot 0} &amp; \omega_n^{0 \cdot 1} &amp; \omega_n^{0 \cdot 2} &amp; \dots &amp; \omega_n^{0 \cdot (n-1)} \\
+    \omega_n^{1 \cdot 0} &amp; \omega_n^{1 \cdot 1} &amp; \omega_n^{1 \cdot 2} &amp; \dots &amp; \omega_n^{1 \cdot (n-1)} \\
+    \omega_n^{2 \cdot 0} &amp; \omega_n^{2 \cdot 1} &amp; \omega_n^{2 \cdot 2} &amp; \dots &amp; \omega_n^{2 \cdot (n-1)} \\
+    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    \omega_n^{(n-1) \cdot 0} &amp; \omega_n^{(n-1) \cdot 1} &amp; \omega_n^{(n-1) \cdot 2} &amp; \dots &amp; \omega_n^{(n-1) \cdot (n-1)} 
+\end{bmatrix}
+\begin{bmatrix}
+    a_0 \\    
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_{n-1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    y_0 \\    
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_{n-1}
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+W=
+\begin{bmatrix}
+    \omega_n^{ij}
+\end{bmatrix}_{0 \le i, j &lt; n}
+\]</div>
+<p>이 때, DFT matrix <span class="arithmatex">\(W\)</span>는 다음 조건을 만족한다.</p>
+<div class="arithmatex">\[
+c_i = \sum_{j+k=i} a_j \cdot b_k
+\]</div>
+<div class="arithmatex">\[
+W
+\begin{bmatrix}
+    a_0 \\    
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_{n-1}
+\end{bmatrix}
+\cdot
+W
+\begin{bmatrix}
+    b_0 \\    
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_{n-1}
+\end{bmatrix}
+=
+W
+\begin{bmatrix}
+    c_0 \\    
+    c_1 \\
+    c_2 \\
+    \vdots \\
+    c_{n-1}
+\end{bmatrix}
+\]</div>
+<p>임의의 연산 <span class="arithmatex">\(\star\)</span>에 대해서도 위와 같은 성질을 만족하는 행렬(invertible matrix) <span class="arithmatex">\(T\)</span>를 찾을 수 있다면, 다항식에 <span class="arithmatex">\(\omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}\)</span>를 대입한 함숫값들을 의미하는 DFT matrix <span class="arithmatex">\(W\)</span>는 아니지만, <strong>DFT</strong>와 같은 논리를 적용할 수 있다.</p>
+<div class="arithmatex">\[
+c_i = \sum_{j \star k=i} a_j \cdot b_k
+\]</div>
+<div class="arithmatex">\[
+T
+\begin{bmatrix}
+    a_0 \\    
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_{n-1}
+\end{bmatrix}
+\cdot
+T
+\begin{bmatrix}
+    b_0 \\    
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_{n-1}
+\end{bmatrix}
+=
+T
+\begin{bmatrix}
+    c_0 \\    
+    c_1 \\
+    c_2 \\
+    \vdots \\
+    c_{n-1}
+\end{bmatrix}
+\]</div>
+<div class="admonition property">
+<p class="admonition-title">Property 1</p>
+<div class="arithmatex">\[
+c_i = \sum_{j \star k=i} a_j \cdot b_k
+\]</div>
+<div class="arithmatex">\[
+T
+\begin{bmatrix}
+    a_0 \\    
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_{n-1}
+\end{bmatrix}
+\cdot
+T
+\begin{bmatrix}
+    b_0 \\    
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_{n-1}
+\end{bmatrix}
+=
+T
+\begin{bmatrix}
+    c_0 \\    
+    c_1 \\
+    c_2 \\
+    \vdots \\
+    c_{n-1}
+\end{bmatrix}
+\]</div>
+<p>임의의 연산 <span class="arithmatex">\(\star\)</span>에 대하여 위 조건을 만족하는 행렬(invertible matrix) <span class="arithmatex">\(T\)</span>를 찾을 수 있다면, <strong>DFT</strong>와 같은 논리를 적용할 수 있다.</p>
+</div>
+<h3 id="multidimensional-dft">MultiDimensional DFT<a class="headerlink" href="#multidimensional-dft" title="Permanent link">&para;</a></h3>
+<p><strong>DFT</strong>는 다항식 <span class="arithmatex">\(A(x)\)</span>에 특정 값들을 대입하여 그 함숫값들로 변환한다.
+일변수 다항식 <span class="arithmatex">\(A(x)\)</span>가 아닌, 이변수 다항식 <span class="arithmatex">\(A(x, y)\)</span>, 혹은 변수가 <span class="arithmatex">\(n\)</span>개 있는 다항식 <span class="arithmatex">\(A(x_0, x_1, \cdots, x_{n-1})\)</span>에 대해서도 변수에 특정 값들을 대입하여 그 함숫값들로 변환할 수 있다.</p>
+<p>구체적으로 MultiDimensional DFT를 정의하기 위하여 다음을 정의하자.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 1</p>
+<p><span class="arithmatex">\(A\)</span>가 <span class="arithmatex">\(m \times n\)</span> 행렬, <span class="arithmatex">\(B\)</span>가 <span class="arithmatex">\(p \times q\)</span> 행렬일 때 <span class="arithmatex">\(A\)</span>와 <span class="arithmatex">\(B\)</span>의 <strong>kronecker product</strong> <span class="arithmatex">\(A \otimes B\)</span>를 다음과 같은 크기 <span class="arithmatex">\(mp \times nq\)</span>의 block matrix로 정의한다.</p>
+<div class="arithmatex">\[
+A \bigotimes B = 
+\begin{bmatrix}
+    a_{11}B &amp; a_{12}B &amp; a_{13}B &amp; \dots &amp; a_{1n}B \\
+    a_{21}B &amp; a_{22}B &amp; a_{23}B &amp; \dots &amp; a_{2n}B \\
+    a_{31}B &amp; a_{32}B &amp; a_{33}B &amp; \dots &amp; a_{3n}B \\
+    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    a_{m1}B &amp; a_{m2}B &amp; a_{m3}B &amp; \dots &amp; a_{mn}B \\
+\end{bmatrix}
+\]</div>
+</div>
+<p>Kronecker product 에는 다음과 같은 성질들이 성립한다.</p>
+<div class="admonition property">
+<p class="admonition-title">Property 2</p>
+<div class="arithmatex">\[(A \otimes B) \otimes C = A \otimes (B \otimes C)\]</div>
+<div class="arithmatex">\[(A \otimes B)(C \otimes D) = (AC \otimes BD)\]</div>
+<div class="arithmatex">\[(A \otimes B)^{-1} = (A^{-1} \otimes B^{-1})\]</div>
+</div>
+<div class="admonition definition">
+<p class="admonition-title">Definition 2</p>
+<p>다항식 <span class="arithmatex">\(A(x_0, x_1, \cdots, x_{n-1})\)</span>이 다음과 같는 계수들을 갖는다.</p>
+<div class="arithmatex">\[
+A(x_0, x_1, \cdots, x_{n-1}) = 
+\sum_{i_0=0}^{m_0}
+\sum_{i_1=0}^{m_1}
+\sum_{i_2=0}^{m_2}
+\cdots
+\sum_{i_{n-1}=0}^{m_{n-1}}
+a_{i_0, i_1, i_2, \cdots, i_{n-1}} x_0^{i_0} x_1^{i_1} x_2^{i_2} \cdots x_{n-1}^{i_{n-1}}
+\]</div>
+<p>이 때, 다항식의 <strong>vector form</strong>을 다음과 같이 정의한다.</p>
+<p><span class="arithmatex">\(\overrightarrow{a}_{0, 1, 2, \cdots, n-1}=\)</span> 다항식들의 계수 <span class="arithmatex">\(a_{i_0, i_1, i_2, \cdots, i_{n-1}}\)</span>를 <span class="arithmatex">\((i_0, i_1, i_2, \cdots, i_{n-1})\)</span>에 대한 사전순으로 일렬로 배열한 벡터.</p>
+<div class="arithmatex">\[
+\overrightarrow{a}_{0, 1, 2, \cdots, n-1} = 
+\begin{bmatrix}
+    a_{0, 0, 0, \cdots, 0} \\
+    a_{0, 0, 0, \cdots, 1} \\
+    a_{0, 0, 0, \cdots, 2} \\
+    \vdots \\ 
+    a_{m_0-1, m_1-1, m_2-1, \cdots, m_{n-1}-1}
+\end{bmatrix}
+\]</div>
+</div>
+<p>다항식의 vector form은 다음과 같이 재귀적으로 해석할 수 있다.</p>
+<div class="arithmatex">\[
+\overrightarrow{a}_{0, 1, 2, \cdots, n-1} = 
+\begin{bmatrix}
+    a_{0, 0, 0, \cdots, 0} \\
+    a_{0, 0, 0, \cdots, 1} \\
+    a_{0, 0, 0, \cdots, 2} \\
+    \vdots \\ 
+    a_{m_0-1, m_1-1, m_2-1, \cdots, m_{n-1}-1}
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+=
+\begin{bmatrix}
+    \begin{bmatrix}
+        a_{0, 0, 0, \cdots, 0} \\
+        a_{0, 0, 0, \cdots, 1} \\
+        \vdots \\ 
+        a_{0, m_1-1, m_2-1, \cdots, m_{n-1}-1}
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        a_{1, 0, 0, \cdots, 0} \\
+        a_{1, 0, 0, \cdots, 1} \\
+        \vdots \\ 
+        a_{1, m_1-1, m_2-1, \cdots, m_{n-1}-1}
+    \end{bmatrix} \\
+    \vdots \\
+    \begin{bmatrix}
+        a_{m_0-1, 0, 0, \cdots, 0} \\
+        a_{m_0-1, 0, 0, \cdots, 1} \\
+        \vdots \\ 
+        a_{m_0-1, m_1-1, m_2-1, \cdots, m_{n-1}-1}
+    \end{bmatrix} \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_0 \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_1 \\
+    \vdots \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_{m_0-1}
+\end{bmatrix}
+\]</div>
+<div class="admonition property">
+<p class="admonition-title">Property 3</p>
+<div class="arithmatex">\[
+\overrightarrow{a}_{0, 1, 2, \cdots, n-1} =
+\begin{bmatrix}
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_0 \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_1 \\
+    \vdots \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_{m_0-1}
+\end{bmatrix}
+\]</div>
+</div>
+<p>이제 1차원 <strong>DFT</strong>를 반복적으로 적용하여 다차원으로 확장하자.
+<span class="arithmatex">\(T_0, T_1, \cdots, T_{n-1}\)</span>을 변수 <span class="arithmatex">\(x_0, x_1, \cdots x_{n-1}\)</span>에 대하여 <strong>Property 1</strong>을 만족하는 행렬이라 하자.
+전체 다항식에 대한 변환 행렬 <span class="arithmatex">\(T\)</span>를 다음과 같이 구할 수 있다.</p>
+<div class="arithmatex">\[
+T=T_0 \otimes T_1 \otimes T_2 \cdots \otimes T_{n-1}
+\]</div>
+<p>편의를 위해 다음을 정의하자.</p>
+<div class="arithmatex">\[T'=T_1 \otimes T_2 \cdots \otimes T_{n-1}\]</div>
+<div class="arithmatex">\[(\overrightarrow{y}_{1, 2, \cdots, n-1})_k = (T_1 \otimes T_2 \cdots \otimes T_{n-1}) (\overrightarrow{a}_{1, 2, \cdots, n-1})_k = T'(\overrightarrow{a}_{1, 2, \cdots, n-1})_k\]</div>
+<div class="admonition definition">
+<p class="admonition-title">Definition 3</p>
+<div class="arithmatex">\[T'=T_1 \otimes T_2 \cdots \otimes T_{n-1}\]</div>
+<div class="arithmatex">\[(\overrightarrow{y}_{1, 2, \cdots, n-1})_k = (T_1 \otimes T_2 \cdots \otimes T_{n-1}) (\overrightarrow{a}_{1, 2, \cdots, n-1})_k = T'(\overrightarrow{a}_{1, 2, \cdots, n-1})_k\]</div>
+</div>
+<div class="arithmatex">\[
+(T_0 \otimes T_1 \otimes T_2 \cdots \otimes T_{n-1}) \ \overrightarrow{a}_{0, 1, 2, \cdots, n-1}
+=
+(T_0 \otimes T')
+\begin{bmatrix}
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_0 \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_1 \\
+    \vdots \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_{m_0-1}
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+=\begin{bmatrix}
+    (T_0)_{0,0} T' &amp; (T_0)_{0,1} T' &amp; \dots &amp; (T_0)_{0, m_0-1} T' \\
+    (T_0)_{1,0} T' &amp; (T_0)_{1,1} T' &amp; \dots &amp; (T_0)_{1, m_0-1} T' \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    (T_0)_{m_0-1,0} T' &amp; (T_0)_{m_0-1,1} T' &amp; \dots &amp; (T_0)_{m_0-1, m_0-1} T' \\
+\end{bmatrix}
+\begin{bmatrix}
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_0 \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_1 \\
+    \vdots \\
+    (\overrightarrow{a}_{1, 2, \cdots, n-1})_{m_0-1}
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+=\begin{bmatrix}
+    (T_0)_{0,0}(\overrightarrow{y}_{1, 2, \cdots, n-1})_0 + (T_0)_{0,1}(\overrightarrow{y}_{1, 2, \cdots, n-1})_1 + \cdots + (T_0)_{0,m_0-1}(\overrightarrow{y}_{1, 2, \cdots, n-1})_{m_0-1}\\
+    (T_0)_{1,0}(\overrightarrow{y}_{1, 2, \cdots, n-1})_0 + (T_0)_{1,1}(\overrightarrow{y}_{1, 2, \cdots, n-1})_1 + \cdots + (T_0)_{1,m_0-1}(\overrightarrow{y}_{1, 2, \cdots, n-1})_{m_0-1}\\
+    \vdots \\
+    (T_0)_{m_0-1,0}(\overrightarrow{y}_{1, 2, \cdots, n-1})_0 + (T_0)_{m_0-1,1}(\overrightarrow{y}_{1, 2, \cdots, n-1})_1 + \cdots + (T_0)_{m_0-1,m_0-1}(\overrightarrow{y}_{1, 2, \cdots, n-1})_{m_0-1}\\
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+= T_0 \ 
+\begin{bmatrix}
+    (\overrightarrow{y}_{1, 2, \cdots, n-1})_0 \\
+    (\overrightarrow{y}_{1, 2, \cdots, n-1})_1 \\
+    \vdots \\
+    (\overrightarrow{y}_{1, 2, \cdots, n-1})_{m_0-1}
+\end{bmatrix}
+=\overrightarrow{y}_{0, 1, 2, \cdots, n-1}
+\]</div>
+<p>이 때, 마지막 식에서 <span class="arithmatex">\(T_0\)</span> 행렬과 <span class="arithmatex">\(\overrightarrow{a}_{0, 1, 2, \cdots, n-1}\)</span> 벡터를 <span class="arithmatex">\(m_0\)</span>개로 묶은 벡터를 행렬 곱셈 연산으로 곱했다는 것에 주의하자.</p>
+<p>위 복잡한 식들의 의미는 결국, 변수 <span class="arithmatex">\(x_0\)</span>를 무시한 후, <span class="arithmatex">\(x_0\)</span>의 차수에 따라 분리한 다항식 계수들에 대하여 각각 <strong>DFT</strong>를 한 후, 결과 벡터를 하나의 수처럼 생각한 후 <span class="arithmatex">\(x_0\)</span>에 대한 <strong>DFT</strong>를 하면 MultiDimensional DFT를 할 수 있다는 의미이다.
+또한, 전 과정에서 DFT matrix 를 사용한 것이 아니라, <strong>Property 1</strong>의 성질을 만족하는 임의의 행렬을 사용해도 괜찮다.</p>
+<div class="admonition algorithm">
+<p class="admonition-title">Algorithm 1</p>
+<p>MultiDimensional DFT를 하기 위해선, 우선 첫 번째 변수 <span class="arithmatex">\(x_0\)</span>의 차수에 따라 분리한 다항식 계수들에 대하여 각각 <span class="arithmatex">\(n-1\)</span>차원 <strong>DFT</strong>를 한 후, 결과 벡터를 하나의 수처럼 생각한 후 <span class="arithmatex">\(x_0\)</span>에 대한 <strong>DFT</strong>를 하면 된다.</p>
+<p>이때, <strong>DFT</strong> 대신 <strong>Property 1</strong>의 성질을 만족하는 단순 행렬곱으로 각 단계를 생각해도 된다.</p>
+</div>
+<p>마지막으로, <strong>IDFT</strong> 또한 <strong>Property 2</strong>를 활용하여 <span class="arithmatex">\(T\)</span>의 역행렬을 쉽게 구할 수 있다.</p>
+<div class="arithmatex">\[
+T^{-1} = T_0^{-1} \otimes T_1^{-1} \otimes T_2^{-1} \cdots \otimes T_{n-1}^{-1}
+\]</div>
+<div class="admonition property">
+<p class="admonition-title">Property 4</p>
+<div class="arithmatex">\[
+T=T_0 \otimes T_1 \otimes T_2 \cdots \otimes T_{n-1}
+\]</div>
+<div class="arithmatex">\[
+T^{-1} = T_0^{-1} \otimes T_1^{-1} \otimes T_2^{-1} \cdots \otimes T_{n-1}^{-1}
+\]</div>
+</div>
+<h2 id="bitwise-convolution">Bitwise Convolution<a class="headerlink" href="#bitwise-convolution" title="Permanent link">&para;</a></h2>
+<p><strong>bitwise xor</strong>, <strong>bitwise and</strong>, <strong>bitwise or</strong> 등의 여러 bitwise operation 들에 convolution을 적용하기 위하여, 다음과 같이 생각하자.
+모든 연산들이 각 bit에 대하여 독립적으로 해석할 수 있으니, 각 bit를 다항식의 변수와 일대일 대응시킬 수 있다.
+예를 들어, 일반적인 <strong>DFT</strong>에서 <span class="arithmatex">\(a_5 = p\)</span>였다면 이를 <span class="arithmatex">\(px^5\)</span>으로 표현했지만, <strong>bitwise DFT</strong>에서는 <span class="arithmatex">\(px_2^1x_1^0x_0^1\)</span> (<span class="arithmatex">\(5=101_{(2)}\)</span>)의 항으로 표현된다.</p>
+<p>따라서, 각 bit를 의미하는 다변수 다항식으로 배열을 표현한 이후, 이제 준 식에 MultiDimensional DFT를 적용할 수 있다.
+각 bit에 적용할 연산 (xor, and, or)이 모두 동일하니 크기 <span class="arithmatex">\(2 \times 2\)</span>인 한 bit에만 적용될 수 있는 행렬 <span class="arithmatex">\(T\)</span>를 찾은 후, <span class="arithmatex">\(T \otimes T \otimes T \cdots \otimes T\)</span>와 같이 반복적으로 kronecker product를 취하면 DFT값을 구할 수 있다.</p>
+<p>이제, 각 연산에 대하여 각각 행렬 <span class="arithmatex">\(T\)</span>를 찾아주기만 하면 된다.</p>
+<p>xor의 예를 들면 <strong>Property 1</strong>의 식을 풀어 쓰면 다음과 같다.</p>
+<div class="arithmatex">\[
+T_{\oplus}
+\begin{bmatrix}
+    p_0 \\ p_1
+\end{bmatrix}
+\cdot
+T_{\oplus}
+\begin{bmatrix}
+    q_0 \\ q_1
+\end{bmatrix}
+=
+T_{\oplus}
+\begin{bmatrix}
+    p_0q_0+p_1q_1 \\ p_0q_1+p_1q_0
+\end{bmatrix}
+\]</div>
+<p>위 성질을 만족하는 invertible matrix를 찾으면 <span class="arithmatex">\(T_{\oplus}\)</span>를 구할 수 있다.</p>
+<div class="arithmatex">\[
+T_{\oplus}=
+\begin{bmatrix}
+    1 &amp; 1 \\ 1 &amp; -1
+\end{bmatrix}, \
+T_{\oplus}^{-1}=
+\frac{1}{2}
+\begin{bmatrix}
+    1 &amp; 1 \\ 1 &amp; -1
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+T_{\&amp;}=
+\begin{bmatrix}
+    0 &amp; 1 \\ 1 &amp; 1
+\end{bmatrix}, \
+T_{\&amp;}^{-1}=
+\begin{bmatrix}
+    -1 &amp; 1 \\ 1 &amp; 0
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+T_{|}=
+\begin{bmatrix}
+    1 &amp; 0 \\ 1 &amp; 1
+\end{bmatrix}, \
+T_{|}^{-1}=
+\begin{bmatrix}
+    1 &amp; 0 \\ -1 &amp; 1
+\end{bmatrix}
+\]</div>
+<div class="admonition property">
+<p class="admonition-title">Property 5</p>
+<div class="arithmatex">\[
+T_{\oplus}=
+\begin{bmatrix}
+    1 &amp; 1 \\ 1 &amp; -1
+\end{bmatrix}, \
+T_{\oplus}^{-1}=
+\frac{1}{2}
+\begin{bmatrix}
+    1 &amp; 1 \\ 1 &amp; -1
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+T_{\&amp;}=
+\begin{bmatrix}
+    0 &amp; 1 \\ 1 &amp; 1
+\end{bmatrix}, \
+T_{\&amp;}^{-1}=
+\begin{bmatrix}
+    -1 &amp; 1 \\ 1 &amp; 0
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+T_{|}=
+\begin{bmatrix}
+    1 &amp; 0 \\ 1 &amp; 1
+\end{bmatrix}, \
+T_{|}^{-1}=
+\begin{bmatrix}
+    1 &amp; 0 \\ -1 &amp; 1
+\end{bmatrix}
+\]</div>
+</div>
+<p>시간 복잡도는 <span class="arithmatex">\(\log N\)</span>차원 <strong>DFT</strong>이고, 각 차원이 크기 <span class="arithmatex">\(2\)</span>인 행렬곱이므로 <span class="arithmatex">\(O(N\log N)\)</span>이다.</p>
+<div class="admonition complexity">
+<p class="admonition-title">Time Complexity</p>
+<p>Time Complexity : <span class="arithmatex">\(O(N\log N)\)</span></p>
+</div>
+<h3 id="xor-convolution">XOR Convolution<a class="headerlink" href="#xor-convolution" title="Permanent link">&para;</a></h3>
+<p>(다른 관점의 해석)</p>
+<p><strong>bitwise xor</strong> 연산은 <span class="arithmatex">\(\mathbb{Z}_2^k\)</span>상에서의 덧셈 연산과 동일하다.</p>
+<div class="arithmatex">\[
+T_{\oplus}=
+\begin{bmatrix}
+    1 &amp; 1 \\ 1 &amp; -1
+\end{bmatrix}, \
+T_{\oplus}^{-1}=
+\frac{1}{2}
+\begin{bmatrix}
+    1 &amp; 1 \\ 1 &amp; -1
+\end{bmatrix}
+\]</div>
+<p>위 행렬을 다음과 같이 해석할 수 있다.
+일반적인 <strong>DFT</strong>에서 <span class="arithmatex">\(\omega_2=-1\)</span>이니, <span class="arithmatex">\(T_{\oplus}\)</span>는 사실 크기 <span class="arithmatex">\(2\)</span>의 DFT matrix와 동일하다.
+하지만 크기 <span class="arithmatex">\(2\)</span>인 벡터를 DFT하여 convolution하기 위해서는 크기 <span class="arithmatex">\(3\)</span>이상의 공간이 필요하지만, 크기 <span class="arithmatex">\(2\)</span>의 행렬을 선택하였기 때문에 <span class="arithmatex">\(x^2\)</span>에 해당하는 값은 다시 <span class="arithmatex">\(x^0\)</span>과 같게 취급되고, 이는 사실 <span class="arithmatex">\(\mathbb{Z}_2\)</span>상에서의 덧셈, 즉 xor이 원하는 연산을 구현하였다고 해석할 수 있다.</p>
+<hr />
+<p>이를 더 일반화하면, <span class="arithmatex">\(\mathbb{Z}_2\)</span>상에서의 덧셈 연산인 <strong>bitwise xor</strong>에서 <span class="arithmatex">\(\omega_2\)</span>로 구성된 크기 <span class="arithmatex">\(2\)</span>의 DFT matrix를 사용했던 것처럼, <span class="arithmatex">\(\mathbb{Z}_k\)</span>상에서의 덧셈 연산에서는 <span class="arithmatex">\(\omega_k\)</span>로 구성된 크기 <span class="arithmatex">\(k\)</span>의 DFT matrix를 사용하면 구할 수 있다.</p>
+<h3 id="and-or-convolution">AND / OR Convolution<a class="headerlink" href="#and-or-convolution" title="Permanent link">&para;</a></h3>
+<p>(다른 관점의 해석)</p>
+<p><strong>bitwise and</strong>연산은 <strong>bitwise or</strong>연산의 여집합으로 해석할 수 있으니, <strong>bitwise or</strong>연산에 대해서만 서술한다.
+<strong>bitwise or</strong>연산은 <span class="arithmatex">\(\mathbb{Z}_2^k\)</span>상에서의 max 연산, 혹은 합집합 연산과 동일하다.</p>
+<div class="arithmatex">\[
+T_{|}=
+\begin{bmatrix}
+    1 &amp; 0 \\ 1 &amp; 1
+\end{bmatrix}, \
+T_{|}^{-1}=
+\begin{bmatrix}
+    1 &amp; 0 \\ -1 &amp; 1
+\end{bmatrix}
+\]</div>
+<p>위 행렬은 크기 <span class="arithmatex">\(2\)</span>인 벡터에 대한 누적합을 취하는 행렬이고, 역행렬은 거꾸로 누적합의 역연산, 즉 차이값 배열을 취하는 행렬이다.
+모든 비트를 모아놓고 보면, 결국 특정 집합의 부분집합을 모두 순회하여 더하는, <strong>Sum of Subset</strong>을 취하는 연산임을 알 수 있다.
+따라서 <strong>OR convolution</strong>은 각 배열 <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>에 대하여 <strong>Sum of Subset</strong>을 취한 후 곱하여 배열 <span class="arithmatex">\(c'\)</span>을 구하고, <strong>Sum of Subset</strong>의 역연산을 통해 최종 배열 <span class="arithmatex">\(c\)</span>를 구한다고 요약할 수 있다.</p>
+<div class="arithmatex">\[
+c_i = \sum_{j \cup k=i} a_j \cdot b_k
+\]</div>
+<div class="arithmatex">\[
+c'_i = \sum_{j \subseteq i}c_j = \sum_{j \cup k \subseteq i} a_j \cdot b_k = \sum_{j \subseteq i \wedge k \subseteq i} a_j \cdot b_k = \sum_{j \subseteq i} a_j \cdot \sum_{k \subseteq i} b_k
+\]</div>
+<p>위 식을 통해서도 그 정당성을 확인할 수 있다.
+<strong>OR convolution</strong>을 구현하면, <strong>SOS DP</strong>를 통해 위 식을 직접 계산하는 것과 동일한 작업을 한다.</p>
+<hr />
+<p>이를 더 일반화하면, <span class="arithmatex">\(\mathbb{Z}_2\)</span>상에서의 max 연산인 <strong>bitwise or</strong>에서 <strong>Sum of Subset</strong>을 취했던 것처럼, <span class="arithmatex">\(\mathbb{Z}_k\)</span>상에서의 max 연산에서는 크기 <span class="arithmatex">\(k\)</span>인 누적합을 하는 <strong>Sum of Subset</strong>을 구한다고 요약할 수 있다.</p>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<p>다음은 <strong>XOR Convolution</strong>에 대한 구현 코드이다.
+<strong>AND / OR Convolution</strong> 또한, 행렬 <span class="arithmatex">\(T\)</span>만 다르게 구현해주면 됨을 알 수 있다.</p>
+<p>또한, 실제 구현은 <strong>FFT</strong>와 매우 유사하지만, 그 동작 원리는 크기 <span class="arithmatex">\(2\)</span>의 FFT를 비트의 개수만큼 쌓아 MultiDimensional FFT를 하는 것임에 주의하자.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">DFT</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">inv</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;&lt;=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">+=</span><span class="n">i</span><span class="o">+</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">&lt;</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">                </span><span class="n">ll</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">];</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">                </span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">                </span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="p">]</span><span class="o">/=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">]</span><span class="o">/=</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://codeforces.com/blog/entry/43499">https://codeforces.com/blog/entry/43499</a></li>
+<li><a href="https://codeforces.com/blog/entry/71899">https://codeforces.com/blog/entry/71899</a></li>
+<li><a href="https://codeforces.com/blog/entry/115438">https://codeforces.com/blog/entry/115438</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2025 Jaemin Park
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/arnold518" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["content.code.copy", "navigation.sections", "header.autohide", "navigation.instant", "navigation.tracking", "navigation.tabs", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.indexes", "navigation.expand"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
