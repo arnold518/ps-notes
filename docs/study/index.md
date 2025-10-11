@@ -8,6 +8,7 @@
 ### Contest Review
 
 - [[20250711] SCPC 2025 Round 1](Contest Review/20250711/post.md)
+- [[20250924] Codeforces Round 1053 (Div. 1)](Contest Review/20250924/post.md)
 
 ## Todo
 
